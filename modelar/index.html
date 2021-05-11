@@ -1,0 +1,550 @@
+
+<!doctype html>
+<html lang="es" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Tutorial avanzado para aprender a programar en lenguaje R">
+      
+      
+      
+        <meta name="author" content="José Carlos y Manuel Jesús">
+      
+      
+      <link rel="shortcut icon" href="../icon/favicon.ico">
+      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-7.0.0">
+    
+    
+      
+        <title>Modelar datos - Tutorial avanzado de programación en R</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.a3f8f96a.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.7fa14f5b.min.css">
+        
+          
+          
+          <meta name="theme-color" content="#009485">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=:300,400,400i,700%7CConsolas&display=fallback">
+        <style>:root{--md-text-font-family:"";--md-code-font-family:"Consolas"}</style>
+      
+    
+    
+    
+      <link rel="stylesheet" href="../extra.css">
+    
+    
+      
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="teal" data-md-color-accent="indigo">
+      
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#introduccion" class="md-skip">
+          Saltar a contenido
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Cabecera">
+    <a href=".." title="Tutorial avanzado de programación en R" class="md-header__button md-logo" aria-label="Tutorial avanzado de programación en R">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 2h2v2c0 1.44.68 2.61 1.88 3.78.86.83 2.01 1.63 3.21 2.42l-1.83 1.19C8.27 10.72 7.31 10 6.5 9.21 5.07 7.82 4 6.1 4 4V2m14 0h2v2c0 2.1-1.07 3.82-2.5 5.21-1.41 1.38-3.21 2.52-4.96 3.63-1.75 1.12-3.45 2.21-4.66 3.38C6.68 17.39 6 18.56 6 20v2H4v-2c0-2.1 1.07-3.82 2.5-5.21 1.41-1.38 3.21-2.52 4.96-3.63 1.75-1.12 3.45-2.21 4.66-3.38C17.32 6.61 18 5.44 18 4V2m-3.26 10.61c.99.67 1.95 1.39 2.76 2.18C18.93 16.18 20 17.9 20 20v2h-2v-2c0-1.44-.68-2.61-1.88-3.78-.86-.83-2.01-1.63-3.21-2.42l1.83-1.19M7 3h10v1l-.06.5H7.06L7 4V3m.68 3h8.64c-.24.34-.52.69-.9 1.06l-.51.44H9.07l-.49-.44c-.38-.37-.66-.72-.9-1.06m1.41 10.5h5.84l.49.44c.38.37.66.72.9 1.06H7.68c.24-.34.52-.69.9-1.06l.51-.44m-2.03 3h9.88l.06.5v1H7v-1l.06-.5z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Tutorial avanzado de programación en R
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Modelar datos
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    <div class="md-header__options">
+      
+    </div>
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Búsqueda" placeholder="Búsqueda" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" data-md-state="active" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <button type="reset" class="md-search__icon md-icon" aria-label="Limpiar" tabindex="-1">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Inicializando búsqueda
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navegación" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Tutorial avanzado de programación en R" class="md-nav__button md-logo" aria-label="Tutorial avanzado de programación en R">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 2h2v2c0 1.44.68 2.61 1.88 3.78.86.83 2.01 1.63 3.21 2.42l-1.83 1.19C8.27 10.72 7.31 10 6.5 9.21 5.07 7.82 4 6.1 4 4V2m14 0h2v2c0 2.1-1.07 3.82-2.5 5.21-1.41 1.38-3.21 2.52-4.96 3.63-1.75 1.12-3.45 2.21-4.66 3.38C6.68 17.39 6 18.56 6 20v2H4v-2c0-2.1 1.07-3.82 2.5-5.21 1.41-1.38 3.21-2.52 4.96-3.63 1.75-1.12 3.45-2.21 4.66-3.38C17.32 6.61 18 5.44 18 4V2m-3.26 10.61c.99.67 1.95 1.39 2.76 2.18C18.93 16.18 20 17.9 20 20v2h-2v-2c0-1.44-.68-2.61-1.88-3.78-.86-.83-2.01-1.63-3.21-2.42l1.83-1.19M7 3h10v1l-.06.5H7.06L7 4V3m.68 3h8.64c-.24.34-.52.69-.9 1.06l-.51.44H9.07l-.49-.44c-.38-.37-.66-.72-.9-1.06m1.41 10.5h5.84l.49.44c.38.37.66.72.9 1.06H7.68c.24-.34.52-.69.9-1.06l.51-.44m-2.03 3h9.88l.06.5v1H7v-1l.06-.5z"/></svg>
+
+    </a>
+    Tutorial avanzado de programación en R
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        Inicio
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tidyverse/" class="md-nav__link">
+        Tidyverse
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../visualizar/" class="md-nav__link">
+        Visualizar datos
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../importar/" class="md-nav__link">
+        Importar datos
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ordenar/" class="md-nav__link">
+        Ordenar datos
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Modelar datos
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Modelar datos
+      </a>
+      
+        
+<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#introduccion" class="md-nav__link">
+    Introducción
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#modelado-basico" class="md-nav__link">
+    Modelado básico
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#referencias" class="md-nav__link">
+    Referencias
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ejercicios/" class="md-nav__link">
+        Realización de ejercicios
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#introduccion" class="md-nav__link">
+    Introducción
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#modelado-basico" class="md-nav__link">
+    Modelado básico
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#referencias" class="md-nav__link">
+    Referencias
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                  <h1>Modelar datos</h1>
+                
+                <h2 id="introduccion">Introducción</h2>
+<p>Modelar consiste en la aplicación de herramientas matemáticas para caracterizar un conjunto de datos y encontrar relaciones entre ellos, con las que somos capaces de:</p>
+<ul>
+<li>Predecir futuros resultados</li>
+<li>Encontrar patrones y diferencias entre variables</li>
+<li>Mejorar la visualización de los resultados</li>
+</ul>
+<p>A la hora de modelar, existen dos partes a seguir:</p>
+<ul>
+<li>
+<p>Primero, Debemos encontrar un patrón dentro de los datos, que puede ser desde una relación lineal simple (<em>y</em> = a·<em>x</em> + b) hasta una curva cuadrática (<em>y</em> = a·<em>x</em> ^ b), siendo <em>x</em> e <em>y</em> las variables conocidas y "a" y "b" los parámetros que podemos modificar para encontrar la relación.</p>
+</li>
+<li>
+<p>Tras esto, conocienco el patron, debemos encotrar el modelo que se ajusta a los datos (es decir, definir "a" y "b")</p>
+</li>
+</ul>
+<div class="admonition info">
+<p class="admonition-title">Nota</p>
+<p>Hay que tener en cuenta que <em>ningún modelo elegido es perfecto</em>, simplemente es el que mejor se ajusta a los datos. Hay veces en el que el mejor modelo simplemente es malo y no tiene por que cumplirse en todos los casos.</p>
+</div>
+<p>En esta parte del tutorial, además de <em>tidyverse</em>, emplearemos el paquete <em>modelr</em>, incluido en R base y que nos dará algunar herramientas para comenzar a modelar. Además, vamos a usar <em>modeldata</em>, que incluye una serie de conjuntos de datos preparados para aprender a modelar. Instalamos los paquetes y los cargamos:</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="nf">install.packages</span><span class="p">(</span><span class="s">&quot;modeldata&quot;</span><span class="p">)</span>
+</code></pre></div>
+</td></tr></table>
+
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2
+3</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="nf">library</span><span class="p">(</span><span class="n">tidyverse</span><span class="p">)</span>
+<span class="nf">library</span><span class="p">(</span><span class="n">modelr</span><span class="p">)</span>
+<span class="nf">library</span><span class="p">(</span><span class="n">modeldata</span><span class="p">)</span>
+</code></pre></div>
+</td></tr></table>
+
+<h2 id="modelado-basico">Modelado básico</h2>
+<p>Para este apartado, vamos a usar el set de datos contenido en <em>modeldata</em> llamado "<em>oils</em>", que muestra las diferentes concentraciones de ácidos grasos en diferentes especies vegetales.</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="nf">data</span><span class="p">(</span><span class="n">oils</span><span class="p">)</span>
+<span class="nf">View</span><span class="p">(</span><span class="n">oils</span><span class="p">)</span>
+</code></pre></div>
+</td></tr></table>
+
+<p><img alt="" src="../images/modelar/1.png" title="" /></p>
+<p>Para comenzar a modelar nos puede venir bien representar gráficamente los datos con los que queremos trabajar. Por ejemplo, imaginemos que necesitamos estudiar las concentraciones de ácido oléico con respecto a las de linoleico. Vamos a representar estas variables en un diagrama de dispersión:</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="nf">ggplot</span><span class="p">(</span><span class="n">data</span> <span class="o">=</span> <span class="n">oils</span><span class="p">)</span> <span class="o">+</span> 
+    <span class="nf">geom_point</span><span class="p">(</span><span class="n">mapping</span> <span class="o">=</span> <span class="nf">aes</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="n">linoleic</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">oleic</span><span class="p">))</span>
+</code></pre></div>
+</td></tr></table>
+
+<p><img alt="" src="../images/modelar/2.png" title="" /></p>
+<p>Vemos que hay una clara tendencia lineal entre las variables (<em>y</em> = a·<em>x</em> + b). Para elegir la linea que mejor se ajusta podemos generar multitud de ellas y elegirla al verla en la gráfica. Para ello, debemos generar rectas "aleatorias", para lo cual podemos usar la funcion <em>runif</em> para generar pendientes y puntos de corte con el eje y (es decir, "a" y "b" respectivamente)</p>
+<p><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="nf">runif</span><span class="p">(</span><span class="o">&lt;</span><span class="n">NÚMERO_DE_RECTAS</span><span class="o">&gt;</span><span class="p">,</span> <span class="n">min</span> <span class="o">=</span><span class="p">,</span> <span class="n">max</span> <span class="o">=</span><span class="p">)</span>
+</code></pre></div>
+</td></tr></table>
+Generamos, por ejemplo, 200 rectas definiendo primero "a" y "b". Viendo la gráfica, podemos deducir el punto de corte con el eje alrededor de 80 (entre 77 y 83) y la pendiente alrededor de 1 (entre -2 y 2):</p>
+<p><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2
+3
+4</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="n">ayb</span> <span class="o">&lt;-</span> <span class="nf">tibble</span><span class="p">(</span>
+  <span class="n">a</span> <span class="o">=</span> <span class="nf">runif</span><span class="p">(</span><span class="m">200</span><span class="p">,</span> <span class="m">-2</span><span class="p">,</span> <span class="m">2</span><span class="p">),</span>
+  <span class="n">b</span> <span class="o">=</span> <span class="nf">runif</span><span class="p">(</span><span class="m">200</span><span class="p">,</span> <span class="m">77</span><span class="p">,</span> <span class="m">83</span><span class="p">)</span>
+<span class="p">)</span>
+</code></pre></div>
+</td></tr></table>
+Tras lo cual, representamos tanto las variables como lar rectas, para lo cual usamos la funcion de <em>ggplot2</em> llamada <em>geom_abline</em>:</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="nf">geom_abline</span><span class="p">(</span><span class="n">data</span> <span class="o">=</span> <span class="o">&lt;</span><span class="n">DATOS</span><span class="o">&gt;</span><span class="p">,</span> <span class="nf">aes</span><span class="p">(</span><span class="n">slope</span> <span class="o">=</span> <span class="o">&lt;</span><span class="n">PENDIENTE</span><span class="o">&gt;</span><span class="p">,</span> <span class="n">intercept</span> <span class="o">=</span> <span class="o">&lt;</span><span class="n">CORTE_EJE_Y</span><span class="o">&gt;</span><span class="p">,))</span>
+</code></pre></div>
+</td></tr></table>
+
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2
+3</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="nf">ggplot</span><span class="p">()</span> <span class="o">+</span> 
+  <span class="nf">geom_abline</span><span class="p">(</span><span class="n">data</span> <span class="o">=</span> <span class="n">ayb</span><span class="p">,</span> <span class="n">mapping</span> <span class="o">=</span> <span class="nf">aes</span><span class="p">(</span><span class="n">slope</span> <span class="o">=</span> <span class="n">a</span><span class="p">,</span> <span class="n">intercept</span> <span class="o">=</span> <span class="n">b</span><span class="p">),</span> <span class="n">alpha</span> <span class="o">=</span> <span class="m">1</span><span class="o">/</span><span class="m">4</span><span class="p">)</span> <span class="o">+</span>
+  <span class="nf">geom_point</span><span class="p">(</span><span class="n">data</span> <span class="o">=</span> <span class="n">oils</span><span class="p">,</span> <span class="n">mapping</span> <span class="o">=</span> <span class="nf">aes</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="n">linoleic</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">oleic</span><span class="p">))</span>
+</code></pre></div>
+</td></tr></table>
+
+<p>Obtenemos algo parecido a esto:</p>
+<p><img alt="" src="../images/modelar/3.png" title="" /></p>
+<p>Vemos que la mayoría de lineas generadas están lejos de ajustarse a los datos. Para seleccionar las buenas es necesario calcular la distancia vertical entre los puntos y las lineas. Para ello, sin embargo, es necesario crear funciones.</p>
+<h2 id="referencias">Referencias</h2>
+<div class="admonition cite">
+<p class="admonition-title">Referencias</p>
+<ul>
+<li><a href="https://ucodemy.github.io/rbioq/"><strong><em>Tutorial de programación en R orientado al estudiante de Bioquímica</em></strong>; Ismael Sánchez Pareja</a></li>
+<li><a href="https://www.tmwr.org/index.html"><strong><em>Tidy Modeling with R</em></strong>; Max Kuhn, Julia Silge</a></li>
+</ul>
+</div>
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Pie">
+      
+        <a href="../ordenar/" class="md-footer__link md-footer__link--prev" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Anterior
+              </span>
+              Ordenar datos
+            </div>
+          </div>
+        </a>
+      
+      
+        <a href="../ejercicios/" class="md-footer__link md-footer__link--next" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Siguiente
+              </span>
+              Realización de ejercicios
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "..", "features": [], "translations": {"clipboard.copy": "Copiar al portapapeles", "clipboard.copied": "Copiado al portapapeles", "search.config.lang": "es", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "B\u00fasqueda", "search.result.placeholder": "Teclee para comenzar b\u00fasqueda", "search.result.none": "No se encontraron documentos", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.more.one": "1 m\u00e1s en esta p\u00e1gina", "search.result.more.other": "# m\u00e1s en esta p\u00e1gina", "search.result.term.missing": "Falta"}, "search": "../assets/javascripts/workers/search.217ffd95.min.js", "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.926459b3.min.js"></script>
+      
+    
+  </body>
+</html>

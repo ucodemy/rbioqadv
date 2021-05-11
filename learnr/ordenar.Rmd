@@ -1,0 +1,142 @@
+---
+title: "Ejercicios de repaso"
+output: learnr::tutorial
+runtime: shiny_prerendered
+description: "Repaso del apartado de orden de datos"
+---
+
+```{r setup, include=FALSE}
+library(learnr)
+library(tidyverse)
+library(hablar)
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+
+## Ejercicio 1
+
+Responde a las siguientes preguntas (una sola respuesta correcta):
+
+```{r Test}
+quiz(
+  question("¿Cómo deben orientarse los datos dentro de un conjunto de datos?",
+    answer("Un caso por fila, una variable por columna y un valor por celda", correct = TRUE),
+    answer("Una variable por fila, un caso por columna y un valor por celda"),
+    answer("Múltiples casos por fila, múltiples variables por columna y múltiples valores por celda"),
+    answer("Es indiferente como estén orientados los datos")
+  ),
+  question("¿Cómo podrías separar o fusionar columnas en un _tibble_?",
+    answer("Con los comandos ```unite()``` y ```separate()```, respectivamente"),
+    answer("Con los comandos ```separate()``` y ```unite()```, respectivamente", correct = TRUE),
+    answer("Con los comandos ```separate()``` y ```attach()```, respectivamente"),
+    answer("No es posible, primero es necesario transformarlo en un _data frame_")
+  ),
+  question("¿Cual de las siguientes funciones de conversión se aplica para datos decimales?",
+    answer("_dtm_"),
+    answer("_dte_"),
+    answer("_dbl_", correct = TRUE),
+    answer("_int_")
+  )
+)
+```
+
+## Ejercicio 2
+
+Empleando el paquete de datos que hemos usado a lo largo de este apartado, y con todo lo que has aprendido a lo largo de este tutorial, **crea una representación gráfica que compare los diferentes tipos de carcinomas estudiados con respecto a la edad de diagnóstico**.
+
+![](images/ordenar/1.png)
+
+```{r ejercicio2, exercise=TRUE, exercise.lines = 10}
+
+```
+
+```{r ejercicio2-hint-1}
+
+"El primer paso sería importar los datos, orientarlos de forma correcta y nombrar las columnas:"
+
+datos <- read_tsv("brca.txt")
+
+ejercicio <- as_tibble(t(datos), rownames = NA)
+
+colnames(ejercicio) <- ejercicio[1,]
+
+ejercicio <- ejercicio[-c(1),]
+```
+
+```{r ejercicio2-hint-2}
+
+"El primer paso sería importar los datos, orientarlos de forma correcta y nombrar las columnas:"
+
+datos <- read_tsv("brca.txt")
+
+ejercicio <- as_tibble(t(datos), rownames = NA)
+
+colnames(ejercicio) <- ejercicio[1,]
+
+ejercicio <- ejercicio[-c(1),]
+
+"Ahora nuestros datos están correctamente orientados. A continuación podríamos intentar representarlos
+(¿qué tipo de gráfica podríamos usar?), pero antes hay que hacer algo muy importante..."
+```
+
+```{r ejercicio2-hint-3}
+
+"El primer paso sería importar los datos, orientarlos de forma correcta y nombrar las columnas:"
+
+datos <- read_tsv("brca.txt")
+
+ejercicio <- as_tibble(t(datos), rownames = NA)
+
+colnames(ejercicio) <- ejercicio[1,]
+
+ejercicio <- ejercicio[-c(1),]
+
+"Ahora nuestros datos están correctamente orientados. A continuación podríamos intentar representarlos
+(¿qué tipo de gráfica podríamos usar?), pero antes hay que hacer algo muy importante..."
+
+"Las variables no están bien catalogadas. Si intentasemos representar ahora histological_type (es decir,
+tipo de carcinoma) y years_to_birth (edad de diagnóstico), nos saldrían valores puntuales para esta 
+última, pues está catalogada como carácter. Antes, por tanto, debemos cambiarla a enteros:"
+
+ejemplo4 <- convert(ejercicio, int(
+   years_to_birth
+   )
+)
+
+```
+
+```{r ejercicio2-hint-4}
+
+"El primer paso sería importar los datos, orientarlos de forma correcta y nombrar las columnas:"
+
+datos <- read_tsv("brca.txt")
+
+ejercicio <- as_tibble(t(datos), rownames = NA)
+
+colnames(ejercicio) <- ejercicio[1,]
+
+ejercicio <- ejercicio[-c(1),]
+
+"Ahora nuestros datos están correctamente orientados. A continuación podríamos intentar representarlos
+(¿qué tipo de gráfica podríamos usar?), pero antes hay que hacer algo muy importante..."
+
+"Las variables no están bien catalogadas. Si intentasemos representar ahora histological_type (es decir,
+tipo de carcinoma) y years_to_birth (edad de diagnóstico), nos saldrían valores puntuales para esta 
+última, pues está catalogada como carácter. Antes, por tanto, debemos cambiarla a enteros:"
+
+ejercicio <- convert(ejercicio, int(
+   years_to_birth
+   )
+)
+
+"Finalmente, podemos representar nuestros datos. El tipo de gráfica ideal en este caso sería un
+diagrama de cajas:"
+
+ggplot(data = ejercicio, mapping = aes(x = histological_type, y = Tumor_purity)) + 
+  geom_boxplot()
+```
+
+### Solución
+
+
+![](images/ordenar/grafica1.png)

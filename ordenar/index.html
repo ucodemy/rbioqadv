@@ -1,0 +1,1263 @@
+
+<!doctype html>
+<html lang="es" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Tutorial avanzado para aprender a programar en lenguaje R">
+      
+      
+      
+        <meta name="author" content="José Carlos y Manuel Jesús">
+      
+      
+      <link rel="shortcut icon" href="../icon/favicon.ico">
+      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-7.0.0">
+    
+    
+      
+        <title>Ordenar datos - Tutorial avanzado de programación en R</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.a3f8f96a.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.7fa14f5b.min.css">
+        
+          
+          
+          <meta name="theme-color" content="#009485">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=:300,400,400i,700%7CConsolas&display=fallback">
+        <style>:root{--md-text-font-family:"";--md-code-font-family:"Consolas"}</style>
+      
+    
+    
+    
+      <link rel="stylesheet" href="../extra.css">
+    
+    
+      
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="teal" data-md-color-accent="indigo">
+      
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#introduccion" class="md-skip">
+          Saltar a contenido
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Cabecera">
+    <a href=".." title="Tutorial avanzado de programación en R" class="md-header__button md-logo" aria-label="Tutorial avanzado de programación en R">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 2h2v2c0 1.44.68 2.61 1.88 3.78.86.83 2.01 1.63 3.21 2.42l-1.83 1.19C8.27 10.72 7.31 10 6.5 9.21 5.07 7.82 4 6.1 4 4V2m14 0h2v2c0 2.1-1.07 3.82-2.5 5.21-1.41 1.38-3.21 2.52-4.96 3.63-1.75 1.12-3.45 2.21-4.66 3.38C6.68 17.39 6 18.56 6 20v2H4v-2c0-2.1 1.07-3.82 2.5-5.21 1.41-1.38 3.21-2.52 4.96-3.63 1.75-1.12 3.45-2.21 4.66-3.38C17.32 6.61 18 5.44 18 4V2m-3.26 10.61c.99.67 1.95 1.39 2.76 2.18C18.93 16.18 20 17.9 20 20v2h-2v-2c0-1.44-.68-2.61-1.88-3.78-.86-.83-2.01-1.63-3.21-2.42l1.83-1.19M7 3h10v1l-.06.5H7.06L7 4V3m.68 3h8.64c-.24.34-.52.69-.9 1.06l-.51.44H9.07l-.49-.44c-.38-.37-.66-.72-.9-1.06m1.41 10.5h5.84l.49.44c.38.37.66.72.9 1.06H7.68c.24-.34.52-.69.9-1.06l.51-.44m-2.03 3h9.88l.06.5v1H7v-1l.06-.5z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Tutorial avanzado de programación en R
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Ordenar datos
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    <div class="md-header__options">
+      
+    </div>
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Búsqueda" placeholder="Búsqueda" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" data-md-state="active" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <button type="reset" class="md-search__icon md-icon" aria-label="Limpiar" tabindex="-1">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Inicializando búsqueda
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navegación" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Tutorial avanzado de programación en R" class="md-nav__button md-logo" aria-label="Tutorial avanzado de programación en R">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 2h2v2c0 1.44.68 2.61 1.88 3.78.86.83 2.01 1.63 3.21 2.42l-1.83 1.19C8.27 10.72 7.31 10 6.5 9.21 5.07 7.82 4 6.1 4 4V2m14 0h2v2c0 2.1-1.07 3.82-2.5 5.21-1.41 1.38-3.21 2.52-4.96 3.63-1.75 1.12-3.45 2.21-4.66 3.38C6.68 17.39 6 18.56 6 20v2H4v-2c0-2.1 1.07-3.82 2.5-5.21 1.41-1.38 3.21-2.52 4.96-3.63 1.75-1.12 3.45-2.21 4.66-3.38C17.32 6.61 18 5.44 18 4V2m-3.26 10.61c.99.67 1.95 1.39 2.76 2.18C18.93 16.18 20 17.9 20 20v2h-2v-2c0-1.44-.68-2.61-1.88-3.78-.86-.83-2.01-1.63-3.21-2.42l1.83-1.19M7 3h10v1l-.06.5H7.06L7 4V3m.68 3h8.64c-.24.34-.52.69-.9 1.06l-.51.44H9.07l-.49-.44c-.38-.37-.66-.72-.9-1.06m1.41 10.5h5.84l.49.44c.38.37.66.72.9 1.06H7.68c.24-.34.52-.69.9-1.06l.51-.44m-2.03 3h9.88l.06.5v1H7v-1l.06-.5z"/></svg>
+
+    </a>
+    Tutorial avanzado de programación en R
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        Inicio
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tidyverse/" class="md-nav__link">
+        Tidyverse
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../visualizar/" class="md-nav__link">
+        Visualizar datos
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../importar/" class="md-nav__link">
+        Importar datos
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Ordenar datos
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Ordenar datos
+      </a>
+      
+        
+<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#introduccion" class="md-nav__link">
+    Introducción
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#orientacion-de-los-datos" class="md-nav__link">
+    Orientación de los datos
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#modificar-datos" class="md-nav__link">
+    Modificar datos
+  </a>
+  
+    <nav class="md-nav" aria-label="Modificar datos">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#combinar-columnas" class="md-nav__link">
+    Combinar columnas
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#separar-columnas" class="md-nav__link">
+    Separar columnas
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#reordenar-columnas" class="md-nav__link">
+    Reordenar columnas
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cambiar-tipo-de-datos" class="md-nav__link">
+    Cambiar tipo de datos
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ejercicios-de-repaso" class="md-nav__link">
+    Ejercicios de repaso
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#referencias" class="md-nav__link">
+    Referencias
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../modelar/" class="md-nav__link">
+        Modelar datos
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ejercicios/" class="md-nav__link">
+        Realización de ejercicios
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#introduccion" class="md-nav__link">
+    Introducción
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#orientacion-de-los-datos" class="md-nav__link">
+    Orientación de los datos
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#modificar-datos" class="md-nav__link">
+    Modificar datos
+  </a>
+  
+    <nav class="md-nav" aria-label="Modificar datos">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#combinar-columnas" class="md-nav__link">
+    Combinar columnas
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#separar-columnas" class="md-nav__link">
+    Separar columnas
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#reordenar-columnas" class="md-nav__link">
+    Reordenar columnas
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cambiar-tipo-de-datos" class="md-nav__link">
+    Cambiar tipo de datos
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ejercicios-de-repaso" class="md-nav__link">
+    Ejercicios de repaso
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#referencias" class="md-nav__link">
+    Referencias
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                  <h1>Ordenar datos</h1>
+                
+                <h2 id="introduccion">Introducción</h2>
+<p>Ahora que sabemos importar nuestros datos crudos, el siguiente paso es transformarlos en algo manejable. Para este apartado, vamos a usar nuestro propio set de datos: <a href="../datos/brca.txt">brca.txt</a>, que contiene información analítica sobre diferentes casos de cáncer de mama, como por ejemplo la edad del paciente, subtipo clínico, subtipo molecular, número de ganglios linfáticos, radioterapia, etc. (puedes obtener el fichero original <a href="http://linkedomics.org/data_download/TCGA-BRCA/Human__TCGA_BRCA__MS__Clinical__Clinical__01_28_2016__BI__Clinical__Firehose.tsi">aquí</a>).</p>
+<p>Además, vamos a emplear un paquete de funciones nuevo, <em>hablar</em>, que no viene incluido ni en <em>Tidyverse</em> ni en R base. Este contiene una función muy útil que nos permite cambiar el tipo de dato asignado a una variable, asunto que veremos más adelante en el tutorial (puedes encontrar más información <a href="https://cran.r-project.org/web/packages/hablar/">aquí</a>). Lo instalamos y cargamos los paquetes <em>Tidyverse</em> y <em>hablar</em>:</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2
+3</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="nf">install.packages</span><span class="p">(</span><span class="s">&quot;hablar&quot;</span><span class="p">)</span>
+<span class="nf">library</span><span class="p">(</span><span class="n">tidyverse</span><span class="p">)</span>
+<span class="nf">library</span><span class="p">(</span><span class="n">hablar</span><span class="p">)</span>
+</code></pre></div>
+</td></tr></table>
+
+<p>Una vez cargados los paquetes y descargado el archivo (que emplea tabulaciones como delimitadores), lo abrimos y le asignamos una variable:</p>
+<p><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="n">datos</span> <span class="o">&lt;-</span> <span class="nf">read_tsv</span><span class="p">(</span><span class="s">&quot;brca.txt&quot;</span><span class="p">)</span>
+</code></pre></div>
+</td></tr></table>
+Podemos ver el dataset en la consola simplemente escribiendo el nombre de la variable:</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="o">&gt;</span> <span class="n">datos</span>
+
+<span class="c1"># A tibble: 11 x 1,098</span>
+   <span class="n">attrib_name</span>   <span class="n">TCGA.3C.AAAU</span>   <span class="n">TCGA.3C.AALI</span>   <span class="n">TCGA.3C.AALJ</span>   <span class="n">TCGA.3C.AALK</span>   <span class="n">TCGA.4H.AAAK</span>  <span class="n">TCGA.5L.AAT0</span> 
+   <span class="o">&lt;</span><span class="n">chr</span><span class="o">&gt;</span>         <span class="o">&lt;</span><span class="n">chr</span><span class="o">&gt;</span>          <span class="o">&lt;</span><span class="n">chr</span><span class="o">&gt;</span>          <span class="o">&lt;</span><span class="n">chr</span><span class="o">&gt;</span>          <span class="o">&lt;</span><span class="n">chr</span><span class="o">&gt;</span>          <span class="o">&lt;</span><span class="n">chr</span><span class="o">&gt;</span>         <span class="o">&lt;</span><span class="n">chr</span><span class="o">&gt;</span>        
+ <span class="m">1</span> <span class="n">years_to_bir</span><span class="o">~</span> <span class="m">55</span>             <span class="m">50</span>             <span class="m">62</span>             <span class="m">52</span>             <span class="m">50</span>            <span class="m">42</span>           
+ <span class="m">2</span> <span class="n">Tumor_purity</span>  <span class="m">0.7886</span>         <span class="m">0.6974</span>         <span class="m">0.7666</span>         <span class="m">0.6869</span>         <span class="m">0.649</span>         <span class="m">0.6501</span>       
+ <span class="m">3</span> <span class="n">pathologic_s</span><span class="o">~</span> <span class="kc">NA</span>             <span class="m">2</span>              <span class="m">2</span>              <span class="m">1</span>              <span class="m">3</span>             <span class="m">2</span>            
+ <span class="m">4</span> <span class="n">histological</span><span class="o">~</span> <span class="n">infiltratingl</span><span class="o">~</span> <span class="n">infiltratingd</span><span class="o">~</span> <span class="n">infiltratingd</span><span class="o">~</span> <span class="n">infiltratingd</span><span class="o">~</span> <span class="n">infiltrating</span><span class="o">~</span> <span class="n">infiltrating</span><span class="o">~</span>
+ <span class="m">5</span> <span class="n">number_of_ly</span><span class="o">~</span> <span class="m">4</span>              <span class="m">1</span>              <span class="m">1</span>              <span class="m">0</span>              <span class="m">4</span>             <span class="m">0</span>            
+ <span class="m">6</span> <span class="n">gender</span>        <span class="n">female</span>         <span class="n">female</span>         <span class="n">female</span>         <span class="n">female</span>         <span class="n">female</span>        <span class="n">female</span>       
+ <span class="m">7</span> <span class="n">radiation_th</span><span class="o">~</span> <span class="n">no</span>             <span class="n">yes</span>            <span class="n">no</span>             <span class="n">no</span>             <span class="n">no</span>            <span class="n">yes</span>          
+ <span class="m">8</span> <span class="n">race</span>          <span class="n">white</span>          <span class="n">blackorafrica</span><span class="o">~</span> <span class="n">blackorafrica</span><span class="o">~</span> <span class="n">blackorafrica</span><span class="o">~</span> <span class="n">white</span>         <span class="n">white</span>        
+ <span class="m">9</span> <span class="n">ethnicity</span>     <span class="n">nothispanicor</span><span class="o">~</span> <span class="n">nothispanicor</span><span class="o">~</span> <span class="n">nothispanicor</span><span class="o">~</span> <span class="n">nothispanicor</span><span class="o">~</span> <span class="n">nothispanico</span><span class="o">~</span> <span class="n">hispanicorla</span><span class="o">~</span>
+<span class="m">10</span> <span class="n">Median_overa</span><span class="o">~</span> <span class="m">1</span>              <span class="m">1</span>              <span class="m">0</span>              <span class="m">0</span>              <span class="m">0</span>             <span class="m">0</span>            
+<span class="m">11</span> <span class="n">overall_surv</span><span class="o">~</span> <span class="m">4047</span>           <span class="m">4005</span>           <span class="m">1474</span>           <span class="m">1448</span>           <span class="m">348</span>           <span class="m">1477</span>         
+<span class="c1"># ... with 1,091 more variables: TCGA.5L.AAT1 &lt;chr&gt;, TCGA.5T.A9QA &lt;chr&gt;, TCGA.A1.A0SB &lt;chr&gt;,...</span>
+</code></pre></div>
+</td></tr></table>
+
+<p>Para verlos en forma de tabla empleamos:</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="nf">View</span><span class="p">(</span><span class="n">datos</span><span class="p">)</span>
+</code></pre></div>
+</td></tr></table>
+
+<p>Debe aparecer algo similar a esto:</p>
+<p><img alt="" src="../images/ordenar/1.png" title="" /></p>
+<h2 id="orientacion-de-los-datos">Orientación de los datos</h2>
+<p>Para considerar que un conjunto de datos está correctamente ordenado, este debe cumplir al menos las siguientes tres reglas:</p>
+<ul>
+<li>
+<p>Cada variable debe tener su propia columna</p>
+</li>
+<li>
+<p>Cada caso debe tener su propia fila</p>
+</li>
+<li>
+<p>Cada valor debe tener su propia celda</p>
+</li>
+</ul>
+<p><img alt="" src="../images/ordenar/2.png" title="" /></p>
+<p>Lo primero de lo que podemos darnos cuenta es que la orientación de nuestro conjunto de datos es incorrecta, pues se muestran las variables en las filas y los diferentes casos en las columnas.</p>
+<p>Esto puede solucionarse fácilmente transponiendo las filas y columnas. Sin embargo, <em>Tidyverse</em> no ofrece ninguna función para transponer <em>tibbles</em>. Por tanto, tenemos que usar la funcion <code>t()</code>, incluida en R base:</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="nf">t</span><span class="p">(</span><span class="n">datos</span><span class="p">)</span>
+</code></pre></div>
+</td></tr></table>
+
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>             <span class="p">[,</span><span class="m">1</span><span class="p">]</span>             <span class="p">[,</span><span class="m">2</span><span class="p">]</span>           <span class="p">[,</span><span class="m">3</span><span class="p">]</span>               <span class="p">[,</span><span class="m">4</span><span class="p">]</span>                           
+<span class="n">attrib_name</span>  <span class="s">&quot;years_to_birth&quot;</span> <span class="s">&quot;Tumor_purity&quot;</span> <span class="s">&quot;pathologic_stage&quot;</span> <span class="s">&quot;histological_type&quot;</span>            
+<span class="n">TCGA.3C.AAAU</span> <span class="s">&quot;55&quot;</span>             <span class="s">&quot;0.7886&quot;</span>       <span class="kc">NA</span>                 <span class="s">&quot;infiltratinglobularcarcinoma&quot;</span> 
+<span class="n">TCGA.3C.AALI</span> <span class="s">&quot;50&quot;</span>             <span class="s">&quot;0.6974&quot;</span>       <span class="s">&quot;2&quot;</span>                <span class="s">&quot;infiltratingductalcarcinoma&quot;</span>  
+<span class="n">TCGA.3C.AALJ</span> <span class="s">&quot;62&quot;</span>             <span class="s">&quot;0.7666&quot;</span>       <span class="s">&quot;2&quot;</span>                <span class="s">&quot;infiltratingductalcarcinoma&quot;</span>  
+<span class="n">TCGA.3C.AALK</span> <span class="s">&quot;52&quot;</span>             <span class="s">&quot;0.6869&quot;</span>       <span class="s">&quot;1&quot;</span>                <span class="s">&quot;infiltratingductalcarcinoma&quot;</span>  
+<span class="n">TCGA.4H.AAAK</span> <span class="s">&quot;50&quot;</span>             <span class="s">&quot;0.649&quot;</span>        <span class="s">&quot;3&quot;</span>                <span class="s">&quot;infiltratinglobularcarcinoma&quot;</span> 
+<span class="n">TCGA.5L.AAT0</span> <span class="s">&quot;42&quot;</span>             <span class="s">&quot;0.6501&quot;</span>       <span class="s">&quot;2&quot;</span>                <span class="s">&quot;infiltratinglobularcarcinoma&quot;</span> 
+<span class="n">TCGA.5L.AAT1</span> <span class="s">&quot;63&quot;</span>             <span class="s">&quot;0.5553&quot;</span>       <span class="s">&quot;4&quot;</span>                <span class="s">&quot;infiltratinglobularcarcinoma&quot;</span> 
+<span class="n">TCGA.5T.A9QA</span> <span class="s">&quot;52&quot;</span>             <span class="s">&quot;0.8368&quot;</span>       <span class="s">&quot;2&quot;</span>                <span class="s">&quot;other,specify&quot;</span>                
+<span class="n">TCGA.A1.A0SB</span> <span class="s">&quot;70&quot;</span>             <span class="s">&quot;0.9328&quot;</span>       <span class="s">&quot;1&quot;</span>                <span class="s">&quot;other,specify&quot;</span>                
+<span class="n">TCGA.A1.A0SD</span> <span class="s">&quot;59&quot;</span>             <span class="s">&quot;0.6906&quot;</span>       <span class="s">&quot;2&quot;</span>                <span class="s">&quot;infiltratingductalcarcinoma&quot;</span>  
+<span class="n">TCGA.A1.A0SE</span> <span class="s">&quot;56&quot;</span>             <span class="s">&quot;0.7979&quot;</span>       <span class="s">&quot;1&quot;</span>                <span class="s">&quot;mixedhistology(pleasespecify)&quot;</span>
+<span class="n">TCGA.A1.A0SF</span> <span class="s">&quot;54&quot;</span>             <span class="s">&quot;0.7237&quot;</span>       <span class="s">&quot;2&quot;</span>                <span class="s">&quot;infiltratingductalcarcinoma&quot;</span>  
+
+<span class="kc">...</span>
+</code></pre></div>
+</td></tr></table>
+
+<p>Esta función, sin embargo, transforma las <em>tibbles</em> en matrices de R estándar. Esto también puede solucionarse fácilmente usando <code>as_tibble()</code>. Vamos a definir una nueva variable para diferenciar los datos originales (variable <code>datos</code>) de los bien ordenados con los que vamos a trabajar a partir de ahora (variable <code>brca</code>):</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="n">brca</span> <span class="o">&lt;-</span> <span class="nf">as_tibble</span><span class="p">(</span><span class="nf">t</span><span class="p">(</span><span class="n">datos</span><span class="p">),</span> <span class="n">rownames</span> <span class="o">=</span> <span class="kc">NA</span><span class="p">)</span>
+</code></pre></div>
+</td></tr></table>
+
+<div class="admonition info">
+<p class="admonition-title">Nota</p>
+<p>Con <code>rownames = NA</code> evitamos que se elimine la columna de nombres de los diferentes casos.</p>
+</div>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="n">brca</span>
+</code></pre></div>
+</td></tr></table>
+
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="c1"># A tibble: 1,098 x 10</span>
+   <span class="n">V1</span>       <span class="n">V2</span>       <span class="n">V3</span>        <span class="n">V4</span>           <span class="n">V5</span>        <span class="n">V6</span>          <span class="n">V7</span>       <span class="n">V8</span>        <span class="n">V9</span>         <span class="n">V10</span>     
+ <span class="o">*</span> <span class="o">&lt;</span><span class="n">chr</span><span class="o">&gt;</span>    <span class="o">&lt;</span><span class="n">chr</span><span class="o">&gt;</span>    <span class="o">&lt;</span><span class="n">chr</span><span class="o">&gt;</span>     <span class="o">&lt;</span><span class="n">chr</span><span class="o">&gt;</span>        <span class="o">&lt;</span><span class="n">chr</span><span class="o">&gt;</span>     <span class="o">&lt;</span><span class="n">chr</span><span class="o">&gt;</span>       <span class="o">&lt;</span><span class="n">chr</span><span class="o">&gt;</span>    <span class="o">&lt;</span><span class="n">chr</span><span class="o">&gt;</span>     <span class="o">&lt;</span><span class="n">chr</span><span class="o">&gt;</span>      <span class="o">&lt;</span><span class="n">chr</span><span class="o">&gt;</span>   
+ <span class="m">1</span> <span class="n">years_t</span><span class="o">~</span> <span class="n">Tumor_p</span><span class="o">~</span> <span class="n">patholog</span><span class="o">~</span> <span class="n">histologica</span><span class="o">~</span> <span class="n">number_o</span><span class="o">~</span> <span class="n">gender_and</span><span class="o">~</span> <span class="n">radiati</span><span class="o">~</span> <span class="n">ethnicity</span> <span class="n">Median_ov</span><span class="o">~</span> <span class="n">overall</span><span class="o">~</span>
+ <span class="m">2</span> <span class="m">55</span>       <span class="m">0.7886</span>   <span class="kc">NA</span>        <span class="n">infiltratin</span><span class="o">~</span> <span class="m">4</span>         <span class="n">female</span><span class="o">/</span><span class="n">whi</span><span class="o">~</span> <span class="n">no</span>       <span class="n">nothispa</span><span class="o">~</span> <span class="m">1</span>          <span class="m">4047</span>    
+ <span class="m">3</span> <span class="m">50</span>       <span class="m">0.6974</span>   <span class="m">2</span>         <span class="n">infiltratin</span><span class="o">~</span> <span class="m">1</span>         <span class="n">female</span><span class="o">/</span><span class="n">bla</span><span class="o">~</span> <span class="n">yes</span>      <span class="n">nothispa</span><span class="o">~</span> <span class="m">1</span>          <span class="m">4005</span>    
+ <span class="m">4</span> <span class="m">62</span>       <span class="m">0.7666</span>   <span class="m">2</span>         <span class="n">infiltratin</span><span class="o">~</span> <span class="m">1</span>         <span class="n">female</span><span class="o">/</span><span class="n">bla</span><span class="o">~</span> <span class="n">no</span>       <span class="n">nothispa</span><span class="o">~</span> <span class="m">0</span>          <span class="m">1474</span>    
+ <span class="m">5</span> <span class="m">52</span>       <span class="m">0.6869</span>   <span class="m">1</span>         <span class="n">infiltratin</span><span class="o">~</span> <span class="m">0</span>         <span class="n">female</span><span class="o">/</span><span class="n">bla</span><span class="o">~</span> <span class="n">no</span>       <span class="n">nothispa</span><span class="o">~</span> <span class="m">0</span>          <span class="m">1448</span>    
+ <span class="m">6</span> <span class="m">50</span>       <span class="m">0.649</span>    <span class="m">3</span>         <span class="n">infiltratin</span><span class="o">~</span> <span class="m">4</span>         <span class="n">female</span><span class="o">/</span><span class="n">whi</span><span class="o">~</span> <span class="n">no</span>       <span class="n">nothispa</span><span class="o">~</span> <span class="m">0</span>          <span class="m">348</span>     
+ <span class="m">7</span> <span class="m">42</span>       <span class="m">0.6501</span>   <span class="m">2</span>         <span class="n">infiltratin</span><span class="o">~</span> <span class="m">0</span>         <span class="n">female</span><span class="o">/</span><span class="n">whi</span><span class="o">~</span> <span class="n">yes</span>      <span class="n">hispanic</span><span class="o">~</span> <span class="m">0</span>          <span class="m">1477</span>    
+ <span class="m">8</span> <span class="m">63</span>       <span class="m">0.5553</span>   <span class="m">4</span>         <span class="n">infiltratin</span><span class="o">~</span> <span class="m">0</span>         <span class="n">female</span><span class="o">/</span><span class="n">whi</span><span class="o">~</span> <span class="n">no</span>       <span class="n">hispanic</span><span class="o">~</span> <span class="m">0</span>          <span class="m">1471</span>    
+ <span class="m">9</span> <span class="m">52</span>       <span class="m">0.8368</span>   <span class="m">2</span>         <span class="n">other</span><span class="p">,</span><span class="n">speci</span><span class="o">~</span> <span class="kc">NA</span>        <span class="n">female</span><span class="o">/</span><span class="n">bla</span><span class="o">~</span> <span class="n">yes</span>      <span class="n">nothispa</span><span class="o">~</span> <span class="m">0</span>          <span class="m">303</span>     
+<span class="m">10</span> <span class="m">70</span>       <span class="m">0.9328</span>   <span class="m">1</span>         <span class="n">other</span><span class="p">,</span><span class="n">speci</span><span class="o">~</span> <span class="m">0</span>         <span class="n">female</span><span class="o">/</span><span class="n">whi</span><span class="o">~</span> <span class="kc">NA</span>       <span class="n">nothispa</span><span class="o">~</span> <span class="m">0</span>          <span class="m">259</span>     
+<span class="c1"># ... with 1,088 more rows</span>
+</code></pre></div>
+</td></tr></table>
+
+<p>Vemos que esta función ha asignado nombres predeterminados a las columnas traspuestas (<code>V1</code>, <code>V2</code>, <code>V3</code>...), dejando los nombres originales en una fila aparte. Corregimos los nombres y eliminamos la fila sobrante:</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="nf">colnames</span><span class="p">(</span><span class="n">brca</span><span class="p">)</span> <span class="o">&lt;-</span> <span class="n">brca</span><span class="p">[</span><span class="m">1</span><span class="p">,]</span>
+<span class="n">brca</span> <span class="o">&lt;-</span> <span class="n">brca</span><span class="p">[</span><span class="o">-</span><span class="nf">c</span><span class="p">(</span><span class="m">1</span><span class="p">),]</span>
+</code></pre></div>
+</td></tr></table>
+
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="n">brca</span>
+</code></pre></div>
+</td></tr></table>
+
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="c1"># A tibble: 1,097 x 10</span>
+   <span class="n">years_to_birth</span> <span class="n">Tumor_purity</span> <span class="n">pathologic_stage</span> <span class="n">histological_type</span>   <span class="n">number_of_lymph_</span><span class="o">~</span> <span class="n">gender_and_race</span>   
+   <span class="o">&lt;</span><span class="n">chr</span><span class="o">&gt;</span>          <span class="o">&lt;</span><span class="n">chr</span><span class="o">&gt;</span>        <span class="o">&lt;</span><span class="n">chr</span><span class="o">&gt;</span>            <span class="o">&lt;</span><span class="n">chr</span><span class="o">&gt;</span>               <span class="o">&lt;</span><span class="n">chr</span><span class="o">&gt;</span>             <span class="o">&lt;</span><span class="n">chr</span><span class="o">&gt;</span>             
+ <span class="m">1</span> <span class="m">55</span>             <span class="m">0.7886</span>       <span class="kc">NA</span>               <span class="n">infiltratinglobula</span><span class="o">~</span> <span class="m">4</span>                 <span class="n">female</span><span class="o">/</span><span class="n">white</span>      
+ <span class="m">2</span> <span class="m">50</span>             <span class="m">0.6974</span>       <span class="m">2</span>                <span class="n">infiltratingductal</span><span class="o">~</span> <span class="m">1</span>                 <span class="n">female</span><span class="o">/</span><span class="n">blackorafr</span><span class="o">~</span>
+ <span class="m">3</span> <span class="m">62</span>             <span class="m">0.7666</span>       <span class="m">2</span>                <span class="n">infiltratingductal</span><span class="o">~</span> <span class="m">1</span>                 <span class="n">female</span><span class="o">/</span><span class="n">blackorafr</span><span class="o">~</span>
+ <span class="m">4</span> <span class="m">52</span>             <span class="m">0.6869</span>       <span class="m">1</span>                <span class="n">infiltratingductal</span><span class="o">~</span> <span class="m">0</span>                 <span class="n">female</span><span class="o">/</span><span class="n">blackorafr</span><span class="o">~</span>
+ <span class="m">5</span> <span class="m">50</span>             <span class="m">0.649</span>        <span class="m">3</span>                <span class="n">infiltratinglobula</span><span class="o">~</span> <span class="m">4</span>                 <span class="n">female</span><span class="o">/</span><span class="n">white</span>      
+ <span class="m">6</span> <span class="m">42</span>             <span class="m">0.6501</span>       <span class="m">2</span>                <span class="n">infiltratinglobula</span><span class="o">~</span> <span class="m">0</span>                 <span class="n">female</span><span class="o">/</span><span class="n">white</span>      
+ <span class="m">7</span> <span class="m">63</span>             <span class="m">0.5553</span>       <span class="m">4</span>                <span class="n">infiltratinglobula</span><span class="o">~</span> <span class="m">0</span>                 <span class="n">female</span><span class="o">/</span><span class="n">white</span>      
+ <span class="m">8</span> <span class="m">52</span>             <span class="m">0.8368</span>       <span class="m">2</span>                <span class="n">other</span><span class="p">,</span><span class="n">specify</span>       <span class="kc">NA</span>                <span class="n">female</span><span class="o">/</span><span class="n">blackorafr</span><span class="o">~</span>
+ <span class="m">9</span> <span class="m">70</span>             <span class="m">0.9328</span>       <span class="m">1</span>                <span class="n">other</span><span class="p">,</span><span class="n">specify</span>       <span class="m">0</span>                 <span class="n">female</span><span class="o">/</span><span class="n">white</span>      
+<span class="m">10</span> <span class="m">59</span>             <span class="m">0.6906</span>       <span class="m">2</span>                <span class="n">infiltratingductal</span><span class="o">~</span> <span class="m">0</span>                 <span class="n">female</span><span class="o">/</span><span class="n">white</span>      
+<span class="c1"># ... with 1,087 more rows, and 4 more variables: radiation_therapy &lt;chr&gt;, ethnicity &lt;chr&gt;,</span>
+<span class="c1">#   Median_overall_survival &lt;chr&gt;, overall_survival &lt;chr&gt;</span>
+</code></pre></div>
+</td></tr></table>
+
+<p>Los datos quedarían finalmente de la siguiente forma:</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="nf">View</span><span class="p">(</span><span class="n">brca</span><span class="p">)</span>
+</code></pre></div>
+</td></tr></table>
+
+<p><img alt="" src="../images/ordenar/3.png" title="" /></p>
+<div class="admonition warning">
+<p class="admonition-title">Importante:</p>
+<p>Vamos a usar estos datos modificados <code>brca</code> hasta el final del apartado. Es posible que no funcione algún ejercicio si no habéis seguido los pasos que hemos hecho hasta ahora.</p>
+</div>
+<h2 id="modificar-datos">Modificar datos</h2>
+<p>Ahora que los datos se encuentran bien orientados, es más fácil ver los resultados y pensar qué modificaciones podemos hacer.</p>
+<div class="admonition info">
+<p class="admonition-title">Nota</p>
+<p>Ya hemos estudiado la manipulación básica de <em>data frames</em> en el tutorial básico anterior. Puedes mirarlo <a href="https://ucodemy.github.io/rbioq/data_frames/">aquí</a>.</p>
+</div>
+<h3 id="combinar-columnas">Combinar columnas</h3>
+<p><em>Tidyverse</em> ofrece una herramienta que nos permite unir variables en una sola columna en caso de que lo necesitemos. Para ello, empleamos el comando <code>unite()</code>, de la siguiente forma:</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="nf">unite</span><span class="p">(</span><span class="o">&lt;</span><span class="n">DATOS</span><span class="o">&gt;</span><span class="p">,</span> <span class="o">&lt;</span><span class="n">COL_NUEVA</span><span class="o">&gt;</span><span class="p">,</span> <span class="o">&lt;</span><span class="n">COLUMNA1</span><span class="o">&gt;</span><span class="p">,</span> <span class="o">&lt;</span><span class="n">COLUMNA2</span><span class="o">&gt;</span><span class="p">,</span> <span class="kc">...</span><span class="p">,</span> <span class="n">sep</span> <span class="o">=</span> <span class="s">&quot;&lt;SEPARADOR&gt;&quot;</span><span class="p">)</span>
+</code></pre></div>
+</td></tr></table>
+
+<p>Por ejemplo, imaginemos que necesitamos en una sola columna a edad del paciente y la pureza del tumor:</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="n">ejemplo1</span> <span class="o">&lt;-</span> <span class="nf">unite</span><span class="p">(</span><span class="n">brca</span><span class="p">,</span> <span class="n">ejemplo1</span><span class="p">,</span> <span class="n">years_to_birth</span><span class="p">,</span> <span class="n">Tumor_purity</span><span class="p">,</span> <span class="n">sep</span> <span class="o">=</span> <span class="s">&quot; - &quot;</span><span class="p">)</span>
+</code></pre></div>
+</td></tr></table>
+
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="n">ejemplo1</span>
+</code></pre></div>
+</td></tr></table>
+
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="c1"># A tibble: 1,097 x 9</span>
+   <span class="n">ejemplo1</span>  <span class="n">pathologic_stage</span> <span class="n">histological_type</span>    <span class="n">number_of_lymph_</span><span class="o">~</span> <span class="n">gender_and_race</span>    <span class="n">radiation_thera</span><span class="o">~</span>
+   <span class="o">&lt;</span><span class="n">chr</span><span class="o">&gt;</span>     <span class="o">&lt;</span><span class="n">chr</span><span class="o">&gt;</span>            <span class="o">&lt;</span><span class="n">chr</span><span class="o">&gt;</span>                <span class="o">&lt;</span><span class="n">chr</span><span class="o">&gt;</span>             <span class="o">&lt;</span><span class="n">chr</span><span class="o">&gt;</span>              <span class="o">&lt;</span><span class="n">chr</span><span class="o">&gt;</span>           
+ <span class="m">1</span> <span class="m">55</span> <span class="o">-</span> <span class="m">0.7</span><span class="o">~</span> <span class="kc">NA</span>               <span class="n">infiltratinglobular</span><span class="o">~</span> <span class="m">4</span>                 <span class="n">female</span><span class="o">/</span><span class="n">white</span>       <span class="n">no</span>              
+ <span class="m">2</span> <span class="m">50</span> <span class="o">-</span> <span class="m">0.6</span><span class="o">~</span> <span class="m">2</span>                <span class="n">infiltratingductalc</span><span class="o">~</span> <span class="m">1</span>                 <span class="n">female</span><span class="o">/</span><span class="n">blackorafr</span><span class="o">~</span> <span class="n">yes</span>             
+ <span class="m">3</span> <span class="m">62</span> <span class="o">-</span> <span class="m">0.7</span><span class="o">~</span> <span class="m">2</span>                <span class="n">infiltratingductalc</span><span class="o">~</span> <span class="m">1</span>                 <span class="n">female</span><span class="o">/</span><span class="n">blackorafr</span><span class="o">~</span> <span class="n">no</span>              
+ <span class="m">4</span> <span class="m">52</span> <span class="o">-</span> <span class="m">0.6</span><span class="o">~</span> <span class="m">1</span>                <span class="n">infiltratingductalc</span><span class="o">~</span> <span class="m">0</span>                 <span class="n">female</span><span class="o">/</span><span class="n">blackorafr</span><span class="o">~</span> <span class="n">no</span>              
+ <span class="m">5</span> <span class="m">50</span> <span class="o">-</span> <span class="m">0.6</span><span class="o">~</span> <span class="m">3</span>                <span class="n">infiltratinglobular</span><span class="o">~</span> <span class="m">4</span>                 <span class="n">female</span><span class="o">/</span><span class="n">white</span>       <span class="n">no</span>              
+ <span class="m">6</span> <span class="m">42</span> <span class="o">-</span> <span class="m">0.6</span><span class="o">~</span> <span class="m">2</span>                <span class="n">infiltratinglobular</span><span class="o">~</span> <span class="m">0</span>                 <span class="n">female</span><span class="o">/</span><span class="n">white</span>       <span class="n">yes</span>             
+ <span class="m">7</span> <span class="m">63</span> <span class="o">-</span> <span class="m">0.5</span><span class="o">~</span> <span class="m">4</span>                <span class="n">infiltratinglobular</span><span class="o">~</span> <span class="m">0</span>                 <span class="n">female</span><span class="o">/</span><span class="n">white</span>       <span class="n">no</span>              
+ <span class="m">8</span> <span class="m">52</span> <span class="o">-</span> <span class="m">0.8</span><span class="o">~</span> <span class="m">2</span>                <span class="n">other</span><span class="p">,</span><span class="n">specify</span>        <span class="kc">NA</span>                <span class="n">female</span><span class="o">/</span><span class="n">blackorafr</span><span class="o">~</span> <span class="n">yes</span>             
+ <span class="m">9</span> <span class="m">70</span> <span class="o">-</span> <span class="m">0.9</span><span class="o">~</span> <span class="m">1</span>                <span class="n">other</span><span class="p">,</span><span class="n">specify</span>        <span class="m">0</span>                 <span class="n">female</span><span class="o">/</span><span class="n">white</span>       <span class="kc">NA</span>              
+<span class="m">10</span> <span class="m">59</span> <span class="o">-</span> <span class="m">0.6</span><span class="o">~</span> <span class="m">2</span>                <span class="n">infiltratingductalc</span><span class="o">~</span> <span class="m">0</span>                 <span class="n">female</span><span class="o">/</span><span class="n">white</span>       <span class="kc">NA</span>              
+<span class="c1"># ... with 1,087 more rows, and 3 more variables: ethnicity &lt;chr&gt;, Median_overall_survival &lt;chr&gt;,</span>
+<span class="c1">#   overall_survival &lt;chr&gt;</span>
+</code></pre></div>
+</td></tr></table>
+
+<p>Si no queremos eliminar las columnas originales, añadimos <code>remove = FALSE</code> al comando:</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="n">ejemplo2</span> <span class="o">&lt;-</span> <span class="nf">unite</span><span class="p">(</span><span class="n">brca</span><span class="p">,</span> <span class="n">ejemplo2</span><span class="p">,</span> <span class="n">years_to_birth</span><span class="p">,</span> <span class="n">Tumor_purity</span><span class="p">,</span> <span class="n">sep</span> <span class="o">=</span> <span class="s">&quot; - &quot;</span><span class="p">,</span> <span class="n">remove</span> <span class="o">=</span> <span class="kc">FALSE</span><span class="p">)</span>
+</code></pre></div>
+</td></tr></table>
+
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="n">ejemplo2</span>
+</code></pre></div>
+</td></tr></table>
+
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="c1"># A tibble: 1,097 x 11</span>
+   <span class="n">ejemplo2</span>    <span class="n">years_to_birth</span> <span class="n">Tumor_purity</span> <span class="n">pathologic_stage</span> <span class="n">histological_type</span>        <span class="n">number_of_lymph_no</span><span class="o">~</span>
+   <span class="o">&lt;</span><span class="n">chr</span><span class="o">&gt;</span>       <span class="o">&lt;</span><span class="n">chr</span><span class="o">&gt;</span>          <span class="o">&lt;</span><span class="n">chr</span><span class="o">&gt;</span>        <span class="o">&lt;</span><span class="n">chr</span><span class="o">&gt;</span>            <span class="o">&lt;</span><span class="n">chr</span><span class="o">&gt;</span>                    <span class="o">&lt;</span><span class="n">chr</span><span class="o">&gt;</span>              
+ <span class="m">1</span> <span class="m">55</span> <span class="o">-</span> <span class="m">0.7886</span> <span class="m">55</span>             <span class="m">0.7886</span>       <span class="kc">NA</span>               <span class="n">infiltratinglobularcarc</span><span class="o">~</span> <span class="m">4</span>                  
+ <span class="m">2</span> <span class="m">50</span> <span class="o">-</span> <span class="m">0.6974</span> <span class="m">50</span>             <span class="m">0.6974</span>       <span class="m">2</span>                <span class="n">infiltratingductalcarci</span><span class="o">~</span> <span class="m">1</span>                  
+ <span class="m">3</span> <span class="m">62</span> <span class="o">-</span> <span class="m">0.7666</span> <span class="m">62</span>             <span class="m">0.7666</span>       <span class="m">2</span>                <span class="n">infiltratingductalcarci</span><span class="o">~</span> <span class="m">1</span>                  
+ <span class="m">4</span> <span class="m">52</span> <span class="o">-</span> <span class="m">0.6869</span> <span class="m">52</span>             <span class="m">0.6869</span>       <span class="m">1</span>                <span class="n">infiltratingductalcarci</span><span class="o">~</span> <span class="m">0</span>                  
+ <span class="m">5</span> <span class="m">50</span> <span class="o">-</span> <span class="m">0.649</span>  <span class="m">50</span>             <span class="m">0.649</span>        <span class="m">3</span>                <span class="n">infiltratinglobularcarc</span><span class="o">~</span> <span class="m">4</span>                  
+ <span class="m">6</span> <span class="m">42</span> <span class="o">-</span> <span class="m">0.6501</span> <span class="m">42</span>             <span class="m">0.6501</span>       <span class="m">2</span>                <span class="n">infiltratinglobularcarc</span><span class="o">~</span> <span class="m">0</span>                  
+ <span class="m">7</span> <span class="m">63</span> <span class="o">-</span> <span class="m">0.5553</span> <span class="m">63</span>             <span class="m">0.5553</span>       <span class="m">4</span>                <span class="n">infiltratinglobularcarc</span><span class="o">~</span> <span class="m">0</span>                  
+ <span class="m">8</span> <span class="m">52</span> <span class="o">-</span> <span class="m">0.8368</span> <span class="m">52</span>             <span class="m">0.8368</span>       <span class="m">2</span>                <span class="n">other</span><span class="p">,</span><span class="n">specify</span>            <span class="kc">NA</span>                 
+ <span class="m">9</span> <span class="m">70</span> <span class="o">-</span> <span class="m">0.9328</span> <span class="m">70</span>             <span class="m">0.9328</span>       <span class="m">1</span>                <span class="n">other</span><span class="p">,</span><span class="n">specify</span>            <span class="m">0</span>                  
+<span class="m">10</span> <span class="m">59</span> <span class="o">-</span> <span class="m">0.6906</span> <span class="m">59</span>             <span class="m">0.6906</span>       <span class="m">2</span>                <span class="n">infiltratingductalcarci</span><span class="o">~</span> <span class="m">0</span>                  
+<span class="c1"># ... with 1,087 more rows, and 5 more variables: gender_and_race &lt;chr&gt;, radiation_therapy &lt;chr&gt;,</span>
+<span class="c1">#   ethnicity &lt;chr&gt;, Median_overall_survival &lt;chr&gt;, overall_survival &lt;chr&gt;</span>
+</code></pre></div>
+</td></tr></table>
+
+<div class="admonition example">
+<p class="admonition-title">Ejercicio</p>
+<p>Prueba a combinar las variables <em>pathologic_stage</em> y <em>radiation_therapy</em> en una nueva columna llamada <em>treatment_urgency</em>, usando como separador " &amp; " y sin eliminar las columnas originales.</p>
+<details class="check"><summary>Respuesta</summary><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2
+3
+4
+5</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="n">ejercicio1</span> <span class="o">&lt;-</span> <span class="nf">unite</span><span class="p">(</span><span class="n">brca</span><span class="p">,</span> <span class="n">treatment_urgency</span><span class="p">,</span>
+<span class="n">pathologic_stage</span><span class="p">,</span>
+<span class="n">radiation_therapy</span><span class="p">,</span>
+<span class="n">sep</span> <span class="o">=</span> <span class="s">&quot; &amp; &quot;</span><span class="p">,</span><span class="n">remove</span> <span class="o">=</span> <span class="kc">FALSE</span>
+<span class="p">)</span>
+</code></pre></div>
+</td></tr></table>
+
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="n">ejercicio1</span>
+</code></pre></div>
+</td></tr></table>
+
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="c1"># A tibble: 1,097 x 11</span>
+   <span class="n">years_to_birth</span> <span class="n">Tumor_purity</span> <span class="n">treatment_urgency</span> <span class="n">pathologic_stage</span> <span class="n">histological_type</span>    <span class="n">number_of_lymph_</span><span class="o">~</span>
+   <span class="o">&lt;</span><span class="n">chr</span><span class="o">&gt;</span>          <span class="o">&lt;</span><span class="n">chr</span><span class="o">&gt;</span>        <span class="o">&lt;</span><span class="n">chr</span><span class="o">&gt;</span>             <span class="o">&lt;</span><span class="n">chr</span><span class="o">&gt;</span>            <span class="o">&lt;</span><span class="n">chr</span><span class="o">&gt;</span>                <span class="o">&lt;</span><span class="n">chr</span><span class="o">&gt;</span>            
+ <span class="m">1</span> <span class="m">55</span>             <span class="m">0.7886</span>       <span class="kc">NA</span> <span class="o">&amp;</span> <span class="n">no</span>           <span class="kc">NA</span>               <span class="n">infiltratinglobular</span><span class="o">~</span> <span class="m">4</span>                
+ <span class="m">2</span> <span class="m">50</span>             <span class="m">0.6974</span>       <span class="m">2</span> <span class="o">&amp;</span> <span class="n">yes</span>           <span class="m">2</span>                <span class="n">infiltratingductalc</span><span class="o">~</span> <span class="m">1</span>                
+ <span class="m">3</span> <span class="m">62</span>             <span class="m">0.7666</span>       <span class="m">2</span> <span class="o">&amp;</span> <span class="n">no</span>            <span class="m">2</span>                <span class="n">infiltratingductalc</span><span class="o">~</span> <span class="m">1</span>                
+ <span class="m">4</span> <span class="m">52</span>             <span class="m">0.6869</span>       <span class="m">1</span> <span class="o">&amp;</span> <span class="n">no</span>            <span class="m">1</span>                <span class="n">infiltratingductalc</span><span class="o">~</span> <span class="m">0</span>                
+ <span class="m">5</span> <span class="m">50</span>             <span class="m">0.649</span>        <span class="m">3</span> <span class="o">&amp;</span> <span class="n">no</span>            <span class="m">3</span>                <span class="n">infiltratinglobular</span><span class="o">~</span> <span class="m">4</span>                
+ <span class="m">6</span> <span class="m">42</span>             <span class="m">0.6501</span>       <span class="m">2</span> <span class="o">&amp;</span> <span class="n">yes</span>           <span class="m">2</span>                <span class="n">infiltratinglobular</span><span class="o">~</span> <span class="m">0</span>                
+ <span class="m">7</span> <span class="m">63</span>             <span class="m">0.5553</span>       <span class="m">4</span> <span class="o">&amp;</span> <span class="n">no</span>            <span class="m">4</span>                <span class="n">infiltratinglobular</span><span class="o">~</span> <span class="m">0</span>                
+ <span class="m">8</span> <span class="m">52</span>             <span class="m">0.8368</span>       <span class="m">2</span> <span class="o">&amp;</span> <span class="n">yes</span>           <span class="m">2</span>                <span class="n">other</span><span class="p">,</span><span class="n">specify</span>        <span class="kc">NA</span>               
+ <span class="m">9</span> <span class="m">70</span>             <span class="m">0.9328</span>       <span class="m">1</span> <span class="o">&amp;</span> <span class="kc">NA</span>            <span class="m">1</span>                <span class="n">other</span><span class="p">,</span><span class="n">specify</span>        <span class="m">0</span>                
+ <span class="m">10</span> <span class="m">59</span>             <span class="m">0.6906</span>       <span class="m">2</span> <span class="o">&amp;</span> <span class="kc">NA</span>            <span class="m">2</span>                <span class="n">infiltratingductalc</span><span class="o">~</span> <span class="m">0</span>                
+ <span class="c1"># ... with 1,087 more rows, and 5 more variables: gender_and_race &lt;chr&gt;, radiation_therapy &lt;chr&gt;,</span>
+ <span class="c1">#   ethnicity &lt;chr&gt;, Median_overall_survival &lt;chr&gt;, overall_survival &lt;chr&gt;</span>
+</code></pre></div>
+</td></tr></table>
+
+</details>
+</div>
+<h3 id="separar-columnas">Separar columnas</h3>
+<p>De la misma forma, podemos separar columnas fácilmente empleando <code>separate()</code>:</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="nf">separate</span><span class="p">(</span><span class="o">&lt;</span><span class="n">DATOS</span><span class="o">&gt;</span><span class="p">,</span> <span class="o">&lt;</span><span class="n">NOMBRE_COLUMNA</span><span class="o">&gt;</span><span class="p">,</span> <span class="n">into</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="s">&quot;&lt;COL_NUEVA_1&gt;&quot;</span><span class="p">,</span> <span class="s">&quot;&lt;COL_NUEVA_2&gt;&quot;</span><span class="p">),</span> <span class="n">sep</span> <span class="o">=</span> <span class="s">&quot;&lt;SEPARADOR&gt;&quot;</span><span class="p">)</span>
+</code></pre></div>
+</td></tr></table>
+
+<p>Esta función es muy útil, pues permite separar las columnas empleando cualquier tipo de caracter como separador. Por ejemplo, en nuestro set de datos encontramos las variables "género" y "raza" en una misma columna llamada <em>gender_and_race</em>. Vamos a separarlas:</p>
+<p><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="n">ejemplo3</span> <span class="o">&lt;-</span> <span class="nf">separate</span><span class="p">(</span><span class="n">brca</span><span class="p">,</span> <span class="n">gender_and_race</span><span class="p">,</span> <span class="n">into</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="s">&quot;gender&quot;</span><span class="p">,</span> <span class="s">&quot;race&quot;</span><span class="p">),</span> <span class="n">sep</span> <span class="o">=</span> <span class="s">&quot;/&quot;</span><span class="p">)</span>
+</code></pre></div>
+</td></tr></table>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="n">ejemplo3</span>
+</code></pre></div>
+</td></tr></table></p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="c1"># A tibble: 1,097 x 11</span>
+   <span class="n">years_to_birth</span> <span class="n">Tumor_purity</span> <span class="n">pathologic_stage</span> <span class="n">histological_type</span>    <span class="n">number_of_lymph_</span><span class="o">~</span> <span class="n">gender</span> <span class="n">race</span>      
+   <span class="o">&lt;</span><span class="n">chr</span><span class="o">&gt;</span>          <span class="o">&lt;</span><span class="n">chr</span><span class="o">&gt;</span>        <span class="o">&lt;</span><span class="n">chr</span><span class="o">&gt;</span>            <span class="o">&lt;</span><span class="n">chr</span><span class="o">&gt;</span>                <span class="o">&lt;</span><span class="n">chr</span><span class="o">&gt;</span>             <span class="o">&lt;</span><span class="n">chr</span><span class="o">&gt;</span>  <span class="o">&lt;</span><span class="n">chr</span><span class="o">&gt;</span>     
+ <span class="m">1</span> <span class="m">55</span>             <span class="m">0.7886</span>       <span class="kc">NA</span>               <span class="n">infiltratinglobular</span><span class="o">~</span> <span class="m">4</span>                 <span class="n">female</span> <span class="n">white</span>     
+ <span class="m">2</span> <span class="m">50</span>             <span class="m">0.6974</span>       <span class="m">2</span>                <span class="n">infiltratingductalc</span><span class="o">~</span> <span class="m">1</span>                 <span class="n">female</span> <span class="n">blackoraf</span><span class="o">~</span>
+ <span class="m">3</span> <span class="m">62</span>             <span class="m">0.7666</span>       <span class="m">2</span>                <span class="n">infiltratingductalc</span><span class="o">~</span> <span class="m">1</span>                 <span class="n">female</span> <span class="n">blackoraf</span><span class="o">~</span>
+ <span class="m">4</span> <span class="m">52</span>             <span class="m">0.6869</span>       <span class="m">1</span>                <span class="n">infiltratingductalc</span><span class="o">~</span> <span class="m">0</span>                 <span class="n">female</span> <span class="n">blackoraf</span><span class="o">~</span>
+ <span class="m">5</span> <span class="m">50</span>             <span class="m">0.649</span>        <span class="m">3</span>                <span class="n">infiltratinglobular</span><span class="o">~</span> <span class="m">4</span>                 <span class="n">female</span> <span class="n">white</span>     
+ <span class="m">6</span> <span class="m">42</span>             <span class="m">0.6501</span>       <span class="m">2</span>                <span class="n">infiltratinglobular</span><span class="o">~</span> <span class="m">0</span>                 <span class="n">female</span> <span class="n">white</span>     
+ <span class="m">7</span> <span class="m">63</span>             <span class="m">0.5553</span>       <span class="m">4</span>                <span class="n">infiltratinglobular</span><span class="o">~</span> <span class="m">0</span>                 <span class="n">female</span> <span class="n">white</span>     
+ <span class="m">8</span> <span class="m">52</span>             <span class="m">0.8368</span>       <span class="m">2</span>                <span class="n">other</span><span class="p">,</span><span class="n">specify</span>        <span class="kc">NA</span>                <span class="n">female</span> <span class="n">blackoraf</span><span class="o">~</span>
+ <span class="m">9</span> <span class="m">70</span>             <span class="m">0.9328</span>       <span class="m">1</span>                <span class="n">other</span><span class="p">,</span><span class="n">specify</span>        <span class="m">0</span>                 <span class="n">female</span> <span class="n">white</span>     
+<span class="m">10</span> <span class="m">59</span>             <span class="m">0.6906</span>       <span class="m">2</span>                <span class="n">infiltratingductalc</span><span class="o">~</span> <span class="m">0</span>                 <span class="n">female</span> <span class="n">white</span>     
+<span class="c1"># ... with 1,087 more rows, and 4 more variables: radiation_therapy &lt;chr&gt;, ethnicity &lt;chr&gt;,</span>
+<span class="c1">#   Median_overall_survival &lt;chr&gt;, overall_survival &lt;chr&gt;</span>
+</code></pre></div>
+</td></tr></table>
+
+<h3 id="reordenar-columnas">Reordenar columnas</h3>
+<p>Normalmente las variables se organizan de forma que aquellas que son más importantes se encuentran más hacia la izquierda. Trabajando podemos estimar que alguna variable es la más importante en nuestro caso y queremos que sea la que ocupa la primera columna.</p>
+<p>Esto es muy sencillo de arreglar empleando la función <code>relocate()</code>:</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="nf">relocate</span><span class="p">(</span><span class="o">&lt;</span><span class="n">DATOS</span><span class="o">&gt;</span><span class="p">,</span> <span class="o">&lt;</span><span class="n">VARIABLE</span><span class="o">&gt;</span><span class="p">)</span>
+</code></pre></div>
+</td></tr></table>
+
+<p>Por ejemplo, mirando nuestros datos ordenados estimamos que la variable "<em>histological_type</em>" es la más importante para nuestro estudio. La reordenamos de la siguiente forma:</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="n">ejemplo4</span> <span class="o">&lt;-</span> <span class="nf">relocate</span><span class="p">(</span><span class="n">brca</span><span class="p">,</span> <span class="n">histological_type</span><span class="p">)</span>
+</code></pre></div>
+</td></tr></table>
+
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="n">ejemplo4</span>
+</code></pre></div>
+</td></tr></table>
+
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="c1"># A tibble: 1,097 x 10</span>
+   <span class="n">histological_type</span>   <span class="n">years_to_birth</span> <span class="n">Tumor_purity</span> <span class="n">pathologic_stage</span> <span class="n">number_of_lymph_</span><span class="o">~</span> <span class="n">gender_and_race</span>   
+   <span class="o">&lt;</span><span class="n">chr</span><span class="o">&gt;</span>               <span class="o">&lt;</span><span class="n">chr</span><span class="o">&gt;</span>          <span class="o">&lt;</span><span class="n">chr</span><span class="o">&gt;</span>        <span class="o">&lt;</span><span class="n">chr</span><span class="o">&gt;</span>            <span class="o">&lt;</span><span class="n">chr</span><span class="o">&gt;</span>             <span class="o">&lt;</span><span class="n">chr</span><span class="o">&gt;</span>             
+ <span class="m">1</span> <span class="n">infiltratinglobula</span><span class="o">~</span> <span class="m">55</span>             <span class="m">0.7886</span>       <span class="kc">NA</span>               <span class="m">4</span>                 <span class="n">female</span><span class="o">/</span><span class="n">white</span>      
+ <span class="m">2</span> <span class="n">infiltratingductal</span><span class="o">~</span> <span class="m">50</span>             <span class="m">0.6974</span>       <span class="m">2</span>                <span class="m">1</span>                 <span class="n">female</span><span class="o">/</span><span class="n">blackorafr</span><span class="o">~</span>
+ <span class="m">3</span> <span class="n">infiltratingductal</span><span class="o">~</span> <span class="m">62</span>             <span class="m">0.7666</span>       <span class="m">2</span>                <span class="m">1</span>                 <span class="n">female</span><span class="o">/</span><span class="n">blackorafr</span><span class="o">~</span>
+ <span class="m">4</span> <span class="n">infiltratingductal</span><span class="o">~</span> <span class="m">52</span>             <span class="m">0.6869</span>       <span class="m">1</span>                <span class="m">0</span>                 <span class="n">female</span><span class="o">/</span><span class="n">blackorafr</span><span class="o">~</span>
+ <span class="m">5</span> <span class="n">infiltratinglobula</span><span class="o">~</span> <span class="m">50</span>             <span class="m">0.649</span>        <span class="m">3</span>                <span class="m">4</span>                 <span class="n">female</span><span class="o">/</span><span class="n">white</span>      
+ <span class="m">6</span> <span class="n">infiltratinglobula</span><span class="o">~</span> <span class="m">42</span>             <span class="m">0.6501</span>       <span class="m">2</span>                <span class="m">0</span>                 <span class="n">female</span><span class="o">/</span><span class="n">white</span>      
+ <span class="m">7</span> <span class="n">infiltratinglobula</span><span class="o">~</span> <span class="m">63</span>             <span class="m">0.5553</span>       <span class="m">4</span>                <span class="m">0</span>                 <span class="n">female</span><span class="o">/</span><span class="n">white</span>      
+ <span class="m">8</span> <span class="n">other</span><span class="p">,</span><span class="n">specify</span>       <span class="m">52</span>             <span class="m">0.8368</span>       <span class="m">2</span>                <span class="kc">NA</span>                <span class="n">female</span><span class="o">/</span><span class="n">blackorafr</span><span class="o">~</span>
+ <span class="m">9</span> <span class="n">other</span><span class="p">,</span><span class="n">specify</span>       <span class="m">70</span>             <span class="m">0.9328</span>       <span class="m">1</span>                <span class="m">0</span>                 <span class="n">female</span><span class="o">/</span><span class="n">white</span>      
+<span class="m">10</span> <span class="n">infiltratingductal</span><span class="o">~</span> <span class="m">59</span>             <span class="m">0.6906</span>       <span class="m">2</span>                <span class="m">0</span>                 <span class="n">female</span><span class="o">/</span><span class="n">white</span>      
+<span class="c1"># ... with 1,087 more rows, and 4 more variables: radiation_therapy &lt;chr&gt;, ethnicity &lt;chr&gt;,</span>
+<span class="c1">#   Median_overall_survival &lt;chr&gt;, overall_survival &lt;chr&gt;</span>
+</code></pre></div>
+</td></tr></table>
+
+<div class="admonition example">
+<p class="admonition-title">Ejercicio</p>
+<p>Con esta función podemos colocar las columnas en las posiciones que queramos, no solamente en la primera columna. Intenta mover la variable "<em>ethnicity</em>" a la 3ª columna.</p>
+<details class="hint"><summary>Pista 1</summary><p>Puedes usar alguno de estos dos comandos dentro de <code>relocate()</code>: <code>.before =</code> o <code>.after =</code>.</p>
+</details>
+<details class="hint"><summary>Pista 2</summary><p>Prueba a usar:
+ <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2
+3
+4</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="nf">relocate</span><span class="p">(</span><span class="o">&lt;</span><span class="n">DATOS</span><span class="o">&gt;</span><span class="p">,</span> <span class="o">&lt;</span><span class="n">VARIABLE</span><span class="o">&gt;</span><span class="p">,</span> 
+   <span class="n">.before</span> <span class="o">=</span> <span class="o">&lt;</span><span class="n">VARIABLE_ANTES</span><span class="o">&gt;</span><span class="p">,</span>
+   <span class="n">.after</span> <span class="o">=</span> <span class="o">&lt;</span><span class="n">VARIABLE_DESPUES</span><span class="o">&gt;</span>
+<span class="p">)</span>
+</code></pre></div>
+</td></tr></table></p>
+</details>
+<details class="check"><summary>Respuesta</summary><p><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2
+3</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="n">ejercicio2</span> <span class="o">&lt;-</span> <span class="nf">relocate</span><span class="p">(</span><span class="n">brca</span><span class="p">,</span> <span class="n">ethnicity</span><span class="p">,</span> 
+    <span class="n">.before</span> <span class="o">=</span> <span class="n">pathologic_stage</span>
+ <span class="p">)</span>
+</code></pre></div>
+</td></tr></table>
+También sirve:
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2
+3</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="n">ejercicio2</span> <span class="o">&lt;-</span> <span class="nf">relocate</span><span class="p">(</span><span class="n">brca</span><span class="p">,</span> <span class="n">ethnicity</span><span class="p">,</span> 
+    <span class="n">.after</span> <span class="o">=</span> <span class="n">Tumor_purity</span>
+ <span class="p">)</span>
+</code></pre></div>
+</td></tr></table></p>
+<p>En ambos casos obtenemos:</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="n">ejercicio2</span>
+</code></pre></div>
+</td></tr></table>
+
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="c1"># A tibble: 1,097 x 10</span>
+   <span class="n">years_to_birth</span> <span class="n">Tumor_purity</span> <span class="n">ethnicity</span>      <span class="n">pathologic_stage</span> <span class="n">histological_type</span>      <span class="n">number_of_lymph_n</span><span class="o">~</span>
+   <span class="o">&lt;</span><span class="n">chr</span><span class="o">&gt;</span>          <span class="o">&lt;</span><span class="n">chr</span><span class="o">&gt;</span>        <span class="o">&lt;</span><span class="n">chr</span><span class="o">&gt;</span>          <span class="o">&lt;</span><span class="n">chr</span><span class="o">&gt;</span>            <span class="o">&lt;</span><span class="n">chr</span><span class="o">&gt;</span>                  <span class="o">&lt;</span><span class="n">chr</span><span class="o">&gt;</span>             
+<span class="m">1</span> <span class="m">55</span>             <span class="m">0.7886</span>       <span class="n">nothispanicor</span><span class="o">~</span> <span class="kc">NA</span>               <span class="n">infiltratinglobularca</span><span class="o">~</span> <span class="m">4</span>                 
+<span class="m">2</span> <span class="m">50</span>             <span class="m">0.6974</span>       <span class="n">nothispanicor</span><span class="o">~</span> <span class="m">2</span>                <span class="n">infiltratingductalcar</span><span class="o">~</span> <span class="m">1</span>                 
+<span class="m">3</span> <span class="m">62</span>             <span class="m">0.7666</span>       <span class="n">nothispanicor</span><span class="o">~</span> <span class="m">2</span>                <span class="n">infiltratingductalcar</span><span class="o">~</span> <span class="m">1</span>                 
+<span class="m">4</span> <span class="m">52</span>             <span class="m">0.6869</span>       <span class="n">nothispanicor</span><span class="o">~</span> <span class="m">1</span>                <span class="n">infiltratingductalcar</span><span class="o">~</span> <span class="m">0</span>                 
+<span class="m">5</span> <span class="m">50</span>             <span class="m">0.649</span>        <span class="n">nothispanicor</span><span class="o">~</span> <span class="m">3</span>                <span class="n">infiltratinglobularca</span><span class="o">~</span> <span class="m">4</span>                 
+<span class="m">6</span> <span class="m">42</span>             <span class="m">0.6501</span>       <span class="n">hispanicorlat</span><span class="o">~</span> <span class="m">2</span>                <span class="n">infiltratinglobularca</span><span class="o">~</span> <span class="m">0</span>                 
+<span class="m">7</span> <span class="m">63</span>             <span class="m">0.5553</span>       <span class="n">hispanicorlat</span><span class="o">~</span> <span class="m">4</span>                <span class="n">infiltratinglobularca</span><span class="o">~</span> <span class="m">0</span>                 
+<span class="m">8</span> <span class="m">52</span>             <span class="m">0.8368</span>       <span class="n">nothispanicor</span><span class="o">~</span> <span class="m">2</span>                <span class="n">other</span><span class="p">,</span><span class="n">specify</span>          <span class="kc">NA</span>                
+<span class="m">9</span> <span class="m">70</span>             <span class="m">0.9328</span>       <span class="n">nothispanicor</span><span class="o">~</span> <span class="m">1</span>                <span class="n">other</span><span class="p">,</span><span class="n">specify</span>          <span class="m">0</span>                 
+<span class="m">10</span> <span class="m">59</span>             <span class="m">0.6906</span>       <span class="n">nothispanicor</span><span class="o">~</span> <span class="m">2</span>                <span class="n">infiltratingductalcar</span><span class="o">~</span> <span class="m">0</span>                 
+<span class="c1"># ... with 1,087 more rows, and 4 more variables: gender_and_race &lt;chr&gt;, radiation_therapy &lt;chr&gt;,</span>
+<span class="c1">#   Median_overall_survival &lt;chr&gt;, overall_survival &lt;chr&gt;</span>
+</code></pre></div>
+</td></tr></table>
+
+</details>
+</div>
+<h3 id="cambiar-tipo-de-datos">Cambiar tipo de datos</h3>
+<p>Al importar los datos, transformarlos a <em>tibble</em> y modificarlos hemos cambiado su naturaleza (esto se ve debajo de los nombres de las columnas). Esto, a la hora de realizar cálculos estadisticos, modificaciones más complejas y representaciones gráficas puede darnos problemas, por lo que es conveniente transormarlos al tipo de dato correspondiente.</p>
+<div class="admonition info">
+<p class="admonition-title">Nota</p>
+<p>Es necesario antes conocer qué significan cada una de las <strong>funciones de conversión</strong> de datos. A continuación, se muestran las más comunes: </p>
+<table>
+<thead>
+<tr>
+<th>FUNCIONES</th>
+<th>TIPO DE DATO</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>&lt;chr&gt;</code></td>
+<td>Carácter</td>
+</tr>
+<tr>
+<td><code>&lt;num&gt;</code></td>
+<td>Numérico</td>
+</tr>
+<tr>
+<td><code>&lt;int&gt;</code></td>
+<td>Entero</td>
+</tr>
+<tr>
+<td><code>&lt;lgl&gt;</code></td>
+<td>Lógico</td>
+</tr>
+<tr>
+<td><code>&lt;fct&gt;</code></td>
+<td>Factor</td>
+</tr>
+<tr>
+<td><code>&lt;dte&gt;</code></td>
+<td>Fecha</td>
+</tr>
+<tr>
+<td><code>&lt;dtm&gt;</code></td>
+<td>Fecha y hora</td>
+</tr>
+<tr>
+<td><code>&lt;dbl&gt;</code></td>
+<td>Decimales</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Usemos de nuevo nuestros datos. Muchas de nuestras variables son numéricas. Sin embargo, a todas se les ha asignado el tipo carácter. Podemos arreglar esto empleando la función <code>convert()</code>, perteneciente al paquete de datos <em>hablar</em>:</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="nf">convert</span><span class="p">(</span><span class="o">&lt;</span><span class="n">DATOS</span><span class="o">&gt;</span><span class="p">,</span> <span class="o">&lt;</span><span class="n">FUNCIÓN_CONVERSIÓN</span><span class="o">&gt;</span><span class="p">(</span><span class="o">&lt;</span><span class="n">COLUMNAS</span><span class="o">&gt;</span><span class="p">))</span>
+</code></pre></div>
+</td></tr></table>
+
+<p>Vemos que muchas de las variables (<em>years_to_birth</em> , <em>number_of_lymph_nodes</em>, <em>Median_overall_survival</em> y <em>overall_survival</em>) son números enteros (<code>&lt;int&gt;</code>) pero están clasificados como carácter (<code>&lt;chr&gt;</code>). Arreglamos esto de forma sencilla:</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2
+3
+4
+5
+6
+7</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="n">ejemplo4</span> <span class="o">&lt;-</span> <span class="nf">convert</span><span class="p">(</span><span class="n">brca</span><span class="p">,</span> <span class="nf">int</span><span class="p">(</span>
+   <span class="n">years_to_birth</span><span class="p">,</span>
+   <span class="n">number_of_lymph_nodes</span><span class="p">,</span>
+   <span class="n">Median_overall_survival</span><span class="p">,</span>
+   <span class="n">overall_survival</span>
+   <span class="p">)</span>
+<span class="p">)</span>
+</code></pre></div>
+</td></tr></table>
+
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="n">ejemplo4</span>
+</code></pre></div>
+</td></tr></table>
+
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="c1"># A tibble: 1,097 x 10</span>
+   <span class="n">years_to_birth</span> <span class="n">Tumor_purity</span> <span class="n">pathologic_stage</span> <span class="n">histological_type</span>   <span class="n">number_of_lymph_</span><span class="o">~</span> <span class="n">gender_and_race</span>   
+            <span class="o">&lt;</span><span class="n">int</span><span class="o">&gt;</span> <span class="o">&lt;</span><span class="n">chr</span><span class="o">&gt;</span>        <span class="o">&lt;</span><span class="n">chr</span><span class="o">&gt;</span>            <span class="o">&lt;</span><span class="n">chr</span><span class="o">&gt;</span>                           <span class="o">&lt;</span><span class="n">int</span><span class="o">&gt;</span> <span class="o">&lt;</span><span class="n">chr</span><span class="o">&gt;</span>             
+ <span class="m">1</span>             <span class="m">55</span> <span class="m">0.7886</span>       <span class="kc">NA</span>               <span class="n">infiltratinglobula</span><span class="o">~</span>                 <span class="m">4</span> <span class="n">female</span><span class="o">/</span><span class="n">white</span>      
+ <span class="m">2</span>             <span class="m">50</span> <span class="m">0.6974</span>       <span class="m">2</span>                <span class="n">infiltratingductal</span><span class="o">~</span>                 <span class="m">1</span> <span class="n">female</span><span class="o">/</span><span class="n">blackorafr</span><span class="o">~</span>
+ <span class="m">3</span>             <span class="m">62</span> <span class="m">0.7666</span>       <span class="m">2</span>                <span class="n">infiltratingductal</span><span class="o">~</span>                 <span class="m">1</span> <span class="n">female</span><span class="o">/</span><span class="n">blackorafr</span><span class="o">~</span>
+ <span class="m">4</span>             <span class="m">52</span> <span class="m">0.6869</span>       <span class="m">1</span>                <span class="n">infiltratingductal</span><span class="o">~</span>                 <span class="m">0</span> <span class="n">female</span><span class="o">/</span><span class="n">blackorafr</span><span class="o">~</span>
+ <span class="m">5</span>             <span class="m">50</span> <span class="m">0.649</span>        <span class="m">3</span>                <span class="n">infiltratinglobula</span><span class="o">~</span>                 <span class="m">4</span> <span class="n">female</span><span class="o">/</span><span class="n">white</span>      
+ <span class="m">6</span>             <span class="m">42</span> <span class="m">0.6501</span>       <span class="m">2</span>                <span class="n">infiltratinglobula</span><span class="o">~</span>                 <span class="m">0</span> <span class="n">female</span><span class="o">/</span><span class="n">white</span>      
+ <span class="m">7</span>             <span class="m">63</span> <span class="m">0.5553</span>       <span class="m">4</span>                <span class="n">infiltratinglobula</span><span class="o">~</span>                 <span class="m">0</span> <span class="n">female</span><span class="o">/</span><span class="n">white</span>      
+ <span class="m">8</span>             <span class="m">52</span> <span class="m">0.8368</span>       <span class="m">2</span>                <span class="n">other</span><span class="p">,</span><span class="n">specify</span>                      <span class="kc">NA</span> <span class="n">female</span><span class="o">/</span><span class="n">blackorafr</span><span class="o">~</span>
+ <span class="m">9</span>             <span class="m">70</span> <span class="m">0.9328</span>       <span class="m">1</span>                <span class="n">other</span><span class="p">,</span><span class="n">specify</span>                       <span class="m">0</span> <span class="n">female</span><span class="o">/</span><span class="n">white</span>      
+<span class="m">10</span>             <span class="m">59</span> <span class="m">0.6906</span>       <span class="m">2</span>                <span class="n">infiltratingductal</span><span class="o">~</span>                 <span class="m">0</span> <span class="n">female</span><span class="o">/</span><span class="n">white</span>      
+<span class="c1"># ... with 1,087 more rows, and 4 more variables: radiation_therapy &lt;chr&gt;, ethnicity &lt;chr&gt;,</span>
+<span class="c1">#   Median_overall_survival &lt;int&gt;, overall_survival &lt;int&gt;</span>
+</code></pre></div>
+</td></tr></table>
+
+<p>Podemos aplicar varios tipos de datos a diferentes variables. Por ejemplo, la variable <em>Tumor_purity</em> es una variable decimal (<code>&lt;dbl&gt;</code>):</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="n">ejemplo5</span> <span class="o">&lt;-</span> <span class="nf">convert</span><span class="p">(</span><span class="n">brca</span><span class="p">,</span>
+   <span class="nf">int</span><span class="p">(</span>
+      <span class="n">years_to_birth</span><span class="p">,</span>
+      <span class="n">number_of_lymph_nodes</span><span class="p">,</span>
+      <span class="n">Median_overall_survival</span><span class="p">,</span>
+      <span class="n">overall_survival</span>
+   <span class="p">),</span>
+   <span class="nf">dbl</span><span class="p">(</span>
+      <span class="n">Tumor_purity</span>
+   <span class="p">)</span>
+<span class="p">)</span>
+</code></pre></div>
+</td></tr></table>
+
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="n">ejemplo5</span>
+</code></pre></div>
+</td></tr></table>
+
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="c1"># A tibble: 1,097 x 10</span>
+   <span class="n">years_to_birth</span> <span class="n">Tumor_purity</span> <span class="n">pathologic_stage</span> <span class="n">histological_type</span>   <span class="n">number_of_lymph_</span><span class="o">~</span> <span class="n">gender_and_race</span>   
+            <span class="o">&lt;</span><span class="n">int</span><span class="o">&gt;</span>        <span class="o">&lt;</span><span class="n">dbl</span><span class="o">&gt;</span> <span class="o">&lt;</span><span class="n">chr</span><span class="o">&gt;</span>            <span class="o">&lt;</span><span class="n">chr</span><span class="o">&gt;</span>                           <span class="o">&lt;</span><span class="n">int</span><span class="o">&gt;</span> <span class="o">&lt;</span><span class="n">chr</span><span class="o">&gt;</span>             
+ <span class="m">1</span>             <span class="m">55</span>        <span class="m">0.789</span> <span class="kc">NA</span>               <span class="n">infiltratinglobula</span><span class="o">~</span>                 <span class="m">4</span> <span class="n">female</span><span class="o">/</span><span class="n">white</span>      
+ <span class="m">2</span>             <span class="m">50</span>        <span class="m">0.697</span> <span class="m">2</span>                <span class="n">infiltratingductal</span><span class="o">~</span>                 <span class="m">1</span> <span class="n">female</span><span class="o">/</span><span class="n">blackorafr</span><span class="o">~</span>
+ <span class="m">3</span>             <span class="m">62</span>        <span class="m">0.767</span> <span class="m">2</span>                <span class="n">infiltratingductal</span><span class="o">~</span>                 <span class="m">1</span> <span class="n">female</span><span class="o">/</span><span class="n">blackorafr</span><span class="o">~</span>
+ <span class="m">4</span>             <span class="m">52</span>        <span class="m">0.687</span> <span class="m">1</span>                <span class="n">infiltratingductal</span><span class="o">~</span>                 <span class="m">0</span> <span class="n">female</span><span class="o">/</span><span class="n">blackorafr</span><span class="o">~</span>
+ <span class="m">5</span>             <span class="m">50</span>        <span class="m">0.649</span> <span class="m">3</span>                <span class="n">infiltratinglobula</span><span class="o">~</span>                 <span class="m">4</span> <span class="n">female</span><span class="o">/</span><span class="n">white</span>      
+ <span class="m">6</span>             <span class="m">42</span>        <span class="m">0.650</span> <span class="m">2</span>                <span class="n">infiltratinglobula</span><span class="o">~</span>                 <span class="m">0</span> <span class="n">female</span><span class="o">/</span><span class="n">white</span>      
+ <span class="m">7</span>             <span class="m">63</span>        <span class="m">0.555</span> <span class="m">4</span>                <span class="n">infiltratinglobula</span><span class="o">~</span>                 <span class="m">0</span> <span class="n">female</span><span class="o">/</span><span class="n">white</span>      
+ <span class="m">8</span>             <span class="m">52</span>        <span class="m">0.837</span> <span class="m">2</span>                <span class="n">other</span><span class="p">,</span><span class="n">specify</span>                      <span class="kc">NA</span> <span class="n">female</span><span class="o">/</span><span class="n">blackorafr</span><span class="o">~</span>
+ <span class="m">9</span>             <span class="m">70</span>        <span class="m">0.933</span> <span class="m">1</span>                <span class="n">other</span><span class="p">,</span><span class="n">specify</span>                       <span class="m">0</span> <span class="n">female</span><span class="o">/</span><span class="n">white</span>      
+<span class="m">10</span>             <span class="m">59</span>        <span class="m">0.691</span> <span class="m">2</span>                <span class="n">infiltratingductal</span><span class="o">~</span>                 <span class="m">0</span> <span class="n">female</span><span class="o">/</span><span class="n">white</span>      
+<span class="c1"># ... with 1,087 more rows, and 4 more variables: radiation_therapy &lt;chr&gt;, ethnicity &lt;chr&gt;,</span>
+<span class="c1">#   Median_overall_survival &lt;int&gt;, overall_survival &lt;int&gt;</span>
+</code></pre></div>
+</td></tr></table>
+
+<p>De esta forma hemos solucionado muchos problemas en el futuro por trabajar con datos erróneamentes clasificados.</p>
+<h2 id="ejercicios-de-repaso">Ejercicios de repaso</h2>
+<p>Para ver si has entendido todo, intenta realizar los ejercicios propuestos en <a href="" title="">este enlace</a>.</p>
+<div class="admonition info">
+<p class="admonition-title">Nota</p>
+<p>Cosulta el apartado "<a href="http://127.0.0.1:8000/ejercicios/">Realización de ejercicios</a>" para saber como descargar, instalar y completar esta tarea.</p>
+</div>
+<h2 id="referencias">Referencias</h2>
+<div class="admonition cite">
+<p class="admonition-title">Referencias</p>
+<ul>
+<li><a href="https://ucodemy.github.io/rbioq/"><strong><em>Tutorial de programación en R orientado al estudiante de Bioquímica</em></strong>; Ismael Sánchez Pareja</a></li>
+<li><a href="https://www.bioconductor.org/packages/release/bioc/vignettes/pathwayPCA/inst/doc/Supplement2-Importing_Data.html"><strong><em>Suppl. Ch. 2: Import and Tidy Data</em></strong>; Gabriel Odom</a></li>
+<li><a href="https://github.com/rstudio/cheatsheets/blob/master/data-import.pdf"><strong><em>Data import: cheat sheet</em></strong>; Garrett Grolemund</a></li>
+<li><a href="https://cran.r-project.org/web/packages/hablar/vignettes/convert.html"><strong><em>A grammer for data type conversion</em></strong>; David Sjoberg</a></li>
+<li><a href="https://dplyr.tidyverse.org/reference/relocate.html"><strong><em>Change column order: relocate</em></strong></a></li>
+<li><a href="http://linkedomics.org/data_download/TCGA-BRCA/"><strong><em>LinkedOmics Data Download</em></strong></a></li>
+</ul>
+</div>
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Pie">
+      
+        <a href="../importar/" class="md-footer__link md-footer__link--prev" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Anterior
+              </span>
+              Importar datos
+            </div>
+          </div>
+        </a>
+      
+      
+        <a href="../modelar/" class="md-footer__link md-footer__link--next" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Siguiente
+              </span>
+              Modelar datos
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "..", "features": [], "translations": {"clipboard.copy": "Copiar al portapapeles", "clipboard.copied": "Copiado al portapapeles", "search.config.lang": "es", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "B\u00fasqueda", "search.result.placeholder": "Teclee para comenzar b\u00fasqueda", "search.result.none": "No se encontraron documentos", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.more.one": "1 m\u00e1s en esta p\u00e1gina", "search.result.more.other": "# m\u00e1s en esta p\u00e1gina", "search.result.term.missing": "Falta"}, "search": "../assets/javascripts/workers/search.217ffd95.min.js", "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.926459b3.min.js"></script>
+      
+    
+  </body>
+</html>

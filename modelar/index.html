@@ -48,6 +48,10 @@
     
     
       
+        
+<script>window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)},ga.l=+new Date,ga("create","G-VCVDM3VLCC","auto"),ga("set","anonymizeIp",!0),ga("send","pageview"),document.addEventListener("DOMContentLoaded",function(){document.forms.search&&document.forms.search.query.addEventListener("blur",function(){var e;this.value&&(e=document.location.pathname,ga("send","pageview",e+"?q="+this.value))}),"undefined"!=typeof location$&&location$.subscribe(function(e){ga("send","pageview",e.pathname)})})</script>
+<script async src="https://www.google-analytics.com/analytics.js"></script>
+      
     
     
   </head>
@@ -299,6 +303,13 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#modelado-de-regresion-lineal" class="md-nav__link">
+    Modelado de regresión lineal
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#referencias" class="md-nav__link">
     Referencias
   </a>
@@ -309,6 +320,21 @@
   
 </nav>
       
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../genesis/" class="md-nav__link">
+        GENESIS
+      </a>
     </li>
   
 
@@ -365,6 +391,13 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#modelado-de-regresion-lineal" class="md-nav__link">
+    Modelado de regresión lineal
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#referencias" class="md-nav__link">
     Referencias
   </a>
@@ -396,17 +429,17 @@
 <p>A la hora de modelar, existen dos partes a seguir:</p>
 <ul>
 <li>
-<p>Primero, Debemos encontrar un patrón dentro de los datos, que puede ser desde una relación lineal simple (<em>y</em> = a·<em>x</em> + b) hasta una curva cuadrática (<em>y</em> = a·<em>x</em> ^ b), siendo <em>x</em> e <em>y</em> las variables conocidas y "a" y "b" los parámetros que podemos modificar para encontrar la relación.</p>
+<p>Primero, debemos encontrar un patrón dentro de los datos, que puede ser desde una relación lineal simple (<em>y</em> = a·<em>x</em> + b) hasta una curva cuadrática (<em>y</em> = a·<em>x</em>^b), siendo <em>x</em> e <em>y</em> las variables conocidas y "a" y "b" los parámetros que podemos modificar para encontrar la relación.</p>
 </li>
 <li>
-<p>Tras esto, conocienco el patron, debemos encotrar el modelo que se ajusta a los datos (es decir, definir "a" y "b")</p>
+<p>Tras esto, conociendo el patrón, debemos encotrar el modelo que se ajusta a los datos (es decir, definir "a" y "b")</p>
 </li>
 </ul>
 <div class="admonition info">
 <p class="admonition-title">Nota</p>
-<p>Hay que tener en cuenta que <em>ningún modelo elegido es perfecto</em>, simplemente es el que mejor se ajusta a los datos. Hay veces en el que el mejor modelo simplemente es malo y no tiene por que cumplirse en todos los casos.</p>
+<p>Hay que tener en cuenta que <em>ningún modelo elegido es perfecto</em>, simplemente es el que mejor se ajusta a los datos. Hay veces en el que el mejor modelo simplemente es malo y no tiene el porqué cumplirse en todos los casos.</p>
 </div>
-<p>En esta parte del tutorial, además de <em>tidyverse</em>, emplearemos el paquete <em>modelr</em>, incluido en R base y que nos dará algunar herramientas para comenzar a modelar. Además, vamos a usar <em>modeldata</em>, que incluye una serie de conjuntos de datos preparados para aprender a modelar. Instalamos los paquetes y los cargamos:</p>
+<p>En esta parte del tutorial, además de <em>tidyverse</em>, emplearemos el paquete <em>modelr</em>, incluido en R base y que nos dará algunas herramientas para comenzar a modelar. Además, vamos a usar <em>modeldata</em>, que incluye una serie de conjuntos de datos preparados para aprender a modelar. Instalamos los paquetes y los cargamos:</p>
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="nf">install.packages</span><span class="p">(</span><span class="s">&quot;modeldata&quot;</span><span class="p">)</span>
 </code></pre></div>
 </td></tr></table>
@@ -420,7 +453,7 @@
 </td></tr></table>
 
 <h2 id="modelado-basico">Modelado básico</h2>
-<p>Para este apartado, vamos a usar el set de datos contenido en <em>modeldata</em> llamado "<em>oils</em>", que muestra las diferentes concentraciones de ácidos grasos en diferentes especies vegetales.</p>
+<p>Para este apartado, vamos a usar el conjunto de datos contenido en <em>modeldata</em> llamado "<em>oils</em>", que muestra las diferentes concentraciones de ácidos grasos en diferentes especies vegetales.</p>
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="nf">data</span><span class="p">(</span><span class="n">oils</span><span class="p">)</span>
 <span class="nf">View</span><span class="p">(</span><span class="n">oils</span><span class="p">)</span>
@@ -436,7 +469,7 @@
 </td></tr></table>
 
 <p><img alt="" src="../images/modelar/2.png" title="" /></p>
-<p>Vemos que hay una clara tendencia lineal entre las variables (<em>y</em> = a·<em>x</em> + b). Para elegir la linea que mejor se ajusta podemos generar multitud de ellas y elegirla al verla en la gráfica. Para ello, debemos generar rectas "aleatorias", para lo cual podemos usar la funcion <em>runif</em> para generar pendientes y puntos de corte con el eje y (es decir, "a" y "b" respectivamente)</p>
+<p>Vemos que hay una clara tendencia lineal entre las variables (<em>y</em> = a·<em>x</em> + b). Para elegir la recta que mejor se ajusta, podemos generar multitud de ellas y elegirla al verla en la gráfica. Para ello, debemos generar rectas "aleatorias", para lo cual podemos usar la funcion <em>runif</em> para generar pendientes y puntos de corte con el eje y (es decir, "a" y "b" respectivamente)</p>
 <p><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="nf">runif</span><span class="p">(</span><span class="o">&lt;</span><span class="n">NÚMERO_DE_RECTAS</span><span class="o">&gt;</span><span class="p">,</span> <span class="n">min</span> <span class="o">=</span><span class="p">,</span> <span class="n">max</span> <span class="o">=</span><span class="p">)</span>
 </code></pre></div>
 </td></tr></table>
@@ -450,7 +483,7 @@ Generamos, por ejemplo, 200 rectas definiendo primero "a" y "b". Viendo la gráf
 <span class="p">)</span>
 </code></pre></div>
 </td></tr></table>
-Tras lo cual, representamos tanto las variables como lar rectas, para lo cual usamos la funcion de <em>ggplot2</em> llamada <em>geom_abline</em>:</p>
+Tras lo cual, representamos tanto las variables como las rectas, para lo cual usamos la funcion de <em>ggplot2</em> llamada <em>geom_abline</em>:</p>
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="nf">geom_abline</span><span class="p">(</span><span class="n">data</span> <span class="o">=</span> <span class="o">&lt;</span><span class="n">DATOS</span><span class="o">&gt;</span><span class="p">,</span> <span class="nf">aes</span><span class="p">(</span><span class="n">slope</span> <span class="o">=</span> <span class="o">&lt;</span><span class="n">PENDIENTE</span><span class="o">&gt;</span><span class="p">,</span> <span class="n">intercept</span> <span class="o">=</span> <span class="o">&lt;</span><span class="n">CORTE_EJE_Y</span><span class="o">&gt;</span><span class="p">,))</span>
 </code></pre></div>
 </td></tr></table>
@@ -465,13 +498,134 @@ Tras lo cual, representamos tanto las variables como lar rectas, para lo cual us
 
 <p>Obtenemos algo parecido a esto:</p>
 <p><img alt="" src="../images/modelar/3.png" title="" /></p>
-<p>Vemos que la mayoría de lineas generadas están lejos de ajustarse a los datos. Para seleccionar las buenas es necesario calcular la distancia vertical entre los puntos y las lineas. Para ello, sin embargo, es necesario crear funciones.</p>
+<p>Vemos que la mayoría de líneas generadas están lejos de ajustarse a los datos. Para seleccionar las buenas es necesario calcular la distancia vertical entre los puntos y las líneas, para lo cual es necesario crear funciones.</p>
+<p>Este proceso es común a la mayoría de diferentes modelados que podemos hacer sobre un set de datos. Este proceso puede ser tedioso y requiere de bastante experiencia en el tema, tarea a la cual el alumno de bioquímica medio no esta acostumbrado. Por ello, en este tutorial promonemos una forma de entrar en el mundo del modelado de datos sin tener que lidiar con programación demasiado compleja.</p>
+<h2 id="modelado-de-regresion-lineal">Modelado de regresión lineal</h2>
+<p>Por tanto, para est <strong><em>MJ: frase incompleta</em></strong></p>
+<p>Antes de comenzar a estudiar la regresión lineal de nuestros datos, siempre es necesario hacer un test de correlación de Pearson. Esto se hace fácilmente empleando la función <code>cor.test()</code>, de la siguiente forma:</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="nf">cor.test</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+</code></pre></div>
+</td></tr></table>
+
+<p>En nuestro caso, determinamos nuestras variables <em>x</em> e <em>y</em> indicando primero "<em>oils</em>" junto con el nombre de la variable empleando el símbolo "<em>$</em>":</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="nf">cor.test</span><span class="p">(</span><span class="n">oils</span><span class="o">$</span><span class="n">oleic</span><span class="p">,</span> <span class="n">oils</span><span class="o">$</span><span class="n">linoleic</span><span class="p">)</span>
+
+        <span class="n">Pearson</span><span class="s">&#39;</span><span class="err">s product-moment correlation</span>
+
+<span class="n">data</span><span class="o">:</span>  <span class="n">oils</span><span class="o">$</span><span class="n">oleic</span> <span class="n">and</span> <span class="n">oils</span><span class="o">$</span><span class="n">linoleic</span>
+<span class="n">t</span> <span class="o">=</span> <span class="m">-45.185</span><span class="p">,</span> <span class="n">df</span> <span class="o">=</span> <span class="m">94</span><span class="p">,</span> <span class="n">p</span><span class="o">-</span><span class="n">value</span> <span class="o">&lt;</span> <span class="m">2.2e-16</span>
+<span class="n">alternative</span> <span class="n">hypothesis</span><span class="o">:</span> <span class="n">true</span> <span class="n">correlation</span> <span class="n">is</span> <span class="n">not</span> <span class="n">equal</span> <span class="n">to</span> <span class="m">0</span>
+<span class="m">95</span> <span class="n">percent</span> <span class="n">confidence</span> <span class="n">interval</span><span class="o">:</span>
+ <span class="m">-0.9851233</span> <span class="m">-0.9667696</span>
+<span class="n">sample</span> <span class="n">estimates</span><span class="o">:</span>
+       <span class="n">cor</span> 
+<span class="m">-0.9777453</span>
+</code></pre></div>
+</td></tr></table>
+
+<p>El coeficiente de correlación cercano al valor <code>-1</code> nos indica que existe una fuerte correlación lineal negativa, y el <em>p</em>-valor menor que <code>0.05</code> señala que el modelo lineal es válido. Ahora podemos plantear un modelo de regresión lineal con seguridad. Para ello, vamos a usar la función <code>lm()</code>. Esta función se usa de forma muy similar a la anterior:</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="nf">lm</span><span class="p">(</span><span class="n">y</span> <span class="o">~</span> <span class="n">x</span><span class="p">)</span>
+</code></pre></div>
+</td></tr></table>
+
+<p>Definimos una variable para el modelo linear de nuestras variables de la siguiente forma:</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="n">regresion</span> <span class="o">&lt;-</span> <span class="nf">lm</span><span class="p">(</span><span class="n">oils</span><span class="o">$</span><span class="n">oleic</span> <span class="o">~</span> <span class="n">oils</span><span class="o">$</span><span class="n">linoleic</span><span class="p">)</span>
+<span class="nf">View</span><span class="p">(</span><span class="n">regresion</span><span class="p">)</span>
+</code></pre></div>
+</td></tr></table>
+
+<p><img alt="" src="../images/modelar/4.png" title="" /></p>
+<p>Para continuar con el analisis, hacemos un <code>summary()</code> a nuestra nueva variable, obteniendo lo siguiente:</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="nf">summary</span><span class="p">(</span><span class="n">regresion</span><span class="p">)</span>
+
+<span class="n">Call</span><span class="o">:</span>
+<span class="nf">lm</span><span class="p">(</span><span class="n">formula</span> <span class="o">=</span> <span class="n">oils</span><span class="o">$</span><span class="n">oleic</span> <span class="o">~</span> <span class="n">oils</span><span class="o">$</span><span class="n">linoleic</span><span class="p">)</span>
+
+<span class="n">Residuals</span><span class="o">:</span>
+    <span class="n">Min</span>      <span class="m">1</span><span class="n">Q</span>  <span class="n">Median</span>      <span class="m">3</span><span class="n">Q</span>     <span class="n">Max</span> 
+<span class="m">-7.1814</span> <span class="m">-1.6842</span> <span class="m">-0.0709</span>  <span class="m">2.6859</span>  <span class="m">5.0556</span> 
+
+<span class="n">Coefficients</span><span class="o">:</span>
+              <span class="n">Estimate</span> <span class="n">Std.</span> <span class="n">Error</span> <span class="n">t</span> <span class="n">value</span> <span class="nf">Pr</span><span class="p">(</span><span class="o">&gt;|</span><span class="n">t</span><span class="o">|</span><span class="p">)</span>    
+<span class="p">(</span><span class="n">Intercept</span><span class="p">)</span>   <span class="m">79.35660</span>    <span class="m">0.99614</span>   <span class="m">79.66</span>   <span class="o">&lt;</span><span class="m">2e-16</span> <span class="o">***</span>
+<span class="n">oils</span><span class="o">$</span><span class="n">linoleic</span> <span class="m">-0.91699</span>    <span class="m">0.02029</span>  <span class="m">-45.19</span>   <span class="o">&lt;</span><span class="m">2e-16</span> <span class="o">***</span>
+<span class="o">---</span>
+<span class="n">Signif.</span> <span class="n">codes</span><span class="o">:</span>  <span class="m">0</span> ‘<span class="o">***</span>’ <span class="m">0.001</span> ‘<span class="o">**</span>’ <span class="m">0.01</span> ‘<span class="o">*</span>’ <span class="m">0.05</span> ‘<span class="n">.</span>’ <span class="m">0.1</span> ‘ ’ <span class="m">1</span>
+
+<span class="n">Residual</span> <span class="n">standard</span> <span class="n">error</span><span class="o">:</span> <span class="m">3.133</span> <span class="n">on</span> <span class="m">94</span> <span class="n">degrees</span> <span class="n">of</span> <span class="n">freedom</span>
+<span class="n">Multiple</span> <span class="n">R</span><span class="o">-</span><span class="n">squared</span><span class="o">:</span>  <span class="m">0.956</span><span class="p">,</span> <span class="n">Adjusted</span> <span class="n">R</span><span class="o">-</span><span class="n">squared</span><span class="o">:</span>  <span class="m">0.9555</span> 
+<span class="bp">F</span><span class="o">-</span><span class="n">statistic</span><span class="o">:</span>  <span class="m">2042</span> <span class="n">on</span> <span class="m">1</span> <span class="n">and</span> <span class="m">94</span> <span class="n">DF</span><span class="p">,</span>  <span class="n">p</span><span class="o">-</span><span class="n">value</span><span class="o">:</span> <span class="o">&lt;</span> <span class="m">2.2e-16</span>
+</code></pre></div>
+</td></tr></table>
+
+<p>Vemos como el R<sup>2</sup> obtenido es de <code>0.9555</code>, reafirmando la validez de nuestro modelo lineal. Podemos, finalmente, determinar cual es la línea de ajuste de este conjunto de datos. Para ello, necesitamos los valores de pendiente y de corte con el eje <em>y</em>. Estos valores ya los hemos calculado al hacer el <code>summary()</code>, y se encuentran en el apartado <code>coefficients</code>:</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2
+3
+4</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="n">regresion</span><span class="o">$</span><span class="nf">coefficients</span>
+
+<span class="nf">  </span><span class="p">(</span><span class="n">Intercept</span><span class="p">)</span> <span class="n">oils</span><span class="o">$</span><span class="n">linoleic</span> 
+   <span class="m">79.3565958</span>    <span class="m">-0.9169897</span> 
+</code></pre></div>
+</td></tr></table>
+
+<div class="admonition info">
+<p class="admonition-title">Nota</p>
+<p>Además de para encontrar modelos lineales, <code>lm()</code> sirve para realizar cualquier tipo de regresión, análisis de varianza y covarianza y otros cálculos estadísticos. Puedes profundizar más en cómo usar esta función <a href="https://www.rdocumentation.org/packages/stats/versions/3.6.2/topics/lm">aquí</a>.</p>
+</div>
+<p>El valor de <code>(Intercept)</code> es el punto de corte con el eje y <code>oils$linoleic</code> es la pendiente. Sustituyendo estos valores en la ecuación de la recta (<em>y</em> = a·<em>x</em> + b), obtenemos la línea de regresión exacta para nuestros datos. Representándola obtenemos:</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2
+3
+4
+5
+6</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="n">a</span> <span class="o">&lt;-</span> <span class="n">regresion</span><span class="o">$</span><span class="n">coefficients</span><span class="p">[</span><span class="m">2</span><span class="p">]</span>
+<span class="n">b</span> <span class="o">&lt;-</span> <span class="n">regresion</span><span class="o">$</span><span class="n">coefficients</span><span class="p">[</span><span class="m">1</span><span class="p">]</span>
+
+<span class="nf">ggplot</span><span class="p">()</span> <span class="o">+</span> 
+  <span class="nf">geom_abline</span><span class="p">(</span><span class="n">mapping</span> <span class="o">=</span> <span class="nf">aes</span><span class="p">(</span><span class="n">slope</span> <span class="o">=</span> <span class="n">a</span><span class="p">,</span> <span class="n">intercept</span> <span class="o">=</span> <span class="n">b</span><span class="p">),</span> <span class="n">color</span> <span class="o">=</span> <span class="s">&quot;red&quot;</span><span class="p">,</span> <span class="n">size</span> <span class="o">=</span> <span class="m">1</span><span class="p">)</span> <span class="o">+</span>
+  <span class="nf">geom_point</span><span class="p">(</span><span class="n">data</span> <span class="o">=</span> <span class="n">oils</span><span class="p">,</span> <span class="n">mapping</span> <span class="o">=</span> <span class="nf">aes</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="n">linoleic</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">oleic</span><span class="p">))</span>
+</code></pre></div>
+</td></tr></table>
+
+<p><img alt="" src="../images/modelar/5.png" title="" /></p>
 <h2 id="referencias">Referencias</h2>
 <div class="admonition cite">
 <p class="admonition-title">Referencias</p>
 <ul>
 <li><a href="https://ucodemy.github.io/rbioq/"><strong><em>Tutorial de programación en R orientado al estudiante de Bioquímica</em></strong>; Ismael Sánchez Pareja</a></li>
 <li><a href="https://www.tmwr.org/index.html"><strong><em>Tidy Modeling with R</em></strong>; Max Kuhn, Julia Silge</a></li>
+<li><a href="https://www.rdocumentation.org/packages/stats/versions/3.6.2/topics/lm"><strong><em>lm function: Fitting Linear Models</em></strong></a></li>
 </ul>
 </div>
                 
@@ -506,13 +660,13 @@ Tras lo cual, representamos tanto las variables como lar rectas, para lo cual us
         </a>
       
       
-        <a href="../ejercicios/" class="md-footer__link md-footer__link--next" rel="next">
+        <a href="../genesis/" class="md-footer__link md-footer__link--next" rel="next">
           <div class="md-footer__title">
             <div class="md-ellipsis">
               <span class="md-footer__direction">
                 Siguiente
               </span>
-              Realización de ejercicios
+              GENESIS
             </div>
           </div>
           <div class="md-footer__button md-icon">

@@ -18,7 +18,7 @@
     
     
       
-        <title>Importar datos - Tutorial avanzado de programación en R</title>
+        <title>GENESIS - Tutorial avanzado de programación en R</title>
       
     
     
@@ -104,7 +104,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Importar datos
+              GENESIS
             
           </span>
         </div>
@@ -230,73 +230,11 @@
 
   
   
-    
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          Importar datos
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../importar/" class="md-nav__link">
         Importar datos
       </a>
-      
-        
-<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
-  
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Tabla de contenidos
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#introduccion" class="md-nav__link">
-    Introducción
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#tibbles" class="md-nav__link">
-    Tibbles
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#importando-datos" class="md-nav__link">
-    Importando datos
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#ejercicios-de-repaso" class="md-nav__link">
-    Ejercicios de repaso
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#referencias" class="md-nav__link">
-    Referencias
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -337,11 +275,52 @@
 
   
   
+    
   
-    <li class="md-nav__item">
-      <a href="../genesis/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          GENESIS
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         GENESIS
       </a>
+      
+        
+<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#introduccion" class="md-nav__link">
+    Introducción
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#referencias" class="md-nav__link">
+    Referencias
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -391,27 +370,6 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#tibbles" class="md-nav__link">
-    Tibbles
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#importando-datos" class="md-nav__link">
-    Importando datos
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#ejercicios-de-repaso" class="md-nav__link">
-    Ejercicios de repaso
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#referencias" class="md-nav__link">
     Referencias
   </a>
@@ -431,150 +389,15 @@
               
                 
                 
-                  <h1>Importar datos</h1>
+                  <h1>GENESIS</h1>
                 
                 <h2 id="introduccion">Introducción</h2>
-<p>Con el material visto hasta ahora, estamos bastante preparados para representar datos ordenados de forma lógica y agradable. Existen muchísimas más opciones para graficar empleando <em>ggplot2</em>, aunque en este tutorial únicamente hemos mostrado lo que nos parece esencial (para saber más, puedes revisar el resto de posibilidades <a href="https://r4ds.had.co.nz/data-visualisation.html">aquí</a>). </p>
-<p>Sin embargo, aunque ya sepamos mucho sobre graficación, todavía no hemos enseñado cómo importar nuestros propios datos y emplear todo lo estudiado en nuestros propios trabajos, tema que vamos a ver a continuación.</p>
-<p>Vamos a emplear el paquete de Tidyverse <strong><em>readr</em></strong>, que es el que se encarga de importar los datos. Abrimos RStudio y activamos la librería:</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="nf">library</span><span class="p">(</span><span class="n">tidyverse</span><span class="p">)</span>
-</code></pre></div>
-</td></tr></table>
-
-<h2 id="tibbles"><em>Tibbles</em></h2>
-<p>El código base de R utiliza <code>data.frame</code> a la hora de representar datos en tablas. Sin embargo, estos son un poco antiguos y a veces se hace un poco engorroso trabajar con ellos. Tidyverse trata de solucionar esto empleando el paquete <strong><em>tibble</em></strong>.</p>
-<p>Los <em>tibbles</em> funcionan muy parecido a los <code>data.frame</code>, pero presentan características que los hace mucho más sencillo trabajar con ellos:</p>
-<ul>
-<li>Son mucho <strong>más rápidos</strong>.</li>
-<li><strong>No transforman</strong> los vectores de caracteres <strong>a factores</strong>, cosa que sí ocurre con los <code>data.frame</code>.</li>
-<li>Son <strong>más reproducibles</strong>, es decir, es más probable que aquellos que trabajen con los mismos datos que tú lleguen a los mismos resultados.</li>
-</ul>
-<p>Podemos transformar cualquier <code>data.frame</code> en un <em>tibble</em> empleando <code>as_tibble()</code>. Empleemos esta función con <code>iris</code>, un <code>data.frame</code> incluido en R:</p>
-<p><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="nf">as_tibble</span><span class="p">(</span><span class="n">iris</span><span class="p">)</span>
-</code></pre></div>
-</td></tr></table>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
- 2
- 3
- 4
- 5
- 6
- 7
- 8
- 9
-10
-11
-12
-13
-14</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code># A tibble: 150 x 5
-   Sepal.Length Sepal.Width Petal.Length Petal.Width Species
-          &lt;dbl&gt;       &lt;dbl&gt;        &lt;dbl&gt;       &lt;dbl&gt; &lt;fct&gt;  
- 1          5.1         3.5          1.4         0.2 setosa 
- 2          4.9         3            1.4         0.2 setosa 
- 3          4.7         3.2          1.3         0.2 setosa 
- 4          4.6         3.1          1.5         0.2 setosa 
- 5          5           3.6          1.4         0.2 setosa 
- 6          5.4         3.9          1.7         0.4 setosa 
- 7          4.6         3.4          1.4         0.3 setosa 
- 8          5           3.4          1.5         0.2 setosa 
- 9          4.4         2.9          1.4         0.2 setosa 
-10          4.9         3.1          1.5         0.1 setosa 
-# ... with 140 more rows
-</code></pre></div>
-</td></tr></table></p>
-<p>También puedes crear tus propios <em>tibbles</em> desde cero. Para ello, empleamos la función <code>tibble()</code>, que construye las tablas por columnas. Por ejemplo:</p>
-<p><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
-2
-3
-4
-5</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="nf">tibble</span><span class="p">(</span>
-  <span class="s">&quot;Columna 1&quot;</span> <span class="o">=</span> <span class="m">1</span><span class="o">:</span><span class="m">5</span><span class="p">,</span>
-  <span class="s">&quot;Columna 2&quot;</span> <span class="o">=</span> <span class="m">2</span><span class="p">,</span>
-  <span class="s">&quot;Columna 3&quot;</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="m">2</span><span class="p">,</span> <span class="m">7</span><span class="p">,</span> <span class="m">4</span><span class="p">,</span> <span class="m">1</span><span class="p">,</span> <span class="m">4</span><span class="p">),</span>
-<span class="p">)</span>
-</code></pre></div>
-</td></tr></table>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
-2
-3
-4
-5
-6
-7
-8</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code># A tibble: 5 x 3
-  `Columna 1` `Columna 2` `Columna 3`
-        &lt;int&gt;       &lt;dbl&gt;       &lt;dbl&gt;
-1           1           2           2
-2           2           2           7
-3           3           2           4
-4           4           2           1
-5           5           2           4
-</code></pre></div>
-</td></tr></table></p>
-<p>Los <em>tibbles</em> ofrecen muchas posibilidades a la hora de crear tablas de datos. Si quieres saber más, puedes usar el comando <code>?tibble</code>, o puedes consultar el manual oficial de <em>Tidyverse</em> <a href="https://r4ds.had.co.nz/tibbles.html">aquí</a>.</p>
-<h2 id="importando-datos">Importando datos</h2>
-<p>Importar archivos de datos es muy sencillo, simplemente usa una de las siguientes funciones, dependiendo del tipo de delimitador por el que estén separados tus datos:</p>
-<table>
-<thead>
-<tr>
-<th>FUNCIÓN</th>
-<th>DELIMITADOR</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>read_csv()</code></td>
-<td>Coma</td>
-</tr>
-<tr>
-<td><code>read_csv2()</code></td>
-<td>Punto y coma</td>
-</tr>
-<tr>
-<td><code>read_tsv()</code></td>
-<td>Tabulaciones</td>
-</tr>
-<tr>
-<td><code>read_table()</code></td>
-<td>Espacio</td>
-</tr>
-</tbody>
-</table>
-<div class="admonition example">
-<p class="admonition-title">Razona:</p>
-<p>Encuentra un comando con el que puedas leer archivos con cualquier delimitador.</p>
-<details class="help"><summary>Pista:</summary><p>Puedes revistar todos los comandos disponibles con <code>?read_delim</code></p>
-</details>
-<details class="check"><summary>Respuesta</summary><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="nf">read_delim</span><span class="p">(</span><span class="o">&lt;</span><span class="n">DATOS</span><span class="o">&gt;</span><span class="p">,</span> <span class="o">&lt;</span><span class="n">DELIMITADOR</span><span class="o">&gt;</span><span class="p">)</span>
-</code></pre></div>
-</td></tr></table>
-
-</details>
-</div>
-<p>A partir de ahora, salvo excepciones, vamos a utilizar datos no incluidos dentro del paquete <em>Tidyverse</em>, empleando alguna de las funciones anteriores.</p>
-<div class="admonition example">
-<p class="admonition-title">Ejercicio</p>
-<p>Adelantemos un poco de trabajo. Abre y descarga <a href="../datos/brca.txt">este conjunto de datos</a> y, teniendo en cuenta sus delimitadores, impórtalo a R.</p>
-<details class="check"><summary>Respuesta</summary><p>Antes de bajarlo podemos comprobar que el archivo emplea tabulaciones como delimitadores. Por tanto, tras descargarlo en nuestro <em>working directory</em>, lo importamos y le asignamos la variable <code>datos</code>:</p>
-<p><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="n">datos</span> <span class="o">&lt;-</span> <span class="nf">read_tsv</span><span class="p">(</span><span class="s">&quot;brca.txt&quot;</span><span class="p">)</span>
-</code></pre></div>
-</td></tr></table>
-Podemos ver como nuestros datos ahora aparecen en la ventana <em>environment</em>, listos para ser usados:</p>
-<p><img alt="" src="../images/importar/1.png" title="" /></p>
-</details>
-</div>
-<h2 id="ejercicios-de-repaso">Ejercicios de repaso</h2>
-<p>Para ver si has entendido todo, intenta realizar los ejercicios propuestos en <a href="" title="Gráfica por ventanas">este enlace</a>.</p>
-<div class="admonition info">
-<p class="admonition-title">Nota</p>
-<p>Cosulta el apartado "<a href="http://127.0.0.1:8000/ejercicios/">Realización de ejercicios</a>" para saber como descargar, instalar y completar esta tarea.</p>
-</div>
 <h2 id="referencias">Referencias</h2>
 <div class="admonition cite">
 <p class="admonition-title">Referencias</p>
 <ul>
-<li><a href="https://r4ds.had.co.nz/"><strong><em>R for Data Science</em></strong>; Hadley Wickham, Garrett Grolemund et al.</a></li>
-<li><a href="https://doi.org/10.5061/dryad.hd5c7"><strong><em>Morphometric discrimination of two allozymically diagnosed sibling species</em></strong>; Wayland, Matthew T. et al.</a></li>
+<li><a href="https://ucodemy.github.io/rbioq/"><strong><em>Tutorial de programación en R orientado al estudiante de Bioquímica</em></strong>; Ismael Sánchez Pareja</a></li>
+<li><a href="https://www.bioconductor.org/packages/release/bioc/html/GENESIS.html"><strong><em>GENESIS</em></strong>; Bioconductor</a></li>
 </ul>
 </div>
                 
@@ -594,7 +417,7 @@ Podemos ver como nuestros datos ahora aparecen en la ventana <em>environment</em
   
     <nav class="md-footer__inner md-grid" aria-label="Pie">
       
-        <a href="../visualizar/" class="md-footer__link md-footer__link--prev" rel="prev">
+        <a href="../modelar/" class="md-footer__link md-footer__link--prev" rel="prev">
           <div class="md-footer__button md-icon">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
           </div>
@@ -603,19 +426,19 @@ Podemos ver como nuestros datos ahora aparecen en la ventana <em>environment</em
               <span class="md-footer__direction">
                 Anterior
               </span>
-              Visualizar datos
+              Modelar datos
             </div>
           </div>
         </a>
       
       
-        <a href="../ordenar/" class="md-footer__link md-footer__link--next" rel="next">
+        <a href="../ejercicios/" class="md-footer__link md-footer__link--next" rel="next">
           <div class="md-footer__title">
             <div class="md-ellipsis">
               <span class="md-footer__direction">
                 Siguiente
               </span>
-              Ordenar datos
+              Realización de ejercicios
             </div>
           </div>
           <div class="md-footer__button md-icon">

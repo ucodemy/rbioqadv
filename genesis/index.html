@@ -18,7 +18,7 @@
     
     
       
-        <title>GENESIS - Tutorial avanzado de programación en R</title>
+        <title>Bioconductor y GENESIS - Tutorial avanzado de programación en R</title>
       
     
     
@@ -72,7 +72,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#introduccion" class="md-skip">
+        <a href="#bioconductor" class="md-skip">
           Saltar a contenido
         </a>
       
@@ -104,7 +104,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              GENESIS
+              Bioconductor y GENESIS
             
           </span>
         </div>
@@ -284,12 +284,12 @@
       
       
         <label class="md-nav__link md-nav__link--active" for="__toc">
-          GENESIS
+          Bioconductor y GENESIS
           <span class="md-nav__icon md-icon"></span>
         </label>
       
       <a href="./" class="md-nav__link md-nav__link--active">
-        GENESIS
+        Bioconductor y GENESIS
       </a>
       
         
@@ -304,15 +304,76 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#introduccion" class="md-nav__link">
-    Introducción
+  <a href="#bioconductor" class="md-nav__link">
+    Bioconductor
   </a>
+  
+    <nav class="md-nav" aria-label="Bioconductor">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#instalacion-de-paquetes" class="md-nav__link">
+    Instalación de paquetes
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#como-usar-paquetes-de-bioconductor" class="md-nav__link">
+    Cómo usar paquetes de Bioconductor
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#referencias" class="md-nav__link">
-    Referencias
+  <a href="#paquete-genesis" class="md-nav__link">
+    Paquete GENESIS
+  </a>
+  
+    <nav class="md-nav" aria-label="Paquete GENESIS">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#pc-air" class="md-nav__link">
+    PC-AiR
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pc-relate" class="md-nav__link">
+    PC-Relate
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#analisis-de-secuencias-genomicas" class="md-nav__link">
+    Análisis de secuencias genómicas
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ejemplos" class="md-nav__link">
+    Ejemplos
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#resumen" class="md-nav__link">
+    Resumen
   </a>
   
 </li>
@@ -335,6 +396,21 @@
     <li class="md-nav__item">
       <a href="../ejercicios/" class="md-nav__link">
         Realización de ejercicios
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../acerca/" class="md-nav__link">
+        Acerca de
       </a>
     </li>
   
@@ -363,15 +439,76 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#introduccion" class="md-nav__link">
-    Introducción
+  <a href="#bioconductor" class="md-nav__link">
+    Bioconductor
   </a>
+  
+    <nav class="md-nav" aria-label="Bioconductor">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#instalacion-de-paquetes" class="md-nav__link">
+    Instalación de paquetes
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#como-usar-paquetes-de-bioconductor" class="md-nav__link">
+    Cómo usar paquetes de Bioconductor
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#referencias" class="md-nav__link">
-    Referencias
+  <a href="#paquete-genesis" class="md-nav__link">
+    Paquete GENESIS
+  </a>
+  
+    <nav class="md-nav" aria-label="Paquete GENESIS">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#pc-air" class="md-nav__link">
+    PC-AiR
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pc-relate" class="md-nav__link">
+    PC-Relate
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#analisis-de-secuencias-genomicas" class="md-nav__link">
+    Análisis de secuencias genómicas
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ejemplos" class="md-nav__link">
+    Ejemplos
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#resumen" class="md-nav__link">
+    Resumen
   </a>
   
 </li>
@@ -389,14 +526,147 @@
               
                 
                 
-                  <h1>GENESIS</h1>
+                  <h1>Bioconductor y GENESIS</h1>
                 
-                <h2 id="introduccion">Introducción</h2>
-<h2 id="referencias">Referencias</h2>
+                <h2 id="bioconductor">Bioconductor</h2>
+<p>Bioconductor es un repositorio de paquetes para R, diseñados para el análisis y comprensión de grandes cantidades de datos genómicos. </p>
+<p>Estos paquetes pueden clasificarse en cuatro tipos:</p>
+<ul>
+<li><strong>Software</strong>, paquetes de funciones para usar en nuestros análisis de datos.</li>
+<li><strong>Anotación</strong>, para la interacción con bases de datos genómicos.</li>
+<li><strong>Datos experimentales</strong>, distribución de datos de experimentos, como los que hemos usado en apartados anteriores.</li>
+<li><em><strong>Workflow</strong></em>, muestran cómo usar paquetes de R y/o <em>Bioconductor</em> en un análisis concreto.</li>
+</ul>
+<p>La cantidad de paquetes que ofrece este repositorio es enorme, y es imposible conocerlos todos. Cada investigador empleará unos paquetes u otros, dependiendo de las necesidades de su trabajo. La selección de paquetes que ofrece cada uno es, por tanto, muy personal. Si necesitas tener una visión global sobre lo que ofrece <em>Bioconductor</em> es recomendable empezar a buscar por su <a href="http://www.bioconductor.org/help/">página de ayuda</a>.</p>
+<h3 id="instalacion-de-paquetes">Instalación de paquetes</h3>
+<p>Para instalar paquetes de Bioconductor, primero debemos instalar <code>BiocManager</code>, paquete que administra la instalación de aquellos que se encuentran en <em>Bioconductor</em>. Esto es muy sencillo, simplemente copia y pega lo siguiente en la consola de R:</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2
+3</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="nf">if </span><span class="p">(</span><span class="o">!</span><span class="nf">requireNamespace</span><span class="p">(</span><span class="s">&quot;BiocManager&quot;</span><span class="p">,</span> <span class="n">quietly</span> <span class="o">=</span> <span class="kc">TRUE</span><span class="p">))</span>
+    <span class="nf">install.packages</span><span class="p">(</span><span class="s">&quot;BiocManager&quot;</span><span class="p">)</span>
+<span class="n">BiocManager</span><span class="o">::</span><span class="nf">install</span><span class="p">(</span><span class="n">version</span> <span class="o">=</span> <span class="s">&quot;3.12&quot;</span><span class="p">)</span>
+</code></pre></div>
+</td></tr></table>
+
+<p>Una vez ha terminado (puede tardar unos minutos), el paquete instala la versión más reciente (en el momento de creación de este tutorial, la 3.12; puede haberse lanzado una nueva versión, aunque el método de instalación es el mismo) y ya puedes instalar cualquier paquete de <em>Bioconductor</em>. Para ello, entra en la página del paquete en el que estés interesado. Abajo te aparecerá un cuadro de código para que lo copies y lo pegues en la consola:</p>
+<p><img alt="" src="../images/genesis/1.png" title="" /></p>
+<p>En este ejemplo, el texto será el siguiente. Cópialo y pégalo en la consola para instalar <strong>GENESIS</strong>, pues lo vamos a usar como ejemplo a continuación.</p>
+<p><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2
+3
+4</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="nf">if </span><span class="p">(</span><span class="o">!</span><span class="nf">requireNamespace</span><span class="p">(</span><span class="s">&quot;BiocManager&quot;</span><span class="p">,</span> <span class="n">quietly</span> <span class="o">=</span> <span class="kc">TRUE</span><span class="p">))</span>
+    <span class="nf">install.packages</span><span class="p">(</span><span class="s">&quot;BiocManager&quot;</span><span class="p">)</span>
+
+<span class="n">BiocManager</span><span class="o">::</span><span class="nf">install</span><span class="p">(</span><span class="s">&quot;GENESIS&quot;</span><span class="p">)</span>
+</code></pre></div>
+</td></tr></table>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="nf">library</span><span class="p">(</span><span class="n">GENESIS</span><span class="p">)</span>
+</code></pre></div>
+</td></tr></table></p>
+<div class="admonition info">
+<p class="admonition-title">Nota</p>
+<p>Como verás, antes de instalar el paquete, el comando comprueba si tienes instalado <code>BiocManager</code>. Si no es así, lo instalará de forma silenciosa.</p>
+</div>
+<h3 id="como-usar-paquetes-de-bioconductor">Cómo usar paquetes de Bioconductor</h3>
+<p>Cada paquete incluye su propia "<em>vignette</em>" (una guía con toda la información necesaria que aparece en la ventana "<em>Help</em>"), que puedes ver usando: </p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="o">?&lt;</span><span class="n">NOMBRE_PAQUETE</span><span class="o">&gt;</span>
+</code></pre></div>
+</td></tr></table>
+
+<p>También puedes ver toda la información en el navegador o en formato <em>.pdf</em> justo debajo de la sección de instalación en la página del paquete.</p>
+<h2 id="paquete-genesis">Paquete GENESIS</h2>
+<p>Uno de estos paquetes es GENESIS (<em>GENetic EStimation and Inference in Structured samples</em>). Este contiene una serie de herramientas para trabajar con numerosas metodologías complejas dentro del campo del análisis de secuencias genómicas.</p>
+<p>GENESIS presenta dos programas únicos para el análisis de datos genómicos de muestras con estructura poblacional y/o parentesco: <em>PC-AiR</em> y <em>PC-Relate</em>.</p>
+<h3 id="pc-air"><em>PC-AiR</em></h3>
+<p><em>PC-AiR</em> (<em>Principal Components Analysis in Related Samples</em>) es un método basado en <em>PCA</em> (<a href="https://es.wikipedia.org/wiki/An%C3%A1lisis_de_componentes_principales"><em>Principal Components Analysis</em></a>), que se aplica en el genotipado de cientos de miles de polimorfismos puntuales (SNPs; Single Nucleotide Polymorphisms) a lo largo de todo el genoma de las muestras para agruparlos en Componentes Principales (<em>PCs</em>) y estudiar la inferencia de estructura poblacional.</p>
+<p>Sin embargo, <em>PCA</em> no tiene en cuenta el posible parentesco que exista entre las muestras analizadas, cuestión clave a la hora de identificar SNPs. <em>PC-AiR</em>, por el contrario, sí que tiene en cuenta el parentesco, pudiendo así identificar SNPs y <em>PCs</em> con mayor precisión.</p>
+<h3 id="pc-relate"><em>PC-Relate</em></h3>
+<p><em>PC-Relate</em> (<em>Relatedness Estimation Adjusted for Principal Components</em>) es capaz de estimar el parentesco entre muestras sin estructura poblacional especificada, empleando PCs de poblaciones representativas muy estudiadas e indexadas, calculadas con <em>PC-AiR</em>.</p>
+<h3 id="analisis-de-secuencias-genomicas">Análisis de secuencias genómicas</h3>
+<p>Tanto <em>PC-AiR</em> como <em>PC-Relate</em> son las herramientas principales que usa GENESIS para el resto de aplicaciones, pudiendo emplearse en multitud de tareas de genotipado de muestras. Por ejemplo, a la hora del análisis de secuencias, los <em>PCs</em> de <em>PC-AiR</em> pueden usarse para la estratificación de una población, y <em>PC-Relate</em> se emplea para determinar la correlación fenotípica en la muestra.</p>
+<h3 id="ejemplos">Ejemplos</h3>
+<p>Un ejemplo de cómo puede usarse este paquete es el siguiente. Imaginemos que necesitamos saber que PCs son ancestrales dentro de una determinada población. Para ello, en un eje de coordenadas se enfrentan los genomas de 1000 individuos de poblaciones distintas.</p>
+<div class="admonition info">
+<p class="admonition-title">Nota</p>
+<p>Este apartado es opcional, así que simplemente puedes seguir leyendo y no es necesario que lo realices por ti mismo.</p>
+</div>
+<p>Primero, instalamos y ejecutamos los siguientes paquetes (si no los tienes instalados ya):</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2
+3</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="nf">install.packages</span><span class="p">(</span><span class="s">&quot;dplyr&quot;</span><span class="p">)</span>
+<span class="nf">install.packages</span><span class="p">(</span><span class="s">&quot;RColorBrewer&quot;</span><span class="p">)</span>
+<span class="nf">install.packages</span><span class="p">(</span><span class="s">&quot;GGally&quot;</span><span class="p">)</span>
+</code></pre></div>
+</td></tr></table>
+
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2
+3
+4</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="nf">library</span><span class="p">(</span><span class="n">dplyr</span><span class="p">)</span>
+<span class="nf">library</span><span class="p">(</span><span class="n">RColorBrewer</span><span class="p">)</span>
+<span class="nf">library</span><span class="p">(</span><span class="n">ggplot2</span><span class="p">)</span>
+<span class="nf">library</span><span class="p">(</span><span class="n">GGally</span><span class="p">)</span>
+</code></pre></div>
+</td></tr></table>
+
+<p>A continuación representamos los SNPs, que están incluidos en un archivo <em>.gds</em> que contiene toda la información de variaciones de la secuencia problema (en este ejemplo, <code>SeqData</code>). Primero debemos definir una variable que contenga la información necesaria. Para ello, se usa el comando <code>pcair()</code>:</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2
+3
+4</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="n">pcs</span> <span class="o">&lt;-</span> <span class="nf">pcair</span><span class="p">(</span><span class="n">seqData</span><span class="p">,</span>                               <span class="c1"># Con &quot;pcair&quot; realizamos el análisis de SNPs sobre SeqData</span>
+             <span class="n">kinobj</span><span class="o">=</span><span class="n">kingMat</span><span class="p">,</span> <span class="n">kin.thresh</span><span class="o">=</span><span class="m">2</span><span class="o">^</span><span class="p">(</span><span class="m">-9</span><span class="o">/</span><span class="m">2</span><span class="p">),</span>   <span class="c1"># &quot;kinobj&quot; calcula el parentesco entre las muestras</span>
+             <span class="n">divobj</span><span class="o">=</span><span class="n">kingMat</span><span class="p">,</span> <span class="n">div.thresh</span><span class="o">=</span><span class="m">-2</span><span class="o">^</span><span class="p">(</span><span class="m">-9</span><span class="o">/</span><span class="m">2</span><span class="p">),</span>  <span class="c1"># &quot;divobj&quot; calcula la divergencia ancestral</span>
+             <span class="n">snp.include</span><span class="o">=</span><span class="n">pruned</span><span class="p">)</span>                    <span class="c1"># Incluye más SNPs para el estudio</span>
+</code></pre></div>
+</td></tr></table>
+
+<p>Después, trabajamos exclusivamente con el apartado de vectores de la variable creada, que contiene los PCs: </p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2
+3
+4
+5
+6
+7
+8</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="n">pc.df</span> <span class="o">&lt;-</span> <span class="nf">as.data.frame</span><span class="p">(</span><span class="n">pcs</span><span class="o">$</span><span class="n">vectors</span><span class="p">)</span>                     <span class="c1"># En este bloque definimos los</span>
+<span class="nf">names</span><span class="p">(</span><span class="n">pc.df</span><span class="p">)</span> <span class="o">&lt;-</span> <span class="nf">paste0</span><span class="p">(</span><span class="s">&quot;PC&quot;</span><span class="p">,</span> <span class="m">1</span><span class="o">:</span><span class="nf">ncol</span><span class="p">(</span><span class="n">pcs</span><span class="o">$</span><span class="n">vectors</span><span class="p">))</span>       <span class="c1"># nombres de las diferentes</span>
+<span class="n">pc.df</span><span class="o">$</span><span class="n">sample.id</span> <span class="o">&lt;-</span> <span class="nf">row.names</span><span class="p">(</span><span class="n">pcs</span><span class="o">$</span><span class="n">vectors</span><span class="p">)</span>               <span class="c1"># variables (poblaciones) y sus</span>
+<span class="n">pc.df</span> <span class="o">&lt;-</span> <span class="nf">left_join</span><span class="p">(</span><span class="n">pc.df</span><span class="p">,</span> <span class="nf">pData</span><span class="p">(</span><span class="n">annot</span><span class="p">),</span> <span class="n">by</span><span class="o">=</span><span class="s">&quot;sample.id&quot;</span><span class="p">)</span> <span class="c1"># casos particulares.</span>
+
+<span class="n">pop.cols</span> <span class="o">&lt;-</span> <span class="nf">setNames</span><span class="p">(</span><span class="nf">brewer.pal</span><span class="p">(</span><span class="m">12</span><span class="p">,</span> <span class="s">&quot;Paired&quot;</span><span class="p">),</span>          <span class="c1"># Aquí especificamos el nombre de</span>
+    <span class="nf">c</span><span class="p">(</span><span class="s">&quot;ACB&quot;</span><span class="p">,</span> <span class="s">&quot;ASW&quot;</span><span class="p">,</span> <span class="s">&quot;CEU&quot;</span><span class="p">,</span> <span class="s">&quot;GBR&quot;</span><span class="p">,</span> <span class="s">&quot;CHB&quot;</span><span class="p">,</span> <span class="s">&quot;JPT&quot;</span><span class="p">,</span>         <span class="c1"># las poblaciones.</span>
+      <span class="s">&quot;CLM&quot;</span><span class="p">,</span> <span class="s">&quot;MXL&quot;</span><span class="p">,</span> <span class="s">&quot;LWK&quot;</span><span class="p">,</span> <span class="s">&quot;YRI&quot;</span><span class="p">,</span> <span class="s">&quot;GIH&quot;</span><span class="p">,</span> <span class="s">&quot;PUR&quot;</span><span class="p">))</span>
+</code></pre></div>
+</td></tr></table>
+
+<p>Finalmente, representamos los datos en un diagrama de dispersión de la siguiente forma:</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="nf">ggplot</span><span class="p">(</span><span class="n">pc.df</span><span class="p">,</span> <span class="nf">aes</span><span class="p">(</span><span class="n">PC1</span><span class="p">,</span> <span class="n">PC2</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">Population</span><span class="p">))</span> <span class="o">+</span> <span class="nf">geom_point</span><span class="p">()</span> <span class="o">+</span>   <span class="c1"># Aquí PC1 y PC2 son dos de los </span>
+    <span class="nf">scale_color_manual</span><span class="p">(</span><span class="n">values</span><span class="o">=</span><span class="n">pop.cols</span><span class="p">)</span>                           <span class="c1"># muchos PC que emplea PC-AiR</span>
+</code></pre></div>
+</td></tr></table>
+
+<p><img alt="" src="../images/genesis/2.png" title="" /></p>
+<p>Puedes también representar estos mismos datos, pero teniendo en cuenta el grado de relación que existe entre las diferentes poblaciones y los PCs con un diagrama de líneas:</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2
+3</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="nf">ggparcoord</span><span class="p">(</span><span class="n">pc.df</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="m">1</span><span class="o">:</span><span class="m">10</span><span class="p">,</span> <span class="n">groupColumn</span><span class="o">=</span><span class="s">&quot;Population&quot;</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="s">&quot;uniminmax&quot;</span><span class="p">)</span> <span class="o">+</span>
+    <span class="nf">scale_color_manual</span><span class="p">(</span><span class="n">values</span><span class="o">=</span><span class="n">pop.cols</span><span class="p">)</span> <span class="o">+</span>
+    <span class="nf">xlab</span><span class="p">(</span><span class="s">&quot;PC&quot;</span><span class="p">)</span> <span class="o">+</span> <span class="nf">ylab</span><span class="p">(</span><span class="s">&quot;&quot;</span><span class="p">)</span>
+</code></pre></div>
+</td></tr></table>
+
+<p><img alt="" src="../images/genesis/3.png" title="" /></p>
+<p>Viendo esta última gráfica podemos ver cómo la relación entre las poblaciones y los PCs es muy variable. Por ejemplo, <em>JPT</em> y <em>CHB</em> (líneas roja y rosa respectivamente) presentan una alta relación con el set de PC número dos, mientras que apenas la tiene con el número 1. Apreciamos también cierto grado de relación de estas dos poblaciones con el resto de PCs.</p>
+<p>Como puedes deducir con estos estudios, trabajar con este tipo de programas requiere de tiempo y dedicación. Puedes estudiarlos más detalladamente en la <a href="https://www.bioconductor.org/packages/release/bioc/vignettes/GENESIS/inst/doc/assoc_test_seq.html#pc-air">página de documentación</a> de GENESIS, de donde provienen estos ejemplos.</p>
+<h2 id="resumen">Resumen</h2>
+<p>Las posibilidades que ofrece este paquete (y todos los demás) son casi ilimitadas y, como se ha mencionado anteriormente, es casi imposible conocerlas todas, pues necesitas trabajar durante mucho tiempo con un determinado conjunto de paquetes para poder manejarlo con soltura. La introducción a este mundo puede ser bastante complicada en un principio, pero no tarda mucho en compensar el esfuerzo. En este tutorial hemos mostrado el potencial que ofrece GENESIS a la hora de trabajar como bioquímicos, pero existen muchos más y, de nuevo, los paquetes que uses van a depender de tus necesidades laborales.</p>
 <div class="admonition cite">
 <p class="admonition-title">Referencias</p>
 <ul>
 <li><a href="https://ucodemy.github.io/rbioq/"><strong><em>Tutorial de programación en R orientado al estudiante de Bioquímica</em></strong>; Ismael Sánchez Pareja</a></li>
+<li><a href="https://www.bioconductor.org/help/"><strong><em>Bioconductor</em></strong>; Help</a></li>
+<li><a href="http://manuals.bioinformatics.ucr.edu/home/R_BioCondManual#TOC-HT-Sequence-Analysis-with-R-and-Bioconductor"><strong><em>R &amp; Bioconductor Manual</em></strong>; T. Girke, UC Riverside</a></li>
 <li><a href="https://www.bioconductor.org/packages/release/bioc/html/GENESIS.html"><strong><em>GENESIS</em></strong>; Bioconductor</a></li>
 </ul>
 </div>

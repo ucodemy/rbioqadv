@@ -305,15 +305,8 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#ejercicios-de-repaso" class="md-nav__link">
-    Ejercicios de repaso
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#referencias" class="md-nav__link">
-    Referencias
+  <a href="#ejercicios" class="md-nav__link">
+    Ejercicios
   </a>
   
 </li>
@@ -380,7 +373,7 @@
   
     <li class="md-nav__item">
       <a href="../genesis/" class="md-nav__link">
-        GENESIS
+        Bioconductor y GENESIS
       </a>
     </li>
   
@@ -396,6 +389,21 @@
     <li class="md-nav__item">
       <a href="../ejercicios/" class="md-nav__link">
         Realización de ejercicios
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../acerca/" class="md-nav__link">
+        Acerca de
       </a>
     </li>
   
@@ -485,15 +493,8 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#ejercicios-de-repaso" class="md-nav__link">
-    Ejercicios de repaso
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#referencias" class="md-nav__link">
-    Referencias
+  <a href="#ejercicios" class="md-nav__link">
+    Ejercicios
   </a>
   
 </li>
@@ -578,7 +579,7 @@
 <div class="admonition example">
 <p class="admonition-title">Razona:</p>
 <p>¿Cómo podrías mostrar las 20 primeras filas de este conjunto?</p>
-<details class="help"><summary>1ª Pista</summary><p>Tienes que utilizar <code>print()</code>. Puedes averiguar como usarlo escribiendo el comando <code>?print</code>.</p>
+<details class="help"><summary>1ª Pista</summary><p>Tienes que utilizar <code>print()</code>. Puedes averiguar cómo usarlo escribiendo el comando <code>?print</code>.</p>
 </details>
 <details class="help"><summary>2ª Pista</summary><p>Utiliza el argumento <code>n = &lt;NÚMERO&gt;</code> dentro del comando anterior.</p>
 </details>
@@ -636,6 +637,10 @@
 </code></pre></div>
 </td></tr></table></p>
 </details>
+</div>
+<div class="admonition info">
+<p class="admonition-title">Nota</p>
+<p>Puedes encontrar información sobre cualquier comando o paquete usando <code>?&lt;NOMBRE_COMANDO&gt;</code> o <code>?&lt;NOMBRE_PAQUETE&gt;</code>. Este abrirá una "<em>vignette</em>", es decir, una guía con toda la información necesaria, que aparece en la ventana "<em>Help</em>" (abajo a la derecha en <em>RStudio</em>). Puedes saber más acerca de las "<em>vignettes</em>" <a href="https://r-pkgs.org/vignettes.html">aquí</a>.</p>
 </div>
 <p><strong><em>mpg</em></strong> es un conjunto de datos que reúne información sobre el consumo de combustible de diferentes vehículos, cuyas variables son las siguientes:</p>
 <table>
@@ -702,7 +707,7 @@
 <p>Empezamos con la función <code>ggplot()</code>, que crea el sistema de coordenadas en el que se representan los datos. Dentro de esta función debemos incluir el conjunto de datos al que pertenecen las variables que queremos representar (en este caso, <code>data = mpg</code>).</p>
 <div class="admonition warning">
 <p class="admonition-title">Importante:</p>
-<p>En <em>ggplot2</em>, para continuar con el comando en la siguente linea, es necesario colocar un símbolo "+" al final de la anterior.</p>
+<p>En <em>ggplot2</em>, para continuar con el comando en la siguiente línea, es necesario colocar un símbolo "+" al final de la anterior.</p>
 </div>
 <p>Como todavía no hemos elegido las variables, la gráfica sigue en blanco. Para seleccionarlas, primero debemos elegir el tipo de gráfico que queremos crear, dependiendo este del tipo de variable que queramos representar (si son continuas o discontinuas). Los diferentes tipos de gráficos los iremos viendo conforme avanzamos en el tutorial. Algunos de estos son:</p>
 <table>
@@ -719,7 +724,7 @@
 </tr>
 <tr>
 <td><code>geom_smooth</code></td>
-<td>Gráfico de linea suavizada</td>
+<td>Gráfico de línea suavizada</td>
 </tr>
 <tr>
 <td><code>geom_bar</code></td>
@@ -771,11 +776,11 @@
 <p>Como vemos, además de representar el gasto en carretera con respecto a la cilindrada, vemos con cada color cada tipo de coche que hay, revelando información extra. </p>
 <div class="admonition example">
 <p class="admonition-title">Razona:</p>
-<p>Observando el ejemplo anterior, ¿a qué conclusion puedes llegar en relación al  tipo de vehículo, su gasto en carretera y su cilindrada?</p>
+<p>Observando el ejemplo anterior, ¿a qué conclusión puedes llegar en relación al  tipo de vehículo, su gasto en carretera y su cilindrada?</p>
 <details class="check"><summary>Respuesta:</summary><p>Los coches, por norma general, gastan más en carretera conforme aumenta su cilindrada. Sin embargo, en este ejemplo existe un grupo de coches que no sigue esta suposición. Al observar la variable que determina el tipo de coche en la gráfica, vemos como estos vehículos son de dos asientos, que, al pesar menos, gastan menos combustible que los demás, independientemente del tamaño del motor.</p>
 </details>
 </div>
-<p>Podemos mapear cualquier variable dentro del gráfico incluyéndola en <code>aes()</code>. Además, podemos elegir que propiedad visual asignar a esta (color, tamaño de los puntos...). Podemos representar el tipo de vehiculos cambiando el tamaño de los puntos (con <code>size</code>):</p>
+<p>Podemos mapear cualquier variable dentro del gráfico incluyéndola en <code>aes()</code>. Además, podemos elegir que propiedad visual asignar a esta (color, tamaño de los puntos...). Podemos representar el tipo de vehículos cambiando el tamaño de los puntos (con <code>size</code>):</p>
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="nf">ggplot</span><span class="p">(</span><span class="n">data</span> <span class="o">=</span> <span class="n">mpg</span><span class="p">)</span> <span class="o">+</span> 
   <span class="nf">geom_point</span><span class="p">(</span><span class="n">mapping</span> <span class="o">=</span> <span class="nf">aes</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="n">displ</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">hwy</span><span class="p">,</span> <span class="n">size</span> <span class="o">=</span> <span class="n">class</span><span class="p">))</span>
@@ -783,7 +788,7 @@
 </td></tr></table>
 
 <p><img alt="" src="../images/visualizacion_datos/3.png" title="" /></p>
-<p>Tambien podemos cambiar su transparencia (con <code>alpha</code>):</p>
+<p>También podemos cambiar su transparencia (con <code>alpha</code>):</p>
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="nf">ggplot</span><span class="p">(</span><span class="n">data</span> <span class="o">=</span> <span class="n">mpg</span><span class="p">)</span> <span class="o">+</span> 
   <span class="nf">geom_point</span><span class="p">(</span><span class="n">mapping</span> <span class="o">=</span> <span class="nf">aes</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="n">displ</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">hwy</span><span class="p">,</span> <span class="n">alpha</span> <span class="o">=</span> <span class="n">class</span><span class="p">))</span>
@@ -807,8 +812,8 @@
 <details class="help"><summary>Pista:</summary><p>Puedes mirar todos los <em>aesthetics</em> posibles para el diagrama de dispersión usando <code>?geom_point</code>.</p>
 </details>
 </div>
-<p>Una cosa muy importante a tener en cuenta es que <code>aes()</code> solo sirve para modificar las gráficas con respecto a una variable. También podemos modificarla sin tener en cuenta los valores. Por ejemplo, podemos cambiar el color de todos los puntos sacando 
-<code>color</code> del comando<code>aes()</code>:</p>
+<p>Una cosa muy importante para tener en cuenta es que <code>aes()</code> solo sirve para modificar las gráficas con respecto a una variable. También podemos modificarla sin tener en cuenta los valores. Por ejemplo, podemos cambiar el color de todos los puntos sacando 
+<code>color</code> del comando <code>aes()</code>:</p>
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="nf">ggplot</span><span class="p">(</span><span class="n">data</span> <span class="o">=</span> <span class="n">mpg</span><span class="p">)</span> <span class="o">+</span> 
   <span class="nf">geom_point</span><span class="p">(</span><span class="n">mapping</span> <span class="o">=</span> <span class="nf">aes</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="n">displ</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">hwy</span><span class="p">),</span> <span class="n">color</span> <span class="o">=</span> <span class="s">&quot;blue&quot;</span><span class="p">)</span>
@@ -845,8 +850,8 @@
 </details>
 </div>
 <div class="admonition example">
-<p class="admonition-title">En el ejemplo anterior, ¿cómo modificarías la gráfica de forma que represente aquellos vehiculos con una cilindrada menor que 5 de un color y aquellos con cilindrada mayor de otro?</p>
-<details class="hint"><summary>Pista:</summary><p>Prueba a usar <code>color = displ &lt; 5</code>.</p>
+<p class="admonition-title">En el ejemplo anterior, ¿cómo modificarías la gráfica de forma que represente aquellos vehículos con una cilindrada menor que 5 de un color y aquellos con cilindrada mayor de otro?</p>
+<details class="hint"><summary>Pista:</summary><p>Trata de usar <code>color = displ &lt; 5</code>.</p>
 </details>
 <details class="check"><summary>Respuesta</summary><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="nf">ggplot</span><span class="p">(</span><span class="n">data</span> <span class="o">=</span> <span class="n">mpg</span><span class="p">)</span> <span class="o">+</span> 
@@ -872,7 +877,7 @@
 </td></tr></table>
 
 <p><img alt="" src="../images/visualizacion_datos/8.png" title="" /></p>
-<p><em>ggplot2</em> interpreta automáticamente que, al no concretar la variable <code>y</code>, debe representar el <strong>número total</strong> de diamantes por calidad de corte. Para ello, <em>ggplot2</em> emplea unas <strong>transformaciones estadisticas</strong> capaces de crear nuevas variables modificando las ya existentes. En este caso, lo que hace es contar el número de diamantes dentro de cada tipo de corte.</p>
+<p><em>ggplot2</em> interpreta automáticamente que, al no concretar la variable <code>y</code>, debe representar el <strong>número total</strong> de diamantes por calidad de corte. Para ello, <em>ggplot2</em> emplea unas <strong>transformaciones estadísticas</strong> capaces de crear nuevas variables modificando las ya existentes. En este caso, lo que hace es contar el número de diamantes dentro de cada tipo de corte.</p>
 <div class="admonition info">
 <p class="admonition-title">Nota</p>
 <p>Si quieres saber más sobre estas transformaciones estadísticas, puedes encontrar más información <a href="https://r4ds.had.co.nz/data-visualisation.html#statistical-transformations">aquí</a>.</p>
@@ -920,7 +925,7 @@
 </ul>
 <h3 id="graficas-por-capas">Gráficas por capas</h3>
 <p><em>ggplot2</em> permite representar muchas variables en una misma gráfica de forma sencilla. </p>
-<p>Supongamos que necesitamos representar una linea de tendencia del gasto en carretera con respecto a la cilindrada. Usando <code>geom_smooth()</code> dibujamos una linea de tendencia suavizada del conjuto de datos propuesto:</p>
+<p>Supongamos que necesitamos representar una línea de tendencia del gasto en carretera con respecto a la cilindrada. Usando <code>geom_smooth()</code> dibujamos una línea de tendencia suavizada del conjunto de datos propuesto:</p>
 <p><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="nf">ggplot</span><span class="p">(</span><span class="n">data</span> <span class="o">=</span> <span class="n">mpg</span><span class="p">)</span> <span class="o">+</span> 
   <span class="nf">geom_smooth</span><span class="p">(</span><span class="n">mapping</span> <span class="o">=</span> <span class="nf">aes</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="n">displ</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">hwy</span><span class="p">))</span>
@@ -929,9 +934,9 @@
 <img alt="" src="../images/visualizacion_datos/10.png" title="" /></p>
 <div class="admonition info">
 <p class="admonition-title">Nota</p>
-<p>Al igual que con el resto de funciones <em>geom</em>, <code>geom_smooth()</code> también posee sus <em>aesthetics</em> específicos (tipo, grosor, color de linea...). Puedes usar <code>?geom_smooth</code> para ver los que hay disponibles.</p>
+<p>Al igual que con el resto de funciones <em>geom</em>, <code>geom_smooth()</code> también posee sus <em>aesthetics</em> específicos (tipo, grosor, color de línea...). Puedes usar <code>?geom_smooth</code> para ver los que hay disponibles.</p>
 </div>
-<p>Si quisieramos representar esta linea como una capa sobre un diagrama de dispersión, simplemente escribimos sus respectivas funciones <em>geom</em> una después de la otra:</p>
+<p>Si quisiéramos representar esta línea como una capa sobre un diagrama de dispersión, simplemente escribimos sus respectivas funciones <em>geom</em> una después de la otra:</p>
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="nf">ggplot</span><span class="p">(</span><span class="n">data</span> <span class="o">=</span> <span class="n">mpg</span><span class="p">)</span> <span class="o">+</span> 
@@ -962,7 +967,7 @@ Representamos el ejemplo anterior:</p>
 </td></tr></table>
 
 <p><img alt="" src="../images/visualizacion_datos/facets.png" title="Gráfica por ventanas" /></p>
-<p>Con <em>facets</em> podemos representar dos variables, empleando la función <code>facet_grid()</code>. Por ejemplo, usemos como variables el tipo de tren de transmision y el número de cilindros:</p>
+<p>Con <em>facets</em> podemos representar dos variables, empleando la función <code>facet_grid()</code>. Por ejemplo, usemos como variables el tipo de tren de transmisión y el número de cilindros:</p>
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="nf">ggplot</span><span class="p">(</span><span class="n">data</span> <span class="o">=</span> <span class="n">mpg</span><span class="p">)</span> <span class="o">+</span> 
@@ -973,17 +978,22 @@ Representamos el ejemplo anterior:</p>
 
 <p><img alt="" src="../images/visualizacion_datos/grid.png" title="Gráfica por ventanas" /></p>
 <p>Los <em>facets</em> son muy útiles cuando queremos ver una visión global de todas las posibles representaciones que podemos hacer. Con ella, vemos multitud de gráficas a la vez y podemos seleccionar la que más nos interese.</p>
-<h2 id="ejercicios-de-repaso">Ejercicios de repaso</h2>
-<p>Para ver si has entendido todo, intenta realizar los ejercicios propuestos en <a href="../learnr/visualizacion.Rmd" title="Gráfica por ventanas">este enlace</a>.</p>
-<div class="admonition info">
-<p class="admonition-title">Nota</p>
-<p>Cosulta el apartado "<a href="http://127.0.0.1:8000/ejercicios/">Realización de ejercicios</a>" para saber cómo descargar, instalar y completar esta tarea.</p>
+<h2 id="ejercicios">Ejercicios</h2>
+<div class="admonition danger">
+<p class="admonition-title">Ejercicios de repaso</p>
+<p>Para ver si has entendido todo, intenta realizar estos <a href="../datos/tutoradvr_1.0.0.0000.tar.gz" title="">ejercicios propuestos</a>. Para saber cómo hacerlos, visita el <a href="http://127.0.0.1:8000/ejercicios/#como-hacer-los-ejercicios-de-repaso">apartado de "Realización de ejercicios"</a>.
+Tras esto, ejecuta el siguiente comando:
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="n">learnr</span><span class="o">::</span><span class="nf">run_tutorial</span><span class="p">(</span><span class="s">&quot;visualizar&quot;</span><span class="p">,</span> <span class="s">&quot;tutoradvr&quot;</span><span class="p">)</span>
+</code></pre></div>
+</td></tr></table>
+Se abrirá una ventana en tu navegador con los ejercicios a resolver</p>
 </div>
-<h2 id="referencias">Referencias</h2>
 <div class="admonition cite">
 <p class="admonition-title">Referencias</p>
 <ul>
+<li><a href="https://ucodemy.github.io/rbioq/"><strong><em>Tutorial de programación en R orientado al estudiante de Bioquímica</em></strong>; Ismael Sánchez Pareja</a></li>
 <li><a href="https://r4ds.had.co.nz/"><strong><em>R for Data Science</em></strong>; Hadley Wickham, Garrett Grolemund et al.</a></li>
+<li><a href="https://r-pkgs.org/vignettes.html"><strong><em>R packages - Vignettes: long-form documentation</em></strong>; Hadley Wickham, Jenny Bryan</a></li>
 </ul>
 </div>
                 

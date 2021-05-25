@@ -280,15 +280,8 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#ejercicios-de-repaso" class="md-nav__link">
-    Ejercicios de repaso
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#referencias" class="md-nav__link">
-    Referencias
+  <a href="#ejercicios" class="md-nav__link">
+    Ejercicios
   </a>
   
 </li>
@@ -340,7 +333,7 @@
   
     <li class="md-nav__item">
       <a href="../genesis/" class="md-nav__link">
-        GENESIS
+        Bioconductor y GENESIS
       </a>
     </li>
   
@@ -356,6 +349,21 @@
     <li class="md-nav__item">
       <a href="../ejercicios/" class="md-nav__link">
         Realización de ejercicios
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../acerca/" class="md-nav__link">
+        Acerca de
       </a>
     </li>
   
@@ -405,15 +413,8 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#ejercicios-de-repaso" class="md-nav__link">
-    Ejercicios de repaso
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#referencias" class="md-nav__link">
-    Referencias
+  <a href="#ejercicios" class="md-nav__link">
+    Ejercicios
   </a>
   
 </li>
@@ -435,7 +436,7 @@
                 
                 <h2 id="introduccion">Introducción</h2>
 <p>Con el material visto hasta ahora, estamos bastante preparados para representar datos ordenados de forma lógica y agradable. Existen muchísimas más opciones para graficar empleando <em>ggplot2</em>, aunque en este tutorial únicamente hemos mostrado lo que nos parece esencial (para saber más, puedes revisar el resto de posibilidades <a href="https://r4ds.had.co.nz/data-visualisation.html">aquí</a>). </p>
-<p>Sin embargo, aunque ya sepamos mucho sobre graficación, todavía no hemos enseñado cómo importar nuestros propios datos y emplear todo lo estudiado en nuestros propios trabajos, tema que vamos a ver a continuación.</p>
+<p>Sin embargo, aunque ya sepamos mucho sobre representación gráfica, todavía no hemos enseñado cómo importar nuestros propios datos y emplear todo lo estudiado en nuestros propios trabajos, tema que vamos a ver a continuación.</p>
 <p>Vamos a emplear el paquete de Tidyverse <strong><em>readr</em></strong>, que es el que se encarga de importar los datos. Abrimos RStudio y activamos la librería:</p>
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="nf">library</span><span class="p">(</span><span class="n">tidyverse</span><span class="p">)</span>
 </code></pre></div>
@@ -551,7 +552,7 @@
 
 </details>
 </div>
-<p>A partir de ahora, salvo excepciones, vamos a utilizar datos no incluidos dentro del paquete <em>Tidyverse</em>, empleando alguna de las funciones anteriores.</p>
+<p>A partir de ahora, salvo excepciones, vamos a utilizar datos no incluidos dentro del paquete <em>Tidyverse</em>, empleando alguna de las funciones anteriores u otros paquetes.</p>
 <div class="admonition example">
 <p class="admonition-title">Ejercicio</p>
 <p>Adelantemos un poco de trabajo. Abre y descarga <a href="../datos/brca.txt">este conjunto de datos</a> y, teniendo en cuenta sus delimitadores, impórtalo a R.</p>
@@ -563,16 +564,20 @@ Podemos ver como nuestros datos ahora aparecen en la ventana <em>environment</em
 <p><img alt="" src="../images/importar/1.png" title="" /></p>
 </details>
 </div>
-<h2 id="ejercicios-de-repaso">Ejercicios de repaso</h2>
-<p>Para ver si has entendido todo, intenta realizar los ejercicios propuestos en <a href="" title="Gráfica por ventanas">este enlace</a>.</p>
-<div class="admonition info">
-<p class="admonition-title">Nota</p>
-<p>Cosulta el apartado "<a href="http://127.0.0.1:8000/ejercicios/">Realización de ejercicios</a>" para saber como descargar, instalar y completar esta tarea.</p>
+<h2 id="ejercicios">Ejercicios</h2>
+<div class="admonition danger">
+<p class="admonition-title">Ejercicios de repaso</p>
+<p>Para ver si has entendido todo, intenta realizar estos <a href="../datos/tutoradvr_1.0.0.0000.tar.gz" title="">ejercicios propuestos</a>. Para saber cómo hacerlos, visita el <a href="http://127.0.0.1:8000/ejercicios/#como-hacer-los-ejercicios-de-repaso">apartado de "Realización de ejercicios"</a>.
+Tras esto, ejecuta el siguiente comando:
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="n">learnr</span><span class="o">::</span><span class="nf">run_tutorial</span><span class="p">(</span><span class="s">&quot;importar&quot;</span><span class="p">,</span> <span class="s">&quot;tutoradvr&quot;</span><span class="p">)</span>
+</code></pre></div>
+</td></tr></table>
+Se abrirá una ventana en tu navegador con los ejercicios a resolver</p>
 </div>
-<h2 id="referencias">Referencias</h2>
 <div class="admonition cite">
 <p class="admonition-title">Referencias</p>
 <ul>
+<li><a href="https://ucodemy.github.io/rbioq/"><strong><em>Tutorial de programación en R orientado al estudiante de Bioquímica</em></strong>; Ismael Sánchez Pareja</a></li>
 <li><a href="https://r4ds.had.co.nz/"><strong><em>R for Data Science</em></strong>; Hadley Wickham, Garrett Grolemund et al.</a></li>
 <li><a href="https://doi.org/10.5061/dryad.hd5c7"><strong><em>Morphometric discrimination of two allozymically diagnosed sibling species</em></strong>; Wayland, Matthew T. et al.</a></li>
 </ul>

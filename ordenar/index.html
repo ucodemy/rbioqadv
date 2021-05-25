@@ -317,6 +317,13 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#separar-datos-por-factores" class="md-nav__link">
+    Separar datos por factores
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#cambiar-tipo-de-datos" class="md-nav__link">
     Cambiar tipo de datos
   </a>
@@ -329,15 +336,8 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#ejercicios-de-repaso" class="md-nav__link">
-    Ejercicios de repaso
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#referencias" class="md-nav__link">
-    Referencias
+  <a href="#ejercicios" class="md-nav__link">
+    Ejercicios
   </a>
   
 </li>
@@ -374,7 +374,7 @@
   
     <li class="md-nav__item">
       <a href="../genesis/" class="md-nav__link">
-        GENESIS
+        Bioconductor y GENESIS
       </a>
     </li>
   
@@ -390,6 +390,21 @@
     <li class="md-nav__item">
       <a href="../ejercicios/" class="md-nav__link">
         Realización de ejercicios
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../acerca/" class="md-nav__link">
+        Acerca de
       </a>
     </li>
   
@@ -461,6 +476,13 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#separar-datos-por-factores" class="md-nav__link">
+    Separar datos por factores
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#cambiar-tipo-de-datos" class="md-nav__link">
     Cambiar tipo de datos
   </a>
@@ -473,15 +495,8 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#ejercicios-de-repaso" class="md-nav__link">
-    Ejercicios de repaso
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#referencias" class="md-nav__link">
-    Referencias
+  <a href="#ejercicios" class="md-nav__link">
+    Ejercicios
   </a>
   
 </li>
@@ -575,7 +590,7 @@ Podemos ver el dataset en la consola simplemente escribiendo el nombre de la var
 </ul>
 <p><img alt="" src="../images/ordenar/2.png" title="" /></p>
 <p>Lo primero de lo que podemos darnos cuenta es que la orientación de nuestro conjunto de datos es incorrecta, pues se muestran las variables en las filas y los diferentes casos en las columnas.</p>
-<p>Esto puede solucionarse fácilmente transponiendo las filas y columnas. Sin embargo, <em>Tidyverse</em> no ofrece ninguna función para transponer <em>tibbles</em>. Por tanto, tenemos que usar la funcion <code>t()</code>, incluida en R base:</p>
+<p>Esto puede solucionarse fácilmente transponiendo las filas y columnas. Sin embargo, <em>Tidyverse</em> no ofrece ninguna función para transponer <em>tibbles</em>. Por tanto, tenemos que usar la función <code>t()</code>, incluida en R base:</p>
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="nf">t</span><span class="p">(</span><span class="n">datos</span><span class="p">)</span>
 </code></pre></div>
 </td></tr></table>
@@ -863,7 +878,7 @@ Podemos ver el dataset en la consola simplemente escribiendo el nombre de la var
 </code></pre></div>
 </td></tr></table>
 
-<p>Esta función es muy útil, pues permite separar las columnas empleando cualquier tipo de caracter como separador. Por ejemplo, en nuestro set de datos encontramos las variables "género" y "raza" en una misma columna llamada <em>gender_and_race</em>. Vamos a separarlas:</p>
+<p>Esta función es muy útil, pues permite separar las columnas empleando cualquier tipo de carácter como separador. Por ejemplo, en nuestro set de datos encontramos las variables "género" y "raza" en una misma columna llamada <em>gender_and_race</em>. Vamos a separarlas:</p>
 <p><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="n">ejemplo3</span> <span class="o">&lt;-</span> <span class="nf">separate</span><span class="p">(</span><span class="n">brca</span><span class="p">,</span> <span class="n">gender_and_race</span><span class="p">,</span> <span class="n">into</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="s">&quot;gender&quot;</span><span class="p">,</span> <span class="s">&quot;race&quot;</span><span class="p">),</span> <span class="n">sep</span> <span class="o">=</span> <span class="s">&quot;/&quot;</span><span class="p">)</span>
 </code></pre></div>
 </td></tr></table>
@@ -955,7 +970,7 @@ Podemos ver el dataset en la consola simplemente escribiendo el nombre de la var
 <p>Con esta función podemos colocar las columnas en las posiciones que queramos, no solamente en la primera columna. Intenta mover la variable "<em>ethnicity</em>" a la 3ª columna.</p>
 <details class="hint"><summary>Pista 1</summary><p>Puedes usar alguno de estos dos comandos dentro de <code>relocate()</code>: <code>.before =</code> o <code>.after =</code>.</p>
 </details>
-<details class="hint"><summary>Pista 2</summary><p>Prueba a usar:
+<details class="hint"><summary>Pista 2</summary><p>Trata de usar:
  <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3
@@ -1020,8 +1035,27 @@ También sirve:
 
 </details>
 </div>
+<h3 id="separar-datos-por-factores">Separar datos por factores</h3>
+<p>En algunos casos vamos a necesitar separar nuestro set de datos en función de una de sus variables tipo factor. Para ello, empleamos la función <code>split()</code>:</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="nf">split</span><span class="p">(</span><span class="o">&lt;</span><span class="n">DATOS</span><span class="o">&gt;</span><span class="p">,</span> <span class="o">&lt;</span><span class="n">VARIABLES</span><span class="o">&gt;</span><span class="p">)</span>
+</code></pre></div>
+</td></tr></table>
+
+<p>En nuestro caso de ejemplo, imaginemos que necesitamos separar nuestros datos en diferentes <em>tibbles</em> en función del tipo de tumor (variable <em>histological_type</em>). Lo hacemos creando una variable de la siguiente forma:</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="n">tipo_tumor</span> <span class="o">&lt;-</span> <span class="nf">split</span><span class="p">(</span><span class="n">brca</span><span class="p">,</span> <span class="n">brca</span><span class="o">$</span><span class="n">histological_type</span><span class="p">)</span>
+</code></pre></div>
+</td></tr></table>
+
+<p>A esta variable se le asigna una lista similar a la siguiente:</p>
+<p><img alt="" src="../images/ordenar/4.png" title="" /></p>
+<p>De esta forma podemos estudiar uno de los factores sin tener en cuenta los demás, Veamos, por ejemplo, únicamente los datos correspondientes a aquellos carcinomas de origen medular (<em>medullarycarcinoma</em>):</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="nf">View</span><span class="p">(</span><span class="n">tipo_tumor</span><span class="o">$</span><span class="n">medullarycarcinoma</span><span class="p">)</span>
+</code></pre></div>
+</td></tr></table>
+
+<p><img alt="" src="../images/ordenar/5.png" title="" /></p>
 <h3 id="cambiar-tipo-de-datos">Cambiar tipo de datos</h3>
-<p>Al importar los datos, transformarlos a <em>tibble</em> y modificarlos hemos cambiado su naturaleza (esto se ve debajo de los nombres de las columnas). Esto, a la hora de realizar cálculos estadisticos, modificaciones más complejas y representaciones gráficas puede darnos problemas, por lo que es conveniente transormarlos al tipo de dato correspondiente.</p>
+<p>Al importar los datos, transformarlos a <em>tibble</em> y modificarlos hemos cambiado su naturaleza (esto se ve debajo de los nombres de las columnas). Esto, a la hora de realizar cálculos estadísticos, modificaciones más complejas y representaciones gráficas puede darnos problemas, por lo que es conveniente transformarlos al tipo de dato correspondiente.</p>
 <div class="admonition info">
 <p class="admonition-title">Nota</p>
 <p>Es necesario antes conocer qué significan cada una de las <strong>funciones de conversión</strong> de datos. A continuación, se muestran las más comunes: </p>
@@ -1187,14 +1221,17 @@ También sirve:
 </code></pre></div>
 </td></tr></table>
 
-<p>De esta forma hemos solucionado muchos problemas en el futuro por trabajar con datos erróneamentes clasificados.</p>
-<h2 id="ejercicios-de-repaso">Ejercicios de repaso</h2>
-<p>Para ver si has entendido todo, intenta realizar los ejercicios propuestos en <a href="" title="">este enlace</a>.</p>
-<div class="admonition info">
-<p class="admonition-title">Nota</p>
-<p>Cosulta el apartado "<a href="http://127.0.0.1:8000/ejercicios/">Realización de ejercicios</a>" para saber como descargar, instalar y completar esta tarea.</p>
+<p>De esta forma hemos solucionado muchos problemas en el futuro por trabajar con datos erróneamente clasificados.</p>
+<h2 id="ejercicios">Ejercicios</h2>
+<div class="admonition danger">
+<p class="admonition-title">Ejercicios de repaso</p>
+<p>Para ver si has entendido todo, intenta realizar estos <a href="../datos/tutoradvr_1.0.0.0000.tar.gz" title="">ejercicios propuestos</a>. Para saber cómo hacerlos, visita el <a href="http://127.0.0.1:8000/ejercicios/#como-hacer-los-ejercicios-de-repaso">apartado de "Realización de ejercicios"</a>.
+Tras esto, ejecuta el siguiente comando:
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="n">learnr</span><span class="o">::</span><span class="nf">run_tutorial</span><span class="p">(</span><span class="s">&quot;ordenar&quot;</span><span class="p">,</span> <span class="s">&quot;tutoradvr&quot;</span><span class="p">)</span>
+</code></pre></div>
+</td></tr></table>
+Se abrirá una ventana en tu navegador con los ejercicios a resolver</p>
 </div>
-<h2 id="referencias">Referencias</h2>
 <div class="admonition cite">
 <p class="admonition-title">Referencias</p>
 <ul>

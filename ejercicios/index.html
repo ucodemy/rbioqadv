@@ -72,7 +72,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#como-hacer-los-ejercicios-de-repaso" class="md-skip">
+        <a href="#paquete-learnr" class="md-skip">
           Saltar a contenido
         </a>
       
@@ -278,7 +278,7 @@
   
     <li class="md-nav__item">
       <a href="../genesis/" class="md-nav__link">
-        GENESIS
+        Bioconductor y GENESIS
       </a>
     </li>
   
@@ -319,6 +319,13 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#paquete-learnr" class="md-nav__link">
+    Paquete learnr
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#como-hacer-los-ejercicios-de-repaso" class="md-nav__link">
     ¿Cómo hacer los ejercicios de repaso?
   </a>
@@ -326,8 +333,8 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#referencias" class="md-nav__link">
-    Referencias
+  <a href="#comandos-por-apartado" class="md-nav__link">
+    Comandos por apartado
   </a>
   
 </li>
@@ -336,6 +343,21 @@
   
 </nav>
       
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../acerca/" class="md-nav__link">
+        Acerca de
+      </a>
     </li>
   
 
@@ -363,6 +385,13 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#paquete-learnr" class="md-nav__link">
+    Paquete learnr
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#como-hacer-los-ejercicios-de-repaso" class="md-nav__link">
     ¿Cómo hacer los ejercicios de repaso?
   </a>
@@ -370,8 +399,8 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#referencias" class="md-nav__link">
-    Referencias
+  <a href="#comandos-por-apartado" class="md-nav__link">
+    Comandos por apartado
   </a>
   
 </li>
@@ -391,12 +420,80 @@
                 
                   <h1>Realización de ejercicios</h1>
                 
-                <h2 id="como-hacer-los-ejercicios-de-repaso">¿Cómo hacer los ejercicios de repaso?</h2>
-<h2 id="referencias">Referencias</h2>
+                <h2 id="paquete-learnr">Paquete <em>learnr</em></h2>
+<p>Para crear los ejercicios finales de algunos apartados hemos empleado el paquete "<a href="https://rstudio.github.io/learnr/"><strong><em>learnr</em></strong></a>". Este nos permite crear tutoriales interactivos en formato <a href="https://bookdown.org/gboccardo/manual-ED-UCH/introduccion-al-uso-de-rmarkdown-para-la-compilacion-de-resultados-de-rstudio-en-diferentes-formatos.html"><strong><em>RMarkdown</em></strong></a>, un formato de edición de texto que nos permite incluir código desde R, y que es en el que está escrito este tutorial.</p>
+<p>Estos tutoriales permiten el uso de multitud de objetos, como cuadros de código en R, preguntas tipo test, imágenes y más, como herramienta de aprendizaje mientras programas. Si has ido resolviendo los ejercicios propuestos al final de cada apartado conforme avanzabas en el tutorial ya habrás visto cómo funciona y el potencial que tiene como herramienta interactiva.</p>
+<h2 id="como-hacer-los-ejercicios-de-repaso">¿Cómo hacer los ejercicios de repaso?</h2>
+<p>En primer lugar, es necesario que instales y actives <em>learnr</em>:</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="nf">install.packages</span><span class="p">(</span><span class="s">&quot;learnr&quot;</span><span class="p">)</span>
+<span class="nf">library</span><span class="p">(</span><span class="n">learnr</span><span class="p">)</span>
+</code></pre></div>
+</td></tr></table>
+
+<p>A continuación, necesitas descargarte el <a href="../datos/tutoradvr_1.0.0.tar.gz" title="">paquete "<em>tutoradvr</em>"</a>, que incluye los ejercicios de todos los apartados. Una vez descargado (no debes descomprimirlo), debes instalarlo en R de la siguiente manera:</p>
+<ul>
+<li>En RStudio, abre la pestaña "<em>Tools</em>" y selecciona "<em>Install packages...</em>".</li>
+</ul>
+<p><img alt="" src="../images/ejercicios/1.png" title="" /></p>
+<ul>
+<li>
+<p>Se abrirá una ventana. En el cuadro "<em>Install from</em>", selecciona la opción "<em>Package Archive File (.zip; .tar.gz).</em>" Esto permite instalar los paquetes de forma local, sin recurrir a repositorios externos como CRAN.</p>
+</li>
+<li>
+<p>Luego, en el cuadro de "<em>Package archive</em>" busca donde hayas descargado el paquete (en nuestro caso, la carpeta de descargas) y selecciónalo.</p>
+</li>
+</ul>
+<p><img alt="" src="../images/ejercicios/2.png" title="" /></p>
+<p>Aparecerán una serie de líneas de comando en la consola, tras lo cual el paquete quedará instalado. Puedes comprobarlo en la pestaña "<em>Packages</em>":</p>
+<p><img alt="" src="../images/ejercicios/3.png" title="" /></p>
+<p>Finalmente, activa el paquete usando el comando <code>library()</code>:</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="nf">library</span><span class="p">(</span><span class="n">tutoradvr</span><span class="p">)</span>
+</code></pre></div>
+</td></tr></table>
+
+<h2 id="comandos-por-apartado">Comandos por apartado</h2>
+<p>Para realizar los ejercicios, simplemente ejecuta los siguientes comandos en la consola:</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2
+3</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="c1"># Apartado &quot;Visualizar datos&quot;</span>
+
+<span class="n">learnr</span><span class="o">::</span><span class="nf">run_tutorial</span><span class="p">(</span><span class="s">&quot;visualizar&quot;</span><span class="p">,</span> <span class="s">&quot;tutoradvr&quot;</span><span class="p">)</span>
+</code></pre></div>
+</td></tr></table>
+
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2
+3</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="c1"># Apartado &quot;Importar datos&quot;</span>
+
+<span class="n">learnr</span><span class="o">::</span><span class="nf">run_tutorial</span><span class="p">(</span><span class="s">&quot;importar&quot;</span><span class="p">,</span> <span class="s">&quot;tutoradvr&quot;</span><span class="p">)</span>
+</code></pre></div>
+</td></tr></table>
+
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2
+3</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="c1"># Apartado &quot;Ordenar datos&quot;</span>
+
+<span class="n">learnr</span><span class="o">::</span><span class="nf">run_tutorial</span><span class="p">(</span><span class="s">&quot;ordenar&quot;</span><span class="p">,</span> <span class="s">&quot;tutoradvr&quot;</span><span class="p">)</span>
+</code></pre></div>
+</td></tr></table>
+
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2
+3</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="c1"># Apartado &quot;Modelar datos&quot;</span>
+
+<span class="n">learnr</span><span class="o">::</span><span class="nf">run_tutorial</span><span class="p">(</span><span class="s">&quot;modelar&quot;</span><span class="p">,</span> <span class="s">&quot;tutoradvr&quot;</span><span class="p">)</span>
+</code></pre></div>
+</td></tr></table>
+
 <div class="admonition cite">
 <p class="admonition-title">Referencias</p>
 <ul>
 <li><a href="https://ucodemy.github.io/rbioq/"><strong><em>Tutorial de programación en R orientado al estudiante de Bioquímica</em></strong>; Ismael Sánchez Pareja</a></li>
+<li><a href="https://rstudio.github.io/learnr/"><strong><em>Interactive Tutorials for R</em></strong>; Garrett Grolemund</a></li>
+<li><a href="https://yabellini.netlify.app/es/post/tutorialesconlearnr/"><strong><em>Generando tutoriales interactivos con el paquete learnr</em></strong>; Yanina Bellini Saibene</a></li>
+<li><a href="https://education.rstudio.com/blog/2020/09/delivering-learnr-tutorials-in-a-package/"><strong><em>How to deliver learnr tutorials in a package</em></strong>; Desirée De Leon</a></li>
+<li><a href="https://bookdown.org/gboccardo/manual-ED-UCH/introduccion-al-uso-de-rmarkdown-para-la-compilacion-de-resultados-de-rstudio-en-diferentes-formatos.html"><strong><em>RStudio para Estadística Descriptiva en Ciencias Sociales</em></strong>; Boccardo Bosoni et al. </a></li>
 </ul>
 </div>
                 
@@ -425,11 +522,25 @@
               <span class="md-footer__direction">
                 Anterior
               </span>
-              GENESIS
+              Bioconductor y GENESIS
             </div>
           </div>
         </a>
       
+      
+        <a href="../acerca/" class="md-footer__link md-footer__link--next" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Siguiente
+              </span>
+              Acerca de
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+          </div>
+        </a>
       
     </nav>
   

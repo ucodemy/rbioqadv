@@ -517,12 +517,14 @@
                   <h1>Ordenar datos</h1>
                 
                 <h2 id="introduccion">Introducción</h2>
-<p>Ahora que sabemos importar nuestros datos crudos, el siguiente paso es transformarlos en algo manejable. Para este apartado, vamos a usar nuestro propio set de datos: <a href="../datos/brca.txt">brca.txt</a>, que contiene información analítica sobre diferentes casos de cáncer de mama, como por ejemplo la edad del paciente, subtipo clínico, subtipo molecular, número de ganglios linfáticos, radioterapia, etc. (puedes obtener el fichero original <a href="http://linkedomics.org/data_download/TCGA-BRCA/Human__TCGA_BRCA__MS__Clinical__Clinical__01_28_2016__BI__Clinical__Firehose.tsi">aquí</a>).</p>
-<p>Además, vamos a emplear un paquete de funciones nuevo, <em>hablar</em>, que no viene incluido ni en <em>Tidyverse</em> ni en R base. Este contiene una función muy útil que nos permite cambiar el tipo de dato asignado a una variable, asunto que veremos más adelante en el tutorial (puedes encontrar más información <a href="https://cran.r-project.org/web/packages/hablar/">aquí</a>). Lo instalamos y cargamos los paquetes <em>Tidyverse</em> y <em>hablar</em>:</p>
+<p>Ahora que sabemos importar nuestros datos brutos, el siguiente paso es transformarlos en algo manejable. Para este apartado, vamos a usar nuestro propio set de datos: <a href="../datos/brca.txt"><strong>brca.txt</strong></a>, que contiene información analítica sobre diferentes casos de cáncer de mama, como por ejemplo la edad del paciente, subtipo clínico, subtipo molecular, número de ganglios linfáticos, radioterapia, entre otros (puedes mirar todas las variables en el <a href="http://linkedomics.org/data_download/TCGA-BRCA/Human__TCGA_BRCA__MS__Clinical__Clinical__01_28_2016__BI__Clinical__Firehose.tsi">fichero original</a>).</p>
+<p>Además, vamos a emplear un paquete de funciones nuevo, <strong><em>hablar</em></strong>, que no viene incluido ni en <em>Tidyverse</em> ni en R base. Este contiene una función muy útil que nos <strong>permite cambiar el tipo de dato asignado a una variable</strong>, tema que trataremos más adelante en el tutorial (si necesitas obtener más información, lee el <a href="https://cran.r-project.org/web/packages/hablar/hablar.pdf">manual de referencia</a>). Lo instalamos y cargamos los paquetes <em>Tidyverse</em> y <em>hablar</em>:</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="nf">install.packages</span><span class="p">(</span><span class="s">&quot;hablar&quot;</span><span class="p">)</span>
+</code></pre></div>
+</td></tr></table>
+
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
-2
-3</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="nf">install.packages</span><span class="p">(</span><span class="s">&quot;hablar&quot;</span><span class="p">)</span>
-<span class="nf">library</span><span class="p">(</span><span class="n">tidyverse</span><span class="p">)</span>
+2</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="nf">library</span><span class="p">(</span><span class="n">tidyverse</span><span class="p">)</span>
 <span class="nf">library</span><span class="p">(</span><span class="n">hablar</span><span class="p">)</span>
 </code></pre></div>
 </td></tr></table>
@@ -532,6 +534,10 @@
 </code></pre></div>
 </td></tr></table>
 Podemos ver el dataset en la consola simplemente escribiendo el nombre de la variable:</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="n">datos</span>
+</code></pre></div>
+</td></tr></table>
+
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
  2
  3
@@ -546,11 +552,7 @@ Podemos ver el dataset en la consola simplemente escribiendo el nombre de la var
 12
 13
 14
-15
-16
-17</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="o">&gt;</span> <span class="n">datos</span>
-
-<span class="c1"># A tibble: 11 x 1,098</span>
+15</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="c1"># A tibble: 11 x 1,098</span>
    <span class="n">attrib_name</span>   <span class="n">TCGA.3C.AAAU</span>   <span class="n">TCGA.3C.AALI</span>   <span class="n">TCGA.3C.AALJ</span>   <span class="n">TCGA.3C.AALK</span>   <span class="n">TCGA.4H.AAAK</span>  <span class="n">TCGA.5L.AAT0</span> 
    <span class="o">&lt;</span><span class="n">chr</span><span class="o">&gt;</span>         <span class="o">&lt;</span><span class="n">chr</span><span class="o">&gt;</span>          <span class="o">&lt;</span><span class="n">chr</span><span class="o">&gt;</span>          <span class="o">&lt;</span><span class="n">chr</span><span class="o">&gt;</span>          <span class="o">&lt;</span><span class="n">chr</span><span class="o">&gt;</span>          <span class="o">&lt;</span><span class="n">chr</span><span class="o">&gt;</span>         <span class="o">&lt;</span><span class="n">chr</span><span class="o">&gt;</span>        
  <span class="m">1</span> <span class="n">years_to_bir</span><span class="o">~</span> <span class="m">55</span>             <span class="m">50</span>             <span class="m">62</span>             <span class="m">52</span>             <span class="m">50</span>            <span class="m">42</span>           
@@ -568,7 +570,7 @@ Podemos ver el dataset en la consola simplemente escribiendo el nombre de la var
 </code></pre></div>
 </td></tr></table>
 
-<p>Para verlos en forma de tabla empleamos:</p>
+<p>Para visualizarlos en forma de tabla empleamos:</p>
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="nf">View</span><span class="p">(</span><span class="n">datos</span><span class="p">)</span>
 </code></pre></div>
 </td></tr></table>
@@ -579,17 +581,17 @@ Podemos ver el dataset en la consola simplemente escribiendo el nombre de la var
 <p>Para considerar que un conjunto de datos está correctamente ordenado, este debe cumplir al menos las siguientes tres reglas:</p>
 <ul>
 <li>
-<p>Cada variable debe tener su propia columna</p>
+<p><strong>Cada variable debe tener su propia columna</strong></p>
 </li>
 <li>
-<p>Cada caso debe tener su propia fila</p>
+<p><strong>Cada caso debe tener su propia fila</strong></p>
 </li>
 <li>
-<p>Cada valor debe tener su propia celda</p>
+<p><strong>Cada valor debe tener su propia celda</strong></p>
 </li>
 </ul>
 <p><img alt="" src="../images/ordenar/2.png" title="" /></p>
-<p>Lo primero de lo que podemos darnos cuenta es que la orientación de nuestro conjunto de datos es incorrecta, pues se muestran las variables en las filas y los diferentes casos en las columnas.</p>
+<p>Lo primero de lo que podemos darnos cuenta es que <strong>la orientación de nuestro conjunto de datos es incorrecta</strong>, pues se muestran las variables en las filas y los diferentes casos en las columnas.</p>
 <p>Esto puede solucionarse fácilmente transponiendo las filas y columnas. Sin embargo, <em>Tidyverse</em> no ofrece ninguna función para transponer <em>tibbles</em>. Por tanto, tenemos que usar la función <code>t()</code>, incluida en R base:</p>
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="nf">t</span><span class="p">(</span><span class="n">datos</span><span class="p">)</span>
 </code></pre></div>
@@ -629,15 +631,11 @@ Podemos ver el dataset en la consola simplemente escribiendo el nombre de la var
 </code></pre></div>
 </td></tr></table>
 
-<p>Esta función, sin embargo, transforma las <em>tibbles</em> en matrices de R estándar. Esto también puede solucionarse fácilmente usando <code>as_tibble()</code>. Vamos a definir una nueva variable para diferenciar los datos originales (variable <code>datos</code>) de los bien ordenados con los que vamos a trabajar a partir de ahora (variable <code>brca</code>):</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="n">brca</span> <span class="o">&lt;-</span> <span class="nf">as_tibble</span><span class="p">(</span><span class="nf">t</span><span class="p">(</span><span class="n">datos</span><span class="p">),</span> <span class="n">rownames</span> <span class="o">=</span> <span class="kc">NA</span><span class="p">)</span>
+<p>Esta función, sin embargo, transforma las <em>tibbles</em> en <em>data frames</em> de R estándar. Esto también puede solucionarse fácilmente usando <code>as_tibble()</code>. Vamos a definir una nueva variable para diferenciar los datos originales (variable <code>datos</code>) de los bien ordenados (variable <code>brca</code>), con los que vamos a trabajar a partir de ahora:</p>
+<p><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="n">brca</span> <span class="o">&lt;-</span> <span class="nf">as_tibble</span><span class="p">(</span><span class="nf">t</span><span class="p">(</span><span class="n">datos</span><span class="p">),</span> <span class="n">rownames</span> <span class="o">=</span> <span class="kc">NA</span><span class="p">)</span> <span class="c1"># &quot;rownames = NA&quot; evita eliminar la columna de nombres</span>
 </code></pre></div>
 </td></tr></table>
-
-<div class="admonition info">
-<p class="admonition-title">Nota</p>
-<p>Con <code>rownames = NA</code> evitamos que se elimine la columna de nombres de los diferentes casos.</p>
-</div>
+Comprobamos como se encuentran ahora nuestros datos:</p>
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="n">brca</span>
 </code></pre></div>
 </td></tr></table>
@@ -672,10 +670,10 @@ Podemos ver el dataset en la consola simplemente escribiendo el nombre de la var
 </code></pre></div>
 </td></tr></table>
 
-<p>Vemos que esta función ha asignado nombres predeterminados a las columnas traspuestas (<code>V1</code>, <code>V2</code>, <code>V3</code>...), dejando los nombres originales en una fila aparte. Corregimos los nombres y eliminamos la fila sobrante:</p>
+<p>Vemos que esta función ha asignado nombres predeterminados a las columnas traspuestas (<code>V1</code>, <code>V2</code>, <code>V3</code>...), dejando los nombres originales en una fila aparte. Corregimos los nombres y eliminamos la fila sobrante de esta manera:</p>
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
-2</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="nf">colnames</span><span class="p">(</span><span class="n">brca</span><span class="p">)</span> <span class="o">&lt;-</span> <span class="n">brca</span><span class="p">[</span><span class="m">1</span><span class="p">,]</span>
-<span class="n">brca</span> <span class="o">&lt;-</span> <span class="n">brca</span><span class="p">[</span><span class="o">-</span><span class="nf">c</span><span class="p">(</span><span class="m">1</span><span class="p">),]</span>
+2</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="nf">colnames</span><span class="p">(</span><span class="n">brca</span><span class="p">)</span> <span class="o">&lt;-</span> <span class="n">brca</span><span class="p">[</span><span class="m">1</span><span class="p">,]</span>  <span class="c1"># Cambia los nombres de las columnas</span>
+<span class="n">brca</span> <span class="o">&lt;-</span> <span class="n">brca</span><span class="p">[</span><span class="m">-1</span><span class="p">,]</span>        <span class="c1"># Elimina la fila que contenía los nombres</span>
 </code></pre></div>
 </td></tr></table>
 
@@ -723,7 +721,7 @@ Podemos ver el dataset en la consola simplemente escribiendo el nombre de la var
 <p><img alt="" src="../images/ordenar/3.png" title="" /></p>
 <div class="admonition warning">
 <p class="admonition-title">Importante:</p>
-<p>Vamos a usar estos datos modificados <code>brca</code> hasta el final del apartado. Es posible que no funcione algún ejercicio si no habéis seguido los pasos que hemos hecho hasta ahora.</p>
+<p>Vamos a usar estos datos modificados <code>brca</code> hasta el final del apartado. Es posible que algún ejercicio no funcione si no habéis seguido los pasos que hemos hecho hasta ahora.</p>
 </div>
 <h2 id="modificar-datos">Modificar datos</h2>
 <p>Ahora que los datos se encuentran bien orientados, es más fácil ver los resultados y pensar qué modificaciones podemos hacer.</p>
@@ -732,7 +730,7 @@ Podemos ver el dataset en la consola simplemente escribiendo el nombre de la var
 <p>Ya hemos estudiado la manipulación básica de <em>data frames</em> en el tutorial básico anterior. Puedes mirarlo <a href="https://ucodemy.github.io/rbioq/data_frames/">aquí</a>.</p>
 </div>
 <h3 id="combinar-columnas">Combinar columnas</h3>
-<p><em>Tidyverse</em> ofrece una herramienta que nos permite unir variables en una sola columna en caso de que lo necesitemos. Para ello, empleamos el comando <code>unite()</code>, de la siguiente forma:</p>
+<p><em>Tidyverse</em> ofrece una herramienta que nos permite <strong>unir variables en una sola columna</strong> en caso de que lo necesitemos. Para ello, empleamos el comando <code>unite()</code>, de la siguiente forma:</p>
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="nf">unite</span><span class="p">(</span><span class="o">&lt;</span><span class="n">DATOS</span><span class="o">&gt;</span><span class="p">,</span> <span class="o">&lt;</span><span class="n">COL_NUEVA</span><span class="o">&gt;</span><span class="p">,</span> <span class="o">&lt;</span><span class="n">COLUMNA1</span><span class="o">&gt;</span><span class="p">,</span> <span class="o">&lt;</span><span class="n">COLUMNA2</span><span class="o">&gt;</span><span class="p">,</span> <span class="kc">...</span><span class="p">,</span> <span class="n">sep</span> <span class="o">=</span> <span class="s">&quot;&lt;SEPARADOR&gt;&quot;</span><span class="p">)</span>
 </code></pre></div>
 </td></tr></table>
@@ -873,12 +871,12 @@ Podemos ver el dataset en la consola simplemente escribiendo el nombre de la var
 </details>
 </div>
 <h3 id="separar-columnas">Separar columnas</h3>
-<p>De la misma forma, podemos separar columnas fácilmente empleando <code>separate()</code>:</p>
+<p>De la misma forma, podemos <strong>separar variables en varias columnas</strong> fácilmente empleando <code>separate()</code>:</p>
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="nf">separate</span><span class="p">(</span><span class="o">&lt;</span><span class="n">DATOS</span><span class="o">&gt;</span><span class="p">,</span> <span class="o">&lt;</span><span class="n">NOMBRE_COLUMNA</span><span class="o">&gt;</span><span class="p">,</span> <span class="n">into</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="s">&quot;&lt;COL_NUEVA_1&gt;&quot;</span><span class="p">,</span> <span class="s">&quot;&lt;COL_NUEVA_2&gt;&quot;</span><span class="p">),</span> <span class="n">sep</span> <span class="o">=</span> <span class="s">&quot;&lt;SEPARADOR&gt;&quot;</span><span class="p">)</span>
 </code></pre></div>
 </td></tr></table>
 
-<p>Esta función es muy útil, pues permite separar las columnas empleando cualquier tipo de carácter como separador. Por ejemplo, en nuestro set de datos encontramos las variables "género" y "raza" en una misma columna llamada <em>gender_and_race</em>. Vamos a separarlas:</p>
+<p>Esta función es muy útil, pues permite separar las columnas empleando cualquier tipo de carácter como separador. Por ejemplo, en nuestro set de datos encontramos las variables "género" y "raza" en una misma columna llamada <code>gender_and_race</code>. Vamos a separarlas:</p>
 <p><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="n">ejemplo3</span> <span class="o">&lt;-</span> <span class="nf">separate</span><span class="p">(</span><span class="n">brca</span><span class="p">,</span> <span class="n">gender_and_race</span><span class="p">,</span> <span class="n">into</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="s">&quot;gender&quot;</span><span class="p">,</span> <span class="s">&quot;race&quot;</span><span class="p">),</span> <span class="n">sep</span> <span class="o">=</span> <span class="s">&quot;/&quot;</span><span class="p">)</span>
 </code></pre></div>
 </td></tr></table>
@@ -919,12 +917,12 @@ Podemos ver el dataset en la consola simplemente escribiendo el nombre de la var
 
 <h3 id="reordenar-columnas">Reordenar columnas</h3>
 <p>Normalmente las variables se organizan de forma que aquellas que son más importantes se encuentran más hacia la izquierda. Trabajando podemos estimar que alguna variable es la más importante en nuestro caso y queremos que sea la que ocupa la primera columna.</p>
-<p>Esto es muy sencillo de arreglar empleando la función <code>relocate()</code>:</p>
+<p>Esto es muy sencillo de arreglar empleando la función <code>relocate()</code>, con la que podemos <strong>elegir la columna que queremos ver más a la izquierda</strong>:</p>
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="nf">relocate</span><span class="p">(</span><span class="o">&lt;</span><span class="n">DATOS</span><span class="o">&gt;</span><span class="p">,</span> <span class="o">&lt;</span><span class="n">VARIABLE</span><span class="o">&gt;</span><span class="p">)</span>
 </code></pre></div>
 </td></tr></table>
 
-<p>Por ejemplo, mirando nuestros datos ordenados estimamos que la variable "<em>histological_type</em>" es la más importante para nuestro estudio. La reordenamos de la siguiente forma:</p>
+<p>Por ejemplo, mirando nuestros datos ordenados estimamos que la variable <code>histological_type</code> es la más importante para nuestro estudio. La reordenamos de la siguiente forma:</p>
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="n">ejemplo4</span> <span class="o">&lt;-</span> <span class="nf">relocate</span><span class="p">(</span><span class="n">brca</span><span class="p">,</span> <span class="n">histological_type</span><span class="p">)</span>
 </code></pre></div>
 </td></tr></table>
@@ -967,19 +965,25 @@ Podemos ver el dataset en la consola simplemente escribiendo el nombre de la var
 
 <div class="admonition example">
 <p class="admonition-title">Ejercicio</p>
-<p>Con esta función podemos colocar las columnas en las posiciones que queramos, no solamente en la primera columna. Intenta mover la variable "<em>ethnicity</em>" a la 3ª columna.</p>
+<p>Con esta función podemos colocar las columnas en las posiciones que queramos, no solamente en la primera columna. Intenta mover la variable <code>ethnicity</code> a la 3ª columna.</p>
 <details class="hint"><summary>Pista 1</summary><p>Puedes usar alguno de estos dos comandos dentro de <code>relocate()</code>: <code>.before =</code> o <code>.after =</code>.</p>
 </details>
-<details class="hint"><summary>Pista 2</summary><p>Trata de usar:
+<details class="hint"><summary>Pista 2</summary><p>Trata de usar el comando de una de las siguientes formas:
  <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
-3
-4</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="nf">relocate</span><span class="p">(</span><span class="o">&lt;</span><span class="n">DATOS</span><span class="o">&gt;</span><span class="p">,</span> <span class="o">&lt;</span><span class="n">VARIABLE</span><span class="o">&gt;</span><span class="p">,</span> 
-   <span class="n">.before</span> <span class="o">=</span> <span class="o">&lt;</span><span class="n">VARIABLE_ANTES</span><span class="o">&gt;</span><span class="p">,</span>
-   <span class="n">.after</span> <span class="o">=</span> <span class="o">&lt;</span><span class="n">VARIABLE_DESPUES</span><span class="o">&gt;</span>
+3</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="nf">relocate</span><span class="p">(</span><span class="o">&lt;</span><span class="n">DATOS</span><span class="o">&gt;</span><span class="p">,</span> <span class="o">&lt;</span><span class="n">VARIABLE</span><span class="o">&gt;</span><span class="p">,</span> 
+   <span class="n">.before</span> <span class="o">=</span> <span class="o">&lt;</span><span class="n">VARIABLE_ANTES</span><span class="o">&gt;</span>
 <span class="p">)</span>
 </code></pre></div>
 </td></tr></table></p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2
+3</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="nf">relocate</span><span class="p">(</span><span class="o">&lt;</span><span class="n">DATOS</span><span class="o">&gt;</span><span class="p">,</span> <span class="o">&lt;</span><span class="n">VARIABLE</span><span class="o">&gt;</span><span class="p">,</span> 
+   <span class="n">.after</span> <span class="o">=</span> <span class="o">&lt;</span><span class="n">VARIABLE_DESPUES</span><span class="o">&gt;</span>
+<span class="p">)</span>
+</code></pre></div>
+</td></tr></table>
+
 </details>
 <details class="check"><summary>Respuesta</summary><p><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
@@ -1036,7 +1040,7 @@ También sirve:
 </details>
 </div>
 <h3 id="separar-datos-por-factores">Separar datos por factores</h3>
-<p>En algunos casos vamos a necesitar separar nuestro set de datos en función de una de sus variables tipo factor. Para ello, empleamos la función <code>split()</code>:</p>
+<p>En algunos casos vamos a necesitar <strong>separar nuestro set de datos en función de una de sus variables tipo factor</strong>. Para ello, empleamos la función <code>split()</code>:</p>
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="nf">split</span><span class="p">(</span><span class="o">&lt;</span><span class="n">DATOS</span><span class="o">&gt;</span><span class="p">,</span> <span class="o">&lt;</span><span class="n">VARIABLES</span><span class="o">&gt;</span><span class="p">)</span>
 </code></pre></div>
 </td></tr></table>
@@ -1048,14 +1052,15 @@ También sirve:
 
 <p>A esta variable se le asigna una lista similar a la siguiente:</p>
 <p><img alt="" src="../images/ordenar/4.png" title="" /></p>
-<p>De esta forma podemos estudiar uno de los factores sin tener en cuenta los demás, Veamos, por ejemplo, únicamente los datos correspondientes a aquellos carcinomas de origen medular (<em>medullarycarcinoma</em>):</p>
+<p>De este modo, podemos estudiar uno de los factores sin tener en cuenta los demás, Veamos, por ejemplo, únicamente los datos correspondientes a aquellos carcinomas de origen medular (<code>medullarycarcinoma</code>):</p>
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="nf">View</span><span class="p">(</span><span class="n">tipo_tumor</span><span class="o">$</span><span class="n">medullarycarcinoma</span><span class="p">)</span>
 </code></pre></div>
 </td></tr></table>
 
 <p><img alt="" src="../images/ordenar/5.png" title="" /></p>
 <h3 id="cambiar-tipo-de-datos">Cambiar tipo de datos</h3>
-<p>Al importar los datos, transformarlos a <em>tibble</em> y modificarlos hemos cambiado su naturaleza (esto se ve debajo de los nombres de las columnas). Esto, a la hora de realizar cálculos estadísticos, modificaciones más complejas y representaciones gráficas puede darnos problemas, por lo que es conveniente transformarlos al tipo de dato correspondiente.</p>
+<p>Al importar los datos, transformarlos a <em>tibble</em> y modificarlos <strong>hemos cambiado su naturaleza</strong>. Esto puede comprobarse debajo de los nombres de las columnas, donde vemos que las funciones de coversion asignadas no coinciden con el tipo de dato.</p>
+<p>Esto puede darnos problemas a la hora de realizar cálculos estadísticos, modificaciones más complejas y representaciones gráficas, por lo que es conveniente transformarlos al tipo de dato correspondiente.</p>
 <div class="admonition info">
 <p class="admonition-title">Nota</p>
 <p>Es necesario antes conocer qué significan cada una de las <strong>funciones de conversión</strong> de datos. A continuación, se muestran las más comunes: </p>
@@ -1102,12 +1107,12 @@ También sirve:
 </tbody>
 </table>
 </div>
-<p>Usemos de nuevo nuestros datos. Muchas de nuestras variables son numéricas. Sin embargo, a todas se les ha asignado el tipo carácter. Podemos arreglar esto empleando la función <code>convert()</code>, perteneciente al paquete de datos <em>hablar</em>:</p>
+<p>Usemos de nuevo nuestros datos. Muchas de nuestras variables son numéricas. Sin embargo, a todas se les ha asignado el tipo carácter. Podemos arreglar esto empleando la función <code>convert()</code>, perteneciente al paquete de datos <strong><em>hablar</em></strong>:</p>
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="nf">convert</span><span class="p">(</span><span class="o">&lt;</span><span class="n">DATOS</span><span class="o">&gt;</span><span class="p">,</span> <span class="o">&lt;</span><span class="n">FUNCIÓN_CONVERSIÓN</span><span class="o">&gt;</span><span class="p">(</span><span class="o">&lt;</span><span class="n">COLUMNAS</span><span class="o">&gt;</span><span class="p">))</span>
 </code></pre></div>
 </td></tr></table>
 
-<p>Vemos que muchas de las variables (<em>years_to_birth</em> , <em>number_of_lymph_nodes</em>, <em>Median_overall_survival</em> y <em>overall_survival</em>) son números enteros (<code>&lt;int&gt;</code>) pero están clasificados como carácter (<code>&lt;chr&gt;</code>). Arreglamos esto de forma sencilla:</p>
+<p>Vemos que muchas de las variables (<code>years_to_birth</code>, <code>number_of_lymph_nodes</code>, <code>Median_overall_survival</code> y <code>overall_survival</code>) son números enteros (<code>&lt;int&gt;</code>) pero están clasificados como carácter (<code>&lt;chr&gt;</code>). Arreglamos esto de forma sencilla:</p>
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3
@@ -1160,7 +1165,7 @@ También sirve:
 </code></pre></div>
 </td></tr></table>
 
-<p>Podemos aplicar varios tipos de datos a diferentes variables. Por ejemplo, la variable <em>Tumor_purity</em> es una variable decimal (<code>&lt;dbl&gt;</code>):</p>
+<p>Podemos aplicar varios tipos de datos a diferentes variables. Por ejemplo, la variable <code>Tumor_purity</code> es una variable decimal (<code>&lt;dbl&gt;</code>):</p>
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
  2
  3
@@ -1225,12 +1230,12 @@ También sirve:
 <h2 id="ejercicios">Ejercicios</h2>
 <div class="admonition danger">
 <p class="admonition-title">Ejercicios de repaso</p>
-<p>Para ver si has entendido todo, intenta realizar estos <a href="../datos/tutoradvr_1.0.0.0000.tar.gz" title="">ejercicios propuestos</a>. Para saber cómo hacerlos, visita el <a href="http://127.0.0.1:8000/ejercicios/#como-hacer-los-ejercicios-de-repaso">apartado de "Realización de ejercicios"</a>.
+<p>Para ver si has entendido todo, intenta realizar estos <a href="../datos/tutoradvr_1.0.0.tar.gz" title=""><strong>ejercicios propuestos</strong></a>. Para saber cómo hacerlos, visita el <a href="http://127.0.0.1:8000/ejercicios/#como-hacer-los-ejercicios-de-repaso">apartado de "Realización de ejercicios"</a>.
 Tras esto, ejecuta el siguiente comando:
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="n">learnr</span><span class="o">::</span><span class="nf">run_tutorial</span><span class="p">(</span><span class="s">&quot;ordenar&quot;</span><span class="p">,</span> <span class="s">&quot;tutoradvr&quot;</span><span class="p">)</span>
 </code></pre></div>
 </td></tr></table>
-Se abrirá una ventana en tu navegador con los ejercicios a resolver</p>
+Se abrirá una ventana en tu navegador con los ejercicios a resolver.</p>
 </div>
 <div class="admonition cite">
 <p class="admonition-title">Referencias</p>
@@ -1238,6 +1243,7 @@ Se abrirá una ventana en tu navegador con los ejercicios a resolver</p>
 <li><a href="https://ucodemy.github.io/rbioq/"><strong><em>Tutorial de programación en R orientado al estudiante de Bioquímica</em></strong>; Ismael Sánchez Pareja</a></li>
 <li><a href="https://www.bioconductor.org/packages/release/bioc/vignettes/pathwayPCA/inst/doc/Supplement2-Importing_Data.html"><strong><em>Suppl. Ch. 2: Import and Tidy Data</em></strong>; Gabriel Odom</a></li>
 <li><a href="https://github.com/rstudio/cheatsheets/blob/master/data-import.pdf"><strong><em>Data import: cheat sheet</em></strong>; Garrett Grolemund</a></li>
+<li><a href="https://cran.r-project.org/web/packages/hablar/hablar.pdf"><strong><em>Package ‘hablar’</em></strong>; David Sjoberg</a></li>
 <li><a href="https://cran.r-project.org/web/packages/hablar/vignettes/convert.html"><strong><em>A grammer for data type conversion</em></strong>; David Sjoberg</a></li>
 <li><a href="https://dplyr.tidyverse.org/reference/relocate.html"><strong><em>Change column order: relocate</em></strong></a></li>
 <li><a href="http://linkedomics.org/data_download/TCGA-BRCA/"><strong><em>LinkedOmics Data Download</em></strong></a></li>
@@ -1313,6 +1319,12 @@ Se abrirá una ventana en tu navegador con los ejercicios a resolver</p>
     
     
       <script src="../assets/javascripts/bundle.926459b3.min.js"></script>
+      
+        <script src="../javascripts/extra.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
       
     
   </body>

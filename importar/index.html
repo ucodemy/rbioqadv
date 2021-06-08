@@ -435,22 +435,21 @@
                   <h1>Importar datos</h1>
                 
                 <h2 id="introduccion">Introducción</h2>
-<p>Con el material visto hasta ahora, estamos bastante preparados para representar datos ordenados de forma lógica y agradable. Existen muchísimas más opciones para graficar empleando <em>ggplot2</em>, aunque en este tutorial únicamente hemos mostrado lo que nos parece esencial (para saber más, puedes revisar el resto de posibilidades <a href="https://r4ds.had.co.nz/data-visualisation.html">aquí</a>). </p>
-<p>Sin embargo, aunque ya sepamos mucho sobre representación gráfica, todavía no hemos enseñado cómo importar nuestros propios datos y emplear todo lo estudiado en nuestros propios trabajos, tema que vamos a ver a continuación.</p>
-<p>Vamos a emplear el paquete de Tidyverse <strong><em>readr</em></strong>, que es el que se encarga de importar los datos. Abrimos RStudio y activamos la librería:</p>
+<p>Tras concluir el apartado anterior, sabemos mucho sobre representación gráfica. Sin embargo, todavía no conocemos cómo emplear todo lo estudiado en nuestros propios trabajos. A partir de este momento, <strong>vamos a seguir el flujo normal de trabajo en la ciencia de datos</strong>, de forma que vamos a ser capaces de importar, ordenar y modificar nuestros propios sets de datos.</p>
+<p>Vamos a emplear el paquete de Tidyverse <strong><em>readr</em></strong>, que es el que se encarga de <strong>importar los datos</strong>. Abrimos RStudio y activamos la librería:</p>
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="nf">library</span><span class="p">(</span><span class="n">tidyverse</span><span class="p">)</span>
 </code></pre></div>
 </td></tr></table>
 
 <h2 id="tibbles"><em>Tibbles</em></h2>
-<p>El código base de R utiliza <code>data.frame</code> a la hora de representar datos en tablas. Sin embargo, estos son un poco antiguos y a veces se hace un poco engorroso trabajar con ellos. Tidyverse trata de solucionar esto empleando el paquete <strong><em>tibble</em></strong>.</p>
-<p>Los <em>tibbles</em> funcionan muy parecido a los <code>data.frame</code>, pero presentan características que los hace mucho más sencillo trabajar con ellos:</p>
+<p>Antes de continuar con el apartado de importación de datos, es importante conocer lo que son los <strong><em>tibbles</em></strong>. El código base de R utiliza <em>data frames</em> a la hora de representar datos en tablas. Sin embargo, estos son un poco antiguos y a veces se hace un poco engorroso trabajar con ellos. Tidyverse trata de solucionar esto empleando el paquete "<em>tibble</em>".</p>
+<p>Los <em>tibbles</em> funcionan muy parecido a los <em>data frame</em>, pero presentan características que los hace mucho más sencillo trabajar con ellos:</p>
 <ul>
 <li>Son mucho <strong>más rápidos</strong>.</li>
 <li><strong>No transforman</strong> los vectores de caracteres <strong>a factores</strong>, cosa que sí ocurre con los <code>data.frame</code>.</li>
 <li>Son <strong>más reproducibles</strong>, es decir, es más probable que aquellos que trabajen con los mismos datos que tú lleguen a los mismos resultados.</li>
 </ul>
-<p>Podemos transformar cualquier <code>data.frame</code> en un <em>tibble</em> empleando <code>as_tibble()</code>. Empleemos esta función con <code>iris</code>, un <code>data.frame</code> incluido en R:</p>
+<p>Podemos transformar cualquier <em>data frame</em> en un <em>tibble</em> empleando <code>as_tibble()</code>. Por ejemplo, usemos esta función con <code>iris</code>, un <em>data frame</em> incluido en R:</p>
 <p><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="nf">as_tibble</span><span class="p">(</span><span class="n">iris</span><span class="p">)</span>
 </code></pre></div>
 </td></tr></table>
@@ -484,7 +483,7 @@
 </code></pre></div>
 </td></tr></table></p>
 <p>También puedes crear tus propios <em>tibbles</em> desde cero. Para ello, empleamos la función <code>tibble()</code>, que construye las tablas por columnas. Por ejemplo:</p>
-<p><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3
 4
@@ -495,6 +494,7 @@
 <span class="p">)</span>
 </code></pre></div>
 </td></tr></table>
+
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3
@@ -511,8 +511,12 @@
 4           4           2           1
 5           5           2           4
 </code></pre></div>
-</td></tr></table></p>
+</td></tr></table>
+
+<div class="admonition info">
+<p class="admonition-title">Nota</p>
 <p>Los <em>tibbles</em> ofrecen muchas posibilidades a la hora de crear tablas de datos. Si quieres saber más, puedes usar el comando <code>?tibble</code>, o puedes consultar el manual oficial de <em>Tidyverse</em> <a href="https://r4ds.had.co.nz/tibbles.html">aquí</a>.</p>
+</div>
 <h2 id="importando-datos">Importando datos</h2>
 <p>Importar archivos de datos es muy sencillo, simplemente usa una de las siguientes funciones, dependiendo del tipo de delimitador por el que estén separados tus datos:</p>
 <table>
@@ -546,16 +550,21 @@
 <p>Encuentra un comando con el que puedas leer archivos con cualquier delimitador.</p>
 <details class="help"><summary>Pista:</summary><p>Puedes revistar todos los comandos disponibles con <code>?read_delim</code></p>
 </details>
-<details class="check"><summary>Respuesta</summary><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="nf">read_delim</span><span class="p">(</span><span class="o">&lt;</span><span class="n">DATOS</span><span class="o">&gt;</span><span class="p">,</span> <span class="o">&lt;</span><span class="n">DELIMITADOR</span><span class="o">&gt;</span><span class="p">)</span>
+<details class="check"><summary>Respuesta</summary><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="nf">read_delim</span><span class="p">(</span><span class="s">&quot;&lt;DATOS&gt;&quot;</span><span class="p">,</span> <span class="o">&lt;</span><span class="n">DELIMITADOR</span><span class="o">&gt;</span><span class="p">)</span>
+</code></pre></div>
+</td></tr></table>
+
+<p>Si, por ejemplo, nuestro archivo llamado datos.txt emplea barras (/) como delimitadores escribimos:</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="nf">read_delim</span><span class="p">(</span><span class="s">&quot;datos.txt&quot;</span><span class="p">,</span><span class="o">/</span><span class="p">)</span>
 </code></pre></div>
 </td></tr></table>
 
 </details>
 </div>
-<p>A partir de ahora, salvo excepciones, vamos a utilizar datos no incluidos dentro del paquete <em>Tidyverse</em>, empleando alguna de las funciones anteriores u otros paquetes.</p>
+<p>A partir de ahora, salvo excepciones, <strong>vamos a utilizar datos no incluidos dentro del paquete <em>Tidyverse</em></strong>, empleando alguna de las funciones anteriores u otros paquetes.</p>
 <div class="admonition example">
 <p class="admonition-title">Ejercicio</p>
-<p>Adelantemos un poco de trabajo. Abre y descarga <a href="../datos/brca.txt">este conjunto de datos</a> y, teniendo en cuenta sus delimitadores, impórtalo a R.</p>
+<p>Adelantemos un poco de trabajo. Abre y descarga <a href="../datos/brca.txt"><strong>este conjunto de datos</strong></a> y, teniendo en cuenta sus delimitadores, impórtalo a R.</p>
 <details class="check"><summary>Respuesta</summary><p>Antes de bajarlo podemos comprobar que el archivo emplea tabulaciones como delimitadores. Por tanto, tras descargarlo en nuestro <em>working directory</em>, lo importamos y le asignamos la variable <code>datos</code>:</p>
 <p><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="n">datos</span> <span class="o">&lt;-</span> <span class="nf">read_tsv</span><span class="p">(</span><span class="s">&quot;brca.txt&quot;</span><span class="p">)</span>
 </code></pre></div>
@@ -567,12 +576,12 @@ Podemos ver como nuestros datos ahora aparecen en la ventana <em>environment</em
 <h2 id="ejercicios">Ejercicios</h2>
 <div class="admonition danger">
 <p class="admonition-title">Ejercicios de repaso</p>
-<p>Para ver si has entendido todo, intenta realizar estos <a href="../datos/tutoradvr_1.0.0.0000.tar.gz" title="">ejercicios propuestos</a>. Para saber cómo hacerlos, visita el <a href="http://127.0.0.1:8000/ejercicios/#como-hacer-los-ejercicios-de-repaso">apartado de "Realización de ejercicios"</a>.
+<p>Para ver si has entendido todo, intenta realizar estos <a href="../datos/tutoradvr_1.0.0.tar.gz" title=""><strong>ejercicios propuestos</strong></a>. Para saber cómo hacerlos, visita el <a href="http://127.0.0.1:8000/ejercicios/#como-hacer-los-ejercicios-de-repaso">apartado de "Realización de ejercicios"</a>.
 Tras esto, ejecuta el siguiente comando:
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="n">learnr</span><span class="o">::</span><span class="nf">run_tutorial</span><span class="p">(</span><span class="s">&quot;importar&quot;</span><span class="p">,</span> <span class="s">&quot;tutoradvr&quot;</span><span class="p">)</span>
 </code></pre></div>
 </td></tr></table>
-Se abrirá una ventana en tu navegador con los ejercicios a resolver</p>
+Se abrirá una ventana en tu navegador con los ejercicios a resolver.</p>
 </div>
 <div class="admonition cite">
 <p class="admonition-title">Referencias</p>
@@ -652,6 +661,12 @@ Se abrirá una ventana en tu navegador con los ejercicios a resolver</p>
     
     
       <script src="../assets/javascripts/bundle.926459b3.min.js"></script>
+      
+        <script src="../javascripts/extra.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
       
     
   </body>

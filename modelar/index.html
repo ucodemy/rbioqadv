@@ -449,7 +449,7 @@
                   <h1>Modelar datos</h1>
                 
                 <h2 id="introduccion">Introducción</h2>
-<p>Modelar consiste en la aplicación de herramientas matemáticas para caracterizar un conjunto de datos y encontrar relaciones entre ellos, con las que somos capaces de:</p>
+<p>Modelar consiste en la <strong>aplicación de herramientas matemáticas para caracterizar un conjunto de datos</strong> y encontrar relaciones entre ellos, con las que somos capaces de:</p>
 <ul>
 <li>Predecir futuros resultados</li>
 <li>Encontrar patrones y diferencias entre variables</li>
@@ -458,17 +458,17 @@
 <p>A la hora de modelar, existen dos partes a seguir:</p>
 <ul>
 <li>
-<p>Primero, debemos encontrar un patrón dentro de los datos, que puede ser desde una relación lineal simple (<em>y</em> = a·<em>x</em> + b) hasta una curva cuadrática (<em>y</em> = a·<em>x</em>^b), siendo <em>x</em> e <em>y</em> las variables conocidas y "a" y "b" los parámetros que podemos modificar para encontrar la relación.</p>
+<p>Primero, debemos <strong>encontrar un patrón</strong> dentro de los datos, que puede ser desde una relación lineal simple <span class="arithmatex">\(y = a·x + b\)</span> hasta una curva cuadrática <span class="arithmatex">\(y = a·x^b\)</span>, siendo <span class="arithmatex">\(x\)</span> e <span class="arithmatex">\(y\)</span> las variables conocidas y <span class="arithmatex">\(a\)</span> y <span class="arithmatex">\(b\)</span> los parámetros que podemos modificar para encontrar la relación.</p>
 </li>
 <li>
-<p>Tras esto, conociendo el patrón, debemos encontrar el modelo que se ajusta a los datos (es decir, definir "a" y "b")</p>
+<p>Tras esto, conociendo el patrón, debemos <strong>encontrar el modelo que se ajusta a los datos</strong> (es decir, definir <span class="arithmatex">\(a\)</span> y <span class="arithmatex">\(b\)</span>)</p>
 </li>
 </ul>
 <div class="admonition info">
 <p class="admonition-title">Nota</p>
-<p>Hay que tener en cuenta que <em>ningún modelo elegido es perfecto</em>, simplemente es el que mejor se ajusta a los datos. Hay veces en el que el mejor modelo simplemente es malo y no tiene el por qué cumplirse en todos los casos.</p>
+<p>Hay que tener en cuenta que <strong>ningún modelo elegido es perfecto</strong>, simplemente es el que mejor se ajusta a los datos. Hay veces en el que el mejor modelo simplemente es malo y no tiene el por qué cumplirse en todos los casos.</p>
 </div>
-<p>En esta parte del tutorial, además de <em>tidyverse</em>, emplearemos el paquete <em>modelr</em>, incluido en R base y que nos dará algunas herramientas para comenzar a modelar. Además, vamos a usar <em>modeldata</em>, que incluye una serie de conjuntos de datos preparados para aprender a modelar. Instalamos los paquetes y los cargamos:</p>
+<p>En esta parte del tutorial, además de <em>tidyverse</em>, emplearemos el paquete <strong><em>modelr</em></strong>, incluido en R base y que nos dará algunas herramientas para comenzar a modelar. Además, vamos a usar <strong><em>modeldata</em></strong>, que incluye una serie de conjuntos de datos preparados para aprender a modelar. Instalamos los paquetes y los cargamos:</p>
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="nf">install.packages</span><span class="p">(</span><span class="s">&quot;modeldata&quot;</span><span class="p">)</span>
 </code></pre></div>
 </td></tr></table>
@@ -498,11 +498,11 @@
 </td></tr></table>
 
 <p><img alt="" src="../images/modelar/2.png" title="" /></p>
-<p>Vemos que hay una clara tendencia lineal entre las variables (<em>y</em> = a·<em>x</em> + b). Para elegir la recta que mejor se ajusta, podemos generar multitud de ellas y elegirla al verla en la gráfica. Para ello, debemos generar rectas "aleatorias", para lo cual podemos usar la función <em>runif</em> para generar pendientes y puntos de corte con el eje y (es decir, "a" y "b" respectivamente)</p>
+<p>Vemos que hay una clara tendencia lineal entre las variables <span class="arithmatex">\(y = a·x + b\)</span>. Para elegir la recta que mejor se ajusta, podemos generar multitud de ellas y elegirla al verla en la gráfica. Para ello, debemos generar rectas "aleatorias", para lo cual podemos usar la función <code>runif()</code> para generar pendientes y puntos de corte con <span class="arithmatex">\(y\)</span> (es decir, <span class="arithmatex">\(a\)</span> y <span class="arithmatex">\(b\)</span> respectivamente)</p>
 <p><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="nf">runif</span><span class="p">(</span><span class="o">&lt;</span><span class="n">NÚMERO_DE_RECTAS</span><span class="o">&gt;</span><span class="p">,</span> <span class="n">min</span> <span class="o">=</span><span class="p">,</span> <span class="n">max</span> <span class="o">=</span><span class="p">)</span>
 </code></pre></div>
 </td></tr></table>
-Generamos, por ejemplo, 200 rectas definiendo primero "a" y "b". Viendo la gráfica, podemos deducir el punto de corte con el eje alrededor de 80 (entre 77 y 83) y la pendiente alrededor de 1 (entre -2 y 2):</p>
+Generamos, por ejemplo, 200 rectas definiendo primero <span class="arithmatex">\(a\)</span> y <span class="arithmatex">\(b\)</span>. Viendo la gráfica, podemos deducir el punto de corte con el eje alrededor de 80 (entre 77 y 83) y la pendiente alrededor de 1 (entre -2 y 2):</p>
 <p><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3
@@ -512,8 +512,8 @@ Generamos, por ejemplo, 200 rectas definiendo primero "a" y "b". Viendo la gráf
 <span class="p">)</span>
 </code></pre></div>
 </td></tr></table>
-Tras lo cual, representamos tanto las variables como las rectas, para lo cual usamos la función de <em>ggplot2</em> llamada <em>geom_abline</em>:</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="nf">geom_abline</span><span class="p">(</span><span class="n">data</span> <span class="o">=</span> <span class="o">&lt;</span><span class="n">DATOS</span><span class="o">&gt;</span><span class="p">,</span> <span class="nf">aes</span><span class="p">(</span><span class="n">slope</span> <span class="o">=</span> <span class="o">&lt;</span><span class="n">PENDIENTE</span><span class="o">&gt;</span><span class="p">,</span> <span class="n">intercept</span> <span class="o">=</span> <span class="o">&lt;</span><span class="n">CORTE_EJE_Y</span><span class="o">&gt;</span><span class="p">,))</span>
+Tras lo cual, representamos tanto las variables como las rectas, para lo cual usamos la función de <em>ggplot2</em> <code>geom_abline()</code>:</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="nf">geom_abline</span><span class="p">(</span><span class="n">data</span> <span class="o">=</span> <span class="o">&lt;</span><span class="n">DATOS</span><span class="o">&gt;</span><span class="p">,</span> <span class="nf">aes</span><span class="p">(</span><span class="n">slope</span> <span class="o">=</span> <span class="o">&lt;</span><span class="n">PENDIENTE</span><span class="o">&gt;</span><span class="p">,</span> <span class="n">intercept</span> <span class="o">=</span> <span class="o">&lt;</span><span class="n">CORTE_EJE_Y</span><span class="o">&gt;</span><span class="p">))</span>
 </code></pre></div>
 </td></tr></table>
 
@@ -625,7 +625,7 @@ Tras lo cual, representamos tanto las variables como las rectas, para lo cual us
 <p class="admonition-title">Nota</p>
 <p>Además de para encontrar modelos lineales, <code>lm()</code> sirve para realizar cualquier tipo de regresión, análisis de varianza y covarianza y otros cálculos estadísticos. Puedes profundizar más en cómo usar esta función <a href="https://www.rdocumentation.org/packages/stats/versions/3.6.2/topics/lm">aquí</a>.</p>
 </div>
-<p>El valor de <code>(Intercept)</code> es el punto de corte con el eje y <code>oils$linoleic</code> es la pendiente. Sustituyendo estos valores en la ecuación de la recta (<em>y</em> = a·<em>x</em> + b), obtenemos la línea de regresión exacta para nuestros datos. Representándola obtenemos:</p>
+<p>El valor de <code>(Intercept)</code> es el punto de corte con el eje y <code>oils$linoleic</code> es la pendiente. Sustituyendo estos valores en la ecuación de la recta <span class="arithmatex">\(y = a·x + b\)</span>, obtenemos la línea de regresión exacta para nuestros datos. Representándola obtenemos:</p>
 <p><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="n">a</span> <span class="o">&lt;-</span> <span class="n">regresion</span><span class="o">$</span><span class="n">coefficients</span><span class="p">[</span><span class="m">2</span><span class="p">]</span>
 <span class="n">b</span> <span class="o">&lt;-</span> <span class="n">regresion</span><span class="o">$</span><span class="n">coefficients</span><span class="p">[</span><span class="m">1</span><span class="p">]</span>
@@ -666,12 +666,12 @@ Tras lo cual, representamos tanto las variables como las rectas, para lo cual us
 <h2 id="ejercicios">Ejercicios</h2>
 <div class="admonition danger">
 <p class="admonition-title">Ejercicios de repaso</p>
-<p>Para ver si has entendido todo, intenta realizar estos <a href="../datos/tutoradvr_1.0.0.0000.tar.gz" title="">ejercicios propuestos</a>. Para saber cómo hacerlos, visita el <a href="http://127.0.0.1:8000/ejercicios/#como-hacer-los-ejercicios-de-repaso">apartado de "Realización de ejercicios"</a>.
+<p>Para ver si has entendido todo, intenta realizar estos <a href="../datos/tutoradvr_1.0.0.tar.gz" title=""><strong>ejercicios propuestos</strong></a>. Para saber cómo hacerlos, visita el <a href="http://127.0.0.1:8000/ejercicios/#como-hacer-los-ejercicios-de-repaso">apartado de "Realización de ejercicios"</a>.
 Tras esto, ejecuta el siguiente comando:
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="n">learnr</span><span class="o">::</span><span class="nf">run_tutorial</span><span class="p">(</span><span class="s">&quot;modelar&quot;</span><span class="p">,</span> <span class="s">&quot;tutoradvr&quot;</span><span class="p">)</span>
 </code></pre></div>
 </td></tr></table>
-Se abrirá una ventana en tu navegador con los ejercicios a resolver</p>
+Se abrirá una ventana en tu navegador con los ejercicios a resolver.</p>
 </div>
 <div class="admonition cite">
 <p class="admonition-title">Referencias</p>
@@ -752,6 +752,12 @@ Se abrirá una ventana en tu navegador con los ejercicios a resolver</p>
     
     
       <script src="../assets/javascripts/bundle.926459b3.min.js"></script>
+      
+        <script src="../javascripts/extra.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
       
     
   </body>
